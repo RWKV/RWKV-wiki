@@ -76,7 +76,7 @@ For Q&A with context task, the most optimal is to repeat the question before and
 
 If the above "guided" setups are not what you are looking for, and you want to experiment with different model sizes / quantization settings. The following are the general list to find the various things you may need.
 
-### Instruction trained models
+### Instruction trained models download
 - [Raven](https://huggingface.co/BlinkDL/rwkv-4-raven/tree/main)
 
 ### Base Models download
