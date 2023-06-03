@@ -36,6 +36,10 @@ jobs:
           path: docs/.vuepress/dist/
   
   deploy:
+    # Limit to only the main branch
+    on: 
+      push:
+        branches: [main]
     # Add a dependency to the build job
     needs: build
     # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
