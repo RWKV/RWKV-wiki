@@ -27,8 +27,8 @@ jobs:
       - name: Archive build artifacts
         uses: actions/upload-artifact@v3
         with:
-          name: "github-pages"
-          path: docs/.vuepress/dist
+          name: github-pages
+          path: docs/.vuepress/dist/
   deploy:
     # Add a dependency to the build job
     needs: build
