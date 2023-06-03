@@ -6,10 +6,14 @@ RWKV (pronounced as RwaKuv) is an RNN with GPT-level LLM performance, which can 
 
 So it's combining the best of RNN and transformer - great performance, fast inference, fast training, saves VRAM, "infinite" ctxlen, and free sentence embedding. Moreover it's 100% attention-free.
 
-- [arXiv paper](https://arxiv.org/abs/2305.13048)
 - [Discord Forum](https://discord.gg/bDSBUMeFpc)
 - [14B demo](https://huggingface.co/spaces/BlinkDL/ChatRWKV-gradio)
 - [7B demo](https://huggingface.co/spaces/BlinkDL/Raven-RWKV-7B)
+
+# RWKV architecture paper
+
+[![RWKV paper cover](./img/RWKV-paper.png)](https://arxiv.org/abs/2305.13048)
+- [arXiv (2305.13048) paper](https://arxiv.org/abs/2305.13048)
 
 # TLDR vs Existing transformer models
 
