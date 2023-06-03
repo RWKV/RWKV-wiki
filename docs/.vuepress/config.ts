@@ -27,7 +27,8 @@ export default defineUserConfig({
 				text: 'Advanced', 
 				link: '/advance/',
 				children: [
-					"/advance/finetune.md"
+					"/advance/finetune.md",
+					"/advance/architecture-study.md"
 				]
 			},
 			{

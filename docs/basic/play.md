@@ -32,6 +32,46 @@ npm install -g rwkv-cpp-node
 rwkv-cpp-node
 ```
 
+# Prompting guidelines for RWKV
+
+RWKV is more sensitive to prompt format, then transformer based models. Due to its lack of ability of "looking back"
+
+As such, instead of doing something like the following
+
+```
+{{CONTEXT}}
+
+{{INSTRUCTION}}
+
+{{ANSWER}}
+```
+
+As the format you should instead, do the following
+
+```
+{{INSTRUCTION}}
+
+{{CONTEXT}}
+
+{{ANSWER}}
+```
+
+For a human analogy, you can think of it as the instruction/input's are being read out loud to to model, without letting the model write it down. If the model is told the context first before instruction, it does not know what to do with the context, and may not remember parts that are crucial to the instruction. As it has not been told what to do with it yet.
+
+However if you tell the model the instruction first, then the context, it will understand the instruction first, and use that knowledge to process the context.
+
+For Q&A with context task, the most optimal is to repeat the question before and after the context like the following
+
+```
+{{QUESTION}}
+
+{{CONTEXT}}
+
+{{QUESTION}}
+
+{{ANSWER}}
+```
+
 ## How to play with custom models instead?
 
 If the above "guided" setups are not what you are looking for, and you want to experiment with different model sizes / quantization settings. The following are the general list to find the various things you may need.
