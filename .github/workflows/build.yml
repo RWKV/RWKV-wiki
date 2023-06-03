@@ -1,10 +1,16 @@
-name: build
+name: build & deploy
 
 on: 
   push:
     branches: [main]
   pull_request:
     branches: [main]
+
+# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
+# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
 
 jobs:
   build:
@@ -21,5 +27,23 @@ jobs:
       - name: Archive build artifacts
         uses: actions/upload-artifact@v3
         with:
-          name: docs
+          name: "github-pages"
           path: docs/.vuepress/dist
+  deploy:
+    # Add a dependency to the build job
+    needs: build
+    # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    # Deploy to the github-pages environment
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    # Run the deploy steps
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy 🚀
+        id: deployment
+        uses: actions/deploy-pages@v2
