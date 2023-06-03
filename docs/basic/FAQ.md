@@ -40,4 +40,4 @@ Time mixing is a similar process, however allows the model to retain the previou
 
 Because the current token, is able to read data from the past state via channel and time mixing. This provides an alternative to "attention" models. 
 
-Where it depending on the model weights, key information is stored in the hidden state, and is read against the current state. Effectively providing a form of trained "attention" against past tokens inside the hidden state, from the current token.
+Where key information is stored in the hidden state (decided by the model weights), and is read against the current state. Effectively providing a form of trained "attention" against past tokens inside the hidden state, from the current token.
