@@ -42,6 +42,12 @@ Because the current token, is able to read data from the past state via channel 
 
 Where key information is stored in the hidden state (decided by the model weights), and is read against the current state. Effectively providing a form of trained "attention" against past tokens inside the hidden state, from the current token.
 
+## What is racoon??
+
+Racoon is a community finetuned model, for chat and general purpose use. And is made by @nath , you can find it here : https://huggingface.co/m8than/rwkv-v4-raccoon
+
+It has its own quirky personality, and is more then willing to insult you the user if needed be.
+
 ## What is the RWKV chat commands ?
 
 RWKV.cpp and the RWKV discord chat bot include the following special commands. Which you can use accordingly.
