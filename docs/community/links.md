@@ -45,6 +45,10 @@ The following are various other RWKV links to community project, for specific us
 - https://github.com/ZeldaHuang/rwkv-cpp-server
 - https://github.com/Atome-FE/llama-node
 
+## Python libraries
+
+- https://pypi.org/project/langdash/
+
 ## RWKV in the browser
 
 - https://github.com/josephrocca/rwkv-v4-web
