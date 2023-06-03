@@ -16,5 +16,10 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 18
-      - run: npm install
-      - run: npm run build  # Build VuePress dist files
+      - run: npm ci
+      - run: npm run docs:build # Build VuePress dist files
+      - name: Archive build artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: docs
+          path: docs/.vuepress/dist
