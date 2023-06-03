@@ -18,7 +18,7 @@ If you are not familiar with python or hugging face, you can install chat models
 - [RWKV Runner Project](https://github.com/josStorer/RWKV-Runner)
     - [exe installer download](https://github.com/josStorer/RWKV-Runner/releases/tag/v1.1.5)
 
-[![RWKV Runner Demo](../img/rwkv-runner-demo.png)](https://github.com/josStorer/RWKV-Runner)
+[![RWKV Runner Demo](/img/rwkv-runner-demo.png)](https://github.com/josStorer/RWKV-Runner)
 
 Or interact with the model via the following CLI, if you have NPM installed
 
