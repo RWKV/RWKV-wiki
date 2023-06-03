@@ -27,9 +27,12 @@ jobs:
       - name: Archive build artifacts
         uses: actions/upload-artifact@v3
         with:
-          name: github-pages
+          name: vuepress-build
           path: docs/.vuepress/dist/
-  deploy:
+      - name: Upload artifact for pages
+        uses: actions/upload-pages-artifact@v1
+        with: 
+          path: docs/.vuepress/dist/
     # Add a dependency to the build job
     needs: build
     # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
