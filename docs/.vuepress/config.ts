@@ -3,12 +3,18 @@ import { defineUserConfig } from '@vuepress/cli'
 
 export default defineUserConfig({
 	theme: defaultTheme({
+		// Custom /RWKV-docs/ for github pages support (until the domain is setup)
+		base: "/RWKV-docs/",
+
+		// Site logo and navbar
 		logo: "/img/rwkv-avartar-256p.png",
 		navbar: [
 			{ text: 'Main Github', link: 'https://github.com/BlinkDL/RWKV-LM' },
 			{ text: 'Hugging Face Integration', link: 'https://huggingface.co/docs/transformers/model_doc/rwkv' },
 			{ text: 'Community Discord', link: 'https://discord.gg/bDSBUMeFpc' }
 		],
+
+		// Sidebar menu
 		sidebar: [
 			{ text: 'RWKV Lanugage Model', link: '/' },
 			{ 
