@@ -3,6 +3,12 @@ import { defineUserConfig } from '@vuepress/cli'
 
 export default defineUserConfig({
 	theme: defaultTheme({
+		logo: "/img/rwkv-avartar-256p.png",
+		navbar: [
+			{ text: 'Main Github', link: 'https://github.com/BlinkDL/RWKV-LM' },
+			{ text: 'Hugging Face Integration', link: 'https://huggingface.co/docs/transformers/model_doc/rwkv' },
+			{ text: 'Community Discord', link: 'https://discord.gg/bDSBUMeFpc' }
+		],
 		sidebar: [
 			{ text: 'RWKV Lanugage Model', link: '/' },
 			{ 
@@ -11,16 +17,25 @@ export default defineUserConfig({
 				children: [
 					"/basic/play.md",
 					"/basic/integrate.md",
-					"/basic/api-host.md"
+					"/basic/FAQ.md"
 				]
 			},
 			{ 
 				text: 'Advanced', 
 				link: '/advance/',
 				children: [
-					"/advance/finetune-lora.md"
+					"/advance/finetune.md"
 				]
 			},
+			{
+				text: 'Community',
+				link: '/community/code-of-conduct.md',
+				children: [
+					"/community/code-of-conduct.md",
+					"/community/contribute.md",
+					"/community/links.md"
+				]
+			}
 		]
 	})
 })
