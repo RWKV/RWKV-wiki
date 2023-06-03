@@ -42,6 +42,27 @@ Because the current token, is able to read data from the past state via channel 
 
 Where key information is stored in the hidden state (decided by the model weights), and is read against the current state. Effectively providing a form of trained "attention" against past tokens inside the hidden state, from the current token.
 
+## What is the RWKV chat commands ?
+
+RWKV.cpp and the RWKV discord chat bot include the following special commands. Which you can use accordingly.
+
+You can configure the following setting anytime.
+
+- `-temp=X` : Set the temperature of the model to X, where X is between 0.2 to 5
+- `-top_p=Y` : Set top_p to be between 0.0 and 1.0
+
+You can only use one of the following command per prompt.
+
+- `+reset` : Reset the current chat history to its initial state
+- `+gen` : Generate a response continuing from the prompt
+    - `+++` : Continue the generation of response
+    - `++` : Retry with an alternative response
+- `+i` : Generate a response using the prompt as an instruction (using instruction template)
+- `+qa` : Generate a response using the prompt as a question, from a blank state (using question answer template)
+- `+` : Retry with an alternative chat reply (default mode is chat mode, unless you used the +gen / +i / +qa command)
+
+These commands are implemented by the `chat.py` code, and are not part of the model itself.
+
 ## I would like to study more on the architecture, where should I go ?
 
 If you are not not familiar machine learning, I would recommend [Andrej Karpathy series on neural networks](https://www.youtube.com/watch?v=VMj-3S1tku0&list=PLAqhIrjkxbuWI23v9cThsA9GvCAUhRvKZ&ab_channel=AndrejKarpathy) - this would help provide a good foundation on various neural network architectures concepts.
