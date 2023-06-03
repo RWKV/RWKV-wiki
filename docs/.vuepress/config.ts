@@ -3,9 +3,6 @@ import { defineUserConfig } from '@vuepress/cli'
 
 export default defineUserConfig({
 	theme: defaultTheme({
-		// Custom /RWKV-docs/ for github pages support (until the domain is setup)
-		base: "/RWKV-docs/",
-
 		// Site logo and navbar
 		logo: "/img/rwkv-avartar-256p.png",
 		navbar: [
