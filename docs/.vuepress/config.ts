@@ -1,5 +1,6 @@
 import { defaultTheme } from '@vuepress/theme-default'
 import { defineUserConfig } from '@vuepress/cli'
+import { searchPlugin } from '@vuepress/plugin-search'
 
 export default defineUserConfig({
 	theme: defaultTheme({
@@ -46,5 +47,12 @@ export default defineUserConfig({
 				]
 			}
 		]
-	})
+	}),
+
+	// Adding search
+	plugins: [
+		searchPlugin({
+			// options
+		}),
+	]
 })
