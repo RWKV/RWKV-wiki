@@ -16,7 +16,7 @@ Chat is disabled in the above public demo
 If you are not familiar with python or hugging face, you can install chat models locally with the following app
 
 - [RWKV Runner Project](https://github.com/josStorer/RWKV-Runner)
-    - [exe installer download](https://github.com/josStorer/RWKV-Runner/releases/tag/v1.1.5)
+    - [installer download (do read the installer README instructions)](https://github.com/josStorer/RWKV-Runner/releases/)
 
 [![RWKV Runner Demo](/img/rwkv-runner-demo.png)](https://github.com/josStorer/RWKV-Runner)
 
