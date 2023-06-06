@@ -48,7 +48,7 @@ Racoon is a community finetuned model, for chat and general purpose use. And is 
 
 It has its own quirky personality, and is more then willing to insult you the user if needed be.
 
-## What is the RWKV chat commands ?
+## What are the RWKV chat commands ?
 
 RWKV.cpp and the RWKV discord chat bot include the following special commands. Which you can use accordingly.
 
