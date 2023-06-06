@@ -15,7 +15,7 @@ export default defineUserConfig({
 		docsRepo: 'https://github.com/RWKV/RWKV-wiki',
 		docsBranch: 'main',
 		docsDir: 'docs',
-		editLinkPattern: ':repo/blob/main/:branch/:path',
+		editLinkPattern: ':repo/blob/:branch/:path',
 
 		// Sidebar menu
 		sidebar: [
