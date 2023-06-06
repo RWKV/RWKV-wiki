@@ -11,6 +11,12 @@ export default defineUserConfig({
 			{ text: 'Community Discord', link: 'https://discord.gg/bDSBUMeFpc' }
 		],
 
+		// Adding docs edit link
+		docsRepo: 'https://github.com/RWKV/RWKV-wiki',
+		docsBranch: 'main',
+		docsDir: 'docs',
+		editLinkPattern: ':repo/-/edit/:branch/:path',
+
 		// Sidebar menu
 		sidebar: [
 			{ text: 'RWKV Lanugage Model', link: '/' },
@@ -25,7 +31,7 @@ export default defineUserConfig({
 			},
 			{ 
 				text: 'Advanced', 
-				link: '/advance/',
+				link: '/advance/finetune.md',
 				children: [
 					"/advance/finetune.md"
 				]
