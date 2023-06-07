@@ -23,7 +23,7 @@ export default defineUserConfig({
 			{ text: 'RWKV Lanugage Model', link: '/' },
 			{ 
 				text: 'Getting Started', 
-				link: '/basic/play.md',
+				link: '/basic/play.html',
 				children: [
 					"/basic/play.md",
 					"/basic/integrate.md",
@@ -32,14 +32,14 @@ export default defineUserConfig({
 			},
 			{ 
 				text: 'Advanced', 
-				link: '/advance/finetune.md',
+				link: '/advance/finetune.html',
 				children: [
 					"/advance/finetune.md"
 				]
 			},
 			{
 				text: 'Community',
-				link: '/community/code-of-conduct.md',
+				link: '/community/code-of-conduct.html',
 				children: [
 					"/community/code-of-conduct.md",
 					"/community/contribute.md",
