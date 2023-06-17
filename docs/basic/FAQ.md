@@ -76,5 +76,6 @@ If you are not not familiar machine learning, I would recommend [Andrej Karpathy
 A good starting point, is to look into [RWKV in 150 lines of code](https://github.com/BlinkDL/ChatRWKV/blob/main/RWKV_in_150_lines.py), which is a good starting point to understand the core concepts of RWKV. You can find the 150 lines explained in more details at the following [blog post here](https://johanwind.github.io/2023/03/23/rwkv_details.html)
 
 Alternatively, you can study it up via the [RWKV paper](https://arxiv.org/abs/2305.13048)
+Or watch [Yannic Kilcher break the paper down step by step on youtube](https://www.youtube.com/watch?v=x8pW19wKfXQ&pp=ygUEUldLVg%3D%3D)
 
 Once you gotten a grasp on the fundemantals, you can start studying the training and cuda code respectively in the [main repo](https://github.com/BlinkDL/RWKV-LM)
