@@ -8,6 +8,9 @@ You are generally expected to know what you are doing, if you are attempting to 
 In many cases what most people want to achieve can be done with tuning their prompts, which is much easier then finetuning.
 :::
 
+For a complete guide on finetuning with lora, you can find it at
+- [https://mysymphony.jp.net/a/rwkv-character/](https://mysymphony.jp.net/a/rwkv-character/)
+
 For finetuning with LoRa, use either of the following LoRa implementation
 
 - [https://github.com/m8than/RWKV-LM-LoRA](https://github.com/m8than/RWKV-LM-LoRA)
