@@ -10,6 +10,7 @@ In many cases what most people want to achieve can be done with tuning their pro
 
 For a complete guide on finetuning with lora, you can find it at
 - [https://mysymphony.jp.net/a/rwkv-character/](https://mysymphony.jp.net/a/rwkv-character/)
+- [https://zhuanlan.zhihu.com/p/638326262 (blinks guide to finetuning in chinese)](https://zhuanlan.zhihu.com/p/638326262)
 
 For finetuning with LoRa, use either of the following LoRa implementation
 
