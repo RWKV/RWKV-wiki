@@ -74,8 +74,7 @@ conda create -y --name rwkv_4neo python=3.10
 conda activate rwkv_4neo
 
 # Install cuda toolkits
-conda install -y -c conda-forge cudatoolkit=11.7 
-conda install -y -c conda-forge cudatoolkit-dev=11.7 
+conda install -y -c conda-forge cudatoolkit=11.7 cudatoolkit-dev=11.7 
 
 # Setting up pytorch 1.13.1 with cuda 1.17 specifically
 python -m pip install torch==1.13.1+cu117 torchvision==0.14.1+cu117 torchaudio==0.13.1 --extra-index-url https://download.pytorch.org/whl/cu117
