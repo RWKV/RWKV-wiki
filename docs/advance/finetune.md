@@ -51,8 +51,8 @@ With LoRa & DeepSpeed you can probably get away with 1/2 or less the vram requir
 If you have issues with python dependencies, you can try the following for a clean setup on Ubuntu 20.04 on an AWS instance
 
 ```bash
-# Entropy stuff first
-sudo apt install -y haveged
+# Make sure haveged, ninja and python itself is installed
+sudo apt-get install -y haveged ninja-build python3-pip python-is-python3
 
 # Check if you have nvidia-smi working
 nvidia-smi
@@ -60,30 +60,25 @@ nvidia-smi
 # If nvidia SMI is not working: you will need the following steps to install nvidia drivers
 # sudo apt install -y  nvidia-driver-515 nvidia-dkms-515
 
-# Installing python stuff
-sudo apt install -y python3-pip python-is-python3
-
 # If conda is not installed, see its instructions online to install it
 # https://www.anaconda.com/download#downloads
 
 # Update conda
-conda update -n base -c conda-forge conda
+conda update conda
 
 # You might need to reinit for your shell
 conda init bash
 
-# Setup conda environment
-conda create --name rwkv_4neo cudatoolkit=11.7 cudatoolkit-dev=11.7 python=3.10
+# Create and activate the conda env
+conda create -y --name rwkv_4neo python=3.10
 conda activate rwkv_4neo
 
+# Install cuda toolkits
+conda install -y -c conda-forge cudatoolkit=11.7 
+conda install -y -c conda-forge cudatoolkit-dev=11.7 
+
 # Setting up pytorch 1.13.1 with cuda 1.17 specifically
-pip install torch==1.13.1+cu117 torchvision==0.14.1+cu117 torchaudio==0.13.1 --extra-index-url https://download.pytorch.org/whl/cu117
-
-# Installing pip stuff
-pip install pytorch-lightning==1.9 deepspeed==0.7.0 
-pip install ninja
-
-# You might need to run this with sudo
-# (if it does not work when running)
-# sudo pip install ninja
+python -m pip install torch==1.13.1+cu117 torchvision==0.14.1+cu117 torchaudio==0.13.1 --extra-index-url https://download.pytorch.org/whl/cu117
+python -m pip install deepspeed==0.7.0 pytorch-lightning==1.9
+python -m pip install ninja wandb transformers
 ```
