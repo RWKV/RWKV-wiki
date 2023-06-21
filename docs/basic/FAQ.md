@@ -78,4 +78,6 @@ A good starting point, is to look into [RWKV in 150 lines of code](https://githu
 Alternatively, you can study it up via the [RWKV paper](https://arxiv.org/abs/2305.13048)
 Or watch [Yannic Kilcher break the paper down step by step on youtube](https://www.youtube.com/watch?v=x8pW19wKfXQ&pp=ygUEUldLVg%3D%3D)
 
+If would like a breakdown on the math involved, you can find it covered in a blog post here: [https://ben.bolte.cc/rwkv](https://ben.bolte.cc/rwkv)
+
 Once you gotten a grasp on the fundemantals, you can start studying the training and cuda code respectively in the [main repo](https://github.com/BlinkDL/RWKV-LM)
