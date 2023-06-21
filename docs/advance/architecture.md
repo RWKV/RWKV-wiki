@@ -6,7 +6,7 @@ If you are not not familiar machine learning, I would highly recommend [Andrej K
 
 ## What is a classic RNN network? / What is the hidden state?
 
-An RNN network is a time of AI neural network, in its simplest form. Uses a hiddenstate, which is constantly being updated, as it processes each input token, while predicting the next token (if needed)
+An RNN network is a time of AI neural network, in its simplest form. Uses a hiddenstate, which is constantly being updated by a function, as it processes each input token, while predicting the next token (if needed)
 
 ![Classic RNN digram](../img/classic-RNN.png)
 
@@ -20,7 +20,7 @@ RWKV can be viewed as a modified varient of RNN
 
 ## How does RWKV differ from classic RNN?
 
-RNN traditionally, due to its sequential nature, of needing to fully process one token and its hidden state before the next taken. Is hard to parallize and train with GPUs. Making them difficult to train at scale for Large Language Models.
+RNN traditionally, due to its sequential nature, of needing to fully process one token and its hidden state before the next token. Is hard to parallize and train with GPUs. Making them difficult to train at scale for Large Language Models.
 
 ![Digram showing the flow of the hiddenstates](../img/rwkv-hidden-state-flow.png)
 
