@@ -55,6 +55,6 @@ You can only use one of the following command per prompt.
 
 These commands are implemented by the `chat.py` code, and are not part of the model itself.
 
-## I would like to study more on the architecture, where should I go ?
+## I would like to study more on the architecture (hidden state, time mixing, etc), where should I go ?
 
 See the [architecture page](../advance/architecture.md)
