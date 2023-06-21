@@ -136,8 +136,14 @@ The following are various other RWKV links to community project, for specific us
 
 ## Educational (RWKV < X lines)
 
-- 150 lines : [https://github.com/uasi/rwkv-in-150-lines-ex](https://github.com/uasi/rwkv-in-150-lines-ex)
+- RWKV paper : [https://arxiv.org/abs/2305.13048](https://arxiv.org/abs/2305.13048)
+- Yannic Kilcher break the paper down step by step on youtube : [https://www.youtube.com/watch?v=x8pW19wKfXQ&pp=ygUEUldLVg%3D%3D](https://www.youtube.com/watch?v=x8pW19wKfXQ&pp=ygUEUldLVg%3D%3D)
+- 150 lines explained 
+    - [https://github.com/uasi/rwkv-in-150-lines-ex](https://github.com/uasi/rwkv-in-150-lines-ex)
+    - [https://johanwind.github.io/2023/03/23/rwkv_details.html](https://johanwind.github.io/2023/03/23/rwkv_details.html)
 - RWKV deconstructed : [https://github.com/cwhy/rwkv-decon](https://github.com/cwhy/rwkv-decon)
+- RWKV math breakdown : [https://ben.bolte.cc/rwkv](https://ben.bolte.cc/rwkv)
+
 
 ## Tooling
 
