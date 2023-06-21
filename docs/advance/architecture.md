@@ -44,7 +44,7 @@ Effectively providing a form of "trained attention" of the past tokens (stored i
 
 > PS: the above is an inaccurate oversimplification, read the paper / links below for deeper details
 
-## I want the nitty-gritty, where do I find it?
+## How does WKV works? / I want the nitty-gritty, where do I find it?
 
 A good starting point, is to look into [RWKV in 150 lines of code](https://github.com/BlinkDL/ChatRWKV/blob/main/RWKV_in_150_lines.py), which is a good starting point to understand the core concepts of RWKV. 
 
