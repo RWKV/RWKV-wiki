@@ -16,6 +16,8 @@ Looping until the target completion state is reached.
 
 This hidden state can be viewed as the AI models "state of mind"
 
+RWKV can be viewed as a modified varient of RNN
+
 ## How does RWKV differ from classic RNN?
 
 RNN traditionally, due to its sequential nature, of needing to fully process one token and its hidden state before the next taken. Is hard to parallize and train with GPUs. Making them difficult to train at scale for Large Language Models.
@@ -26,7 +28,7 @@ RWKV mitigate this issue, by splitting the full RNN network into multiple smalle
 
 This allow for the next token states to be computed partially in parallel, while awaiting the complete calculation of the first hidden state. In a cascading like pattern.
 
-Effectively, allowing the RNN network to run like a transformer network, when rolled out side by side.
+Effectively, allowing the RNN network to run like a transformer network, when rolled out side by side. Where it can be trained "like a transformer" and "executed like an RNN" (the best of both worlds)
 
 All of this is achieved by using a combination of token shifting, channel and time mixing, to comptue the next layer / hidden state.
 
