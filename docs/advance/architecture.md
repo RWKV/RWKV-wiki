@@ -4,7 +4,7 @@
 If you are not not familiar machine learning, I would highly recommend [Andrej Karpathy series on neural networks](https://www.youtube.com/watch?v=VMj-3S1tku0&list=PLAqhIrjkxbuWI23v9cThsA9GvCAUhRvKZ&ab_channel=AndrejKarpathy) - that would help provide a good foundation on various neural network architectures concepts.
 :::
 
-## What is a classic RNN network?
+## What is a classic RNN network? / What is the hidden state?
 
 An RNN network is a time of AI neural network, in its simplest form. Uses a hiddenstate, which is constantly being updated, as it processes each input token, while predicting the next token (if needed)
 
