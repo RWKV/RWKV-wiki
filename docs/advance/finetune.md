@@ -21,6 +21,8 @@ For best performance, it is adviced to convert your dataset to a binary format f
 
 - [https://github.com/Abel2076/json2binidx_tool](https://github.com/Abel2076/json2binidx_tool)
 
+> Most of the existing finetune script, should work with the world model, provided you pretokenize your dataset with the world tokenizer, using the json2binidx tool
+
 ## Fine tuning without LoRa
 
 Alternatively, you can use the official repo, to finetune the project without LoRa (or the above LoRa projects, without the LoRa flags)
