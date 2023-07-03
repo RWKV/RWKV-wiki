@@ -28,6 +28,10 @@ RWKV mitigate this issue, by splitting the full RNN network into multiple smalle
 
 This allow for the next token states to be computed partially in parallel, while awaiting the complete calculation of the first hidden state. In a cascading like pattern.
 
+The follow gif, illustrates the parallel cascading nature over approximately 3 layers (height) and 25 tokens (width)
+
+![Digram showing the RWKV parallel cascading pattern, in transformer mode, generated via https://jsfiddle.net/buLswgem/31/ ](../img/rwkv-cascading-pattern.gif)
+
 Effectively, allowing the RNN network to run like a transformer network, when rolled out side by side. Where it can be trained "like a transformer" and "executed like an RNN" (the best of both worlds)
 
 All of this is achieved by using a combination of token shifting, channel and time mixing, to comptue the next layer / hidden state.
