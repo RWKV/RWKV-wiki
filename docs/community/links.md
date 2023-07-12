@@ -76,6 +76,7 @@ The following are various other RWKV links to community project, for specific us
 
 - [https://github.com/mrsteyk/rwkvk-rs](https://github.com/mrsteyk/rwkvk-rs)
 - [https://github.com/KerfuffleV2/smolrsrwkv](https://github.com/KerfuffleV2/smolrsrwkv)
+- [https://github.com/cryscan/web-rwkv](https://github.com/cryscan/web-rwkv)
 
 ## Tiny grad rewrites
 
@@ -91,6 +92,10 @@ The following are various other RWKV links to community project, for specific us
 - [https://github.com/harrisonvanderbyl/rwkv-cpp](https://github.com/harrisonvanderbyl/rwkv-cpp)
 - [https://github.com/donomii/go-rwkv.cpp](https://github.com/donomii/go-rwkv.cpp)
 
+## WebGPU implementation
+
+- [https://github.com/cryscan/web-rwkv](https://github.com/cryscan/web-rwkv)
+
 ## ALEXA integration
 
 - [https://github.com/RafaRed/RWKV-alexa](https://github.com/RafaRed/RWKV-alexa)
@@ -103,7 +108,7 @@ The following are various other RWKV links to community project, for specific us
 
 - [https://github.com/HighCWu/rwkv-paddle](https://github.com/HighCWu/rwkv-paddle)
 
-## Pico Implementation
+## Pico implementation
 
 - [https://github.com/guanyilun/picollms](https://github.com/guanyilun/picollms)
 
