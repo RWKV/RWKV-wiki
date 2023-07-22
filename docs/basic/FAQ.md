@@ -79,4 +79,4 @@ And while no one wants to wait 190+ years for their model to finish, and that is
 This ends up being a very complicated math of "how fast you want the model" vs "how much can you pay" with faster training time, generally meaning increasing costs in overall. Making estimates of $5M to $1M all very possible numbers depending on how fast (or slow) would you want your model to be.
 
 
-> If you however, do have ~$1M worth of GPU time you can donate to RWKV for training an OSS model, through your research institute, etc. Do get in touch with us 😉
+> If you however, do have GPU time you can donate to RWKV for training an OSS model, through your research institute, etc. Do get in touch with us 😉 (it does not need to be ~$1M worth, even small amount helps in a long way)
