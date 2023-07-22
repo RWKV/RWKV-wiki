@@ -58,3 +58,23 @@ These commands are implemented by the `chat.py` code, and are not part of the mo
 ## I would like to study more on the architecture (hidden state, time mixing, etc), where should I go ?
 
 See the [architecture page](../advance/architecture.md)
+
+## How much would it cost to train RWKV >20B from scratch ? And why can't you give me a simple answer to how much I need ?
+
+While the price of training a model keeps falling, training from scratch is a task most individuals underestimate the cost.
+
+There are lots of factors involved in training a model, most importantly is the dataset size (aka. number of tokens), the model size, and your timeline. Also you will need to budget in for mistakes, that could happen in the training process, and the human cost involved in setting up and preparing the whole process. All of which makes things hard to predict accurately.
+
+For example, it is predicted that LLaMA2 [70B foundation model cost $2.6M to train from scratch, with 2 Trillion tokens](https://twitter.com/moinnadeem/status/1681393075367841792) - so as a general rule of thumb, unless you have access to $1M worth of GPU time, you should not be considering training anything >14B from scratch.
+
+While RWKV as a RNN, should in theory be cheaper to train then a transformer. Even 1/5 of $2.6M, is a cost most individuals or companies will not be able to afford.
+At this point, however some of you may ask: is it possible to just train on a single machine? instead of an expensive GPU farm?
+
+In theory, you can train on a single machine, as long as you have the [minimum required vram for the model size](https://wiki.rwkv.com/advance/finetune.html#how-much-gpu-vram-do-you-need). However with a large enough dataset, or in the case of 70B LLaMA2 2 Trillion tokens - it would have taken a single A100 a total of 1,720,320 hours, or a 196 years.
+
+And while no one wants to wait 190+ years for their model to finish, and that is why we split workload across multiple training nodes. For every node we add, we face a heavy penalty in efficiency, due to the high communication overheads involved.
+
+This ends up being a very complicated math of "how fast you want the model" vs "how much can you pay" with faster training time, generally meaning increasing costs in overall. Making estimates of $5M to $1M all very possible numbers depending on how fast (or slow) would you want your model to be.
+
+
+> If you however, do have ~$1M worth of GPU time you can donate to RWKV for training an OSS model, through your research institute, etc. Do get in touch with us 😉
