@@ -61,6 +61,8 @@ See the [architecture page](../advance/architecture.md)
 
 ## How much would it cost to train RWKV >20B from scratch ? And why can't you give me a simple answer to how much I need ?
 
+> TLDR: If you do not have access to ~$1M worth of GPU time, do not consider this task
+
 While the price of training a model keeps falling, training from scratch is a task most individuals underestimate the cost.
 
 There are lots of factors involved in training a model, most importantly is the dataset size (aka. number of tokens), the model size, and your timeline. Also you will need to budget in for mistakes, that could happen in the training process, and the human cost involved in setting up and preparing the whole process. All of which makes things hard to predict accurately.
