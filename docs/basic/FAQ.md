@@ -74,8 +74,8 @@ At this point, however some of you may ask: is it possible to just train on a si
 
 In theory, you can train on a single machine, as long as you have the [minimum required vram for the model size](https://wiki.rwkv.com/advance/finetune.html#how-much-gpu-vram-do-you-need). However with a large enough dataset, or in the case of 70B LLaMA2 2 Trillion tokens - it would have taken a single A100 a total of 1,720,320 hours, or a 196 years.
 
-As such, because no one wants to wait 190+ years for their model to finish - we split workload across multiple training nodes. However, this is not a perfectly scalable process. For every node we add, we face a heavy penalty in efficiency, due to the high communication overheads involved.
+As such, because no one wants to wait 190+ years for their model to finish - we split workload across multiple training nodes. This is sadly not a perfectly scalable process. As every node we add, adds a penalty in efficiencies, due to the high communication overheads involved.
 
 The end result, ends up being a very complicated math of "how fast you want the model" vs "how much can you pay" with faster training time, generally meaning increasing costs in overall. Making estimates of $5M to $1M all very possible numbers depending on how fast (or slow) would you want your model to be.
 
-> If you however, do have GPU time you can donate to RWKV for training an OSS model, through your research institute, etc. Do get in touch with us 😉 (it does not need to be ~$1M worth, even small amount helps in a long way)
+> If you, do have GPU time you can donate to RWKV for training an OSS model, through your research institute, etc. Do get in touch with us 😉 (it does not need to be ~$1M worth, even small amount helps in a long way)
