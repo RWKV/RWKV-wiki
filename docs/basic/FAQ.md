@@ -69,7 +69,7 @@ There are lots of factors involved in training a model, most importantly is the 
 
 For example, it is predicted that LLaMA2 [70B foundation model cost $2.6M to train from scratch, with 2 Trillion tokens](https://twitter.com/moinnadeem/status/1681393075367841792) in GPU time alone - so as a general rule of thumb, unless you have access to $1M worth of GPU time, and a decent amount to prepare the datasets, you should not be considering training anything >14B from scratch.
 
-While RWKV as a RNN, should in theory be cheaper to train then a transformer. Even 1/5 of $2.6M, is a cost most individuals or companies will not be able to afford.
+While RWKV as a RNN, should in theory be cheaper to train than a transformer. Even 1/5 of $2.6M, is a cost most individuals or companies will not be able to afford.
 At this point, however some of you may ask: is it possible to just train on a single machine? instead of an expensive GPU farm?
 
 In theory, you can train on a single machine, as long as you have the [minimum required vram for the model size](https://wiki.rwkv.com/advance/finetune.html#how-much-gpu-vram-do-you-need). However with a large enough dataset, or in the case of 70B LLaMA2 2 Trillion tokens - it would have taken a single A100 a total of 1,720,320 hours, or a 196 years.
