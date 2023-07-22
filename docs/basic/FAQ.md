@@ -67,7 +67,7 @@ While the price of training a model keeps falling, training from scratch is a ta
 
 There are lots of factors involved in training a model, most importantly is the dataset size (aka. number of tokens), the model size, and your timeline. Also you will need to budget in for mistakes, that could happen in the training process, and the human cost involved in setting up and preparing the whole process. All of which makes things hard to predict accurately. (Not to mention with that amount of money involved, you probably would want to have a say of the datasets being used, all of which takes even more time and labour to prepare)
 
-For example, it is predicted that LLaMA2 [70B foundation model cost $2.6M to train from scratch, with 2 Trillion tokens](https://twitter.com/moinnadeem/status/1681393075367841792) - so as a general rule of thumb, unless you have access to $1M worth of GPU time, you should not be considering training anything >14B from scratch.
+For example, it is predicted that LLaMA2 [70B foundation model cost $2.6M to train from scratch, with 2 Trillion tokens](https://twitter.com/moinnadeem/status/1681393075367841792) in GPU time alone - so as a general rule of thumb, unless you have access to $1M worth of GPU time, and a decent amount to prepare the datasets, you should not be considering training anything >14B from scratch.
 
 While RWKV as a RNN, should in theory be cheaper to train then a transformer. Even 1/5 of $2.6M, is a cost most individuals or companies will not be able to afford.
 At this point, however some of you may ask: is it possible to just train on a single machine? instead of an expensive GPU farm?
