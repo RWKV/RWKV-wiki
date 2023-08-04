@@ -65,6 +65,8 @@ If you would like a breakdown on the math involved, you can find it covered in a
 Finally once you gotten a grasp on the fundemantals, you can start studying the training and cuda code respectively in the [main repo](https://github.com/BlinkDL/RWKV-LM)
 
 **Additional links/resources**
-- RWKV model math: https://ben.bolte.cc/rwkv-model
-- RWKV explained: https://fullstackdeeplearning.com/blog/posts/rwkv-explainer/
-- How RWKV works: https://johanwind.github.io/2023/03/23/rwkv_details.html
+- RWKV model math: [https://ben.bolte.cc/rwkv-model](https://ben.bolte.cc/rwkv-model)
+- RWKV explained: [https://fullstackdeeplearning.com/blog/posts/rwkv-explainer/](https://fullstackdeeplearning.com/blog/posts/rwkv-explainer/)
+- How RWKV works: [https://johanwind.github.io/2023/03/23/rwkv_details.html](https://johanwind.github.io/2023/03/23/rwkv_details.html)
+- RWKV training cost estimate (outdated): [https://johanwind.github.io/2023/03/23/rwkv_overview.html](https://johanwind.github.io/2023/03/23/rwkv_overview.html)
+
