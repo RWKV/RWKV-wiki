@@ -63,3 +63,8 @@ Or watch [Yannic Kilcher break the paper down step by step on youtube](https://w
 If you would like a breakdown on the math involved, you can find it covered in a blog post here: [https://ben.bolte.cc/rwkv](https://ben.bolte.cc/rwkv)
 
 Finally once you gotten a grasp on the fundemantals, you can start studying the training and cuda code respectively in the [main repo](https://github.com/BlinkDL/RWKV-LM)
+
+**Additional links/resources**
+- RWKV model math: https://ben.bolte.cc/rwkv-model
+- RWKV explained: https://fullstackdeeplearning.com/blog/posts/rwkv-explainer/
+- How RWKV works: https://johanwind.github.io/2023/03/23/rwkv_details.html
