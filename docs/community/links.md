@@ -149,6 +149,10 @@ The following are various other RWKV links to community project, for specific us
 - RWKV deconstructed : [https://github.com/cwhy/rwkv-decon](https://github.com/cwhy/rwkv-decon)
 - RWKV math breakdown : [https://ben.bolte.cc/rwkv](https://ben.bolte.cc/rwkv)
 
+- RWKV model math: [https://ben.bolte.cc/rwkv-model](https://ben.bolte.cc/rwkv-model)
+- RWKV explained: [https://fullstackdeeplearning.com/blog/posts/rwkv-explainer/](https://fullstackdeeplearning.com/blog/posts/rwkv-explainer/)
+- How RWKV works: [https://johanwind.github.io/2023/03/23/rwkv_details.html](https://johanwind.github.io/2023/03/23/rwkv_details.html)
+- RWKV training cost estimate (outdated): [https://johanwind.github.io/2023/03/23/rwkv_overview.html](https://johanwind.github.io/2023/03/23/rwkv_overview.html)
 
 ## Tooling
 
