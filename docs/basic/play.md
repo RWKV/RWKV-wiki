@@ -11,7 +11,7 @@ If you simply want to give the RWKV Raven a try, you can try the following publi
 Chat is disabled in the above public demo
 :::
 
-## Minimal steps for local setup
+## Minimal steps for local setup (Recommended route)
 
 If you are not familiar with python or hugging face, you can install chat models locally with the following app
 
@@ -101,6 +101,10 @@ These projects are designed to run locally, without the need of python or huggin
 ::: tip
 Despite the "cuda" name, rwkv-cpp-cuda does have vulkan support, meaning it can run on AMD GPU's
 :::
+
+### RWKV mobile projects
+
+- [AltaeraAI : Run RWKV on your android phone \(May require some CLI knowledge to get it running\)](https://altaera.ai/)
 
 ### Chat client projects
 
