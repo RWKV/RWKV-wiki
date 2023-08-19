@@ -4,9 +4,10 @@
 
 RWKV does not have a fixed release schedule, nor make commitments on when the next model will be released. In general BlinkDL, who is in charge of the RWKV project, releases a new model as and when it is ready.
 
-So anywhere from next few days, to next few months.
+So anywhere from next few days, to next few months. 
 
-Generally speaking as the current version of the model is being released, the training process for the next version of the model is already underway.
+In addition, as an OSS model. Our training processes are also heavily subjected to GPU avaliability, provided by our sponsors.
+Generally speaking as the current version of the model is being released, the training / preperation process for the next version of the model is already underway.
 
 ## What is the dataset that RWKV is trained on?
 
