@@ -20,7 +20,7 @@ export default defineUserConfig({
 		  '/': {
 			selectLanguageName: 'English',
 			selectLanguageText: 'Languages',
-        	selectLanguageAriaLabel: 'Languages',
+			selectLanguageAriaLabel: 'Languages',
 
 			// Site navbar
 			navbar: [
