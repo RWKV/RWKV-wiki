@@ -4,6 +4,16 @@ import { searchPlugin } from '@vuepress/plugin-search'
 
 export default defineUserConfig({
 	theme: defaultTheme({
+		// Adding internationalization languages
+		locales: {
+		  '/': {
+			selectLanguageName: 'English',
+		  },
+		  '/zh/': {
+			selectLanguageName: '简体中文',
+		  },
+		},
+
 		// Site logo and navbar
 		logo: "/img/rwkv-avartar-256p.png",
 		navbar: [
