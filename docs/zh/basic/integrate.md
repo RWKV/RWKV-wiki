@@ -21,7 +21,7 @@
 
 ## 其它语言绑定
 
-如下列出一些.cpp / cpp-cuda 库的其它语言绑定，欢迎补充。
+如下列出一些 .cpp / cpp-cuda 库的其它语言绑定，欢迎补充。
 
 - [Javascript : rwkv-cpp-node](https://github.com/PicoCreator/RWKV-cpp-node)
 - [GoDot : godot-rwkv](https://github.com/harrisonvanderbyl/godot-rwkv)
