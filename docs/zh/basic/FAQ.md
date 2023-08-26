@@ -37,7 +37,7 @@ RWKV 源代码和模型参数采用 Apache 2.0 开源许可证，可以同时适
 ## RWKV discord 机器人怎么用？
 
 
-RWKV.cpp and the RWKV discord 聊天机器人支持一些特殊指令。
+RWKV.cpp 和 RWKV discord 聊天机器人支持一些特殊指令。
 
 考虑到适用范围和更新周期，详细介绍请看英文原版条目。
 
