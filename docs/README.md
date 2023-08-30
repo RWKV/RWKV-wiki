@@ -25,7 +25,7 @@ So it's combining the best of RNN and transformer - great performance, fast infe
 
 **Bad**
 + Is sensitive to prompt fomatting, you may need to change how you prompt the model
-+ Is weak at task that require lookback, so reorder your prompt accordingly
++ Is weaker at task that require lookback, so reorder your prompt accordingly
     + (e.g. Instead of saying "For the document above do X", which will require a lookback. Say "For the document below do X" instead)
 
 # Quick RWKV community terminology
@@ -33,5 +33,5 @@ So it's combining the best of RNN and transformer - great performance, fast infe
 - **RWKV** - The model architecture itself, code found at [https://github.com/BlinkDL/RWKV-LM](https://github.com/BlinkDL/RWKV-LM)
 - **Base model / Pile Plus Model** - RWKV Base model is currently trained on "The Pile" with additional mix of other datasets. This model is not instruction trained.
 - **Raven** - Official finetuned version of the base model, with instruction training
-- **RWKV World** - New base model that is being trained on a larger more diverse mix of dataset, which include samples from over a 100 languages. This model is not instruction trained.
-- **Raven World** - Upcoming finetuned version of the RWKV World model, with instruction training
+- **RWKV World** - New base model that is being trained on a larger more diverse mix of dataset, which include samples from over a 100 languages. Partially instruction trained.
+- **Raven World** - Future? finetuned version of the RWKV World model, with more instruction training
