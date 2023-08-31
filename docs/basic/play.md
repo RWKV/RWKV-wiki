@@ -34,7 +34,7 @@ rwkv-cpp-node
 
 # Prompting guidelines for RWKV
 
-RWKV is more sensitive to prompt format, then transformer based models. Due to its lack of ability of "looking back"
+RWKV is more sensitive to prompt format, then transformer based models. Due to its weaker ability in "looking back"
 
 As such, instead of doing something like the following
 
