@@ -24,6 +24,7 @@ The following are various other RWKV links to community project, for specific us
 ## Chat bots / demos
 
 - RWKV runner : [https://github.com/josStorer/RWKV-Runner](https://github.com/josStorer/RWKV-Runner)
+- AI00 RWKV server : [https://github.com/cgisky1980/ai00_rwkv_server](https://github.com/cgisky1980/ai00_rwkv_server)
 - Chatbot demo : [https://github.com/harrisonvanderbyl/rwkv_chatbot](https://github.com/harrisonvanderbyl/rwkv_chatbot)
 - Hugging face UI : [https://huggingface.co/spaces/Hazzzardous/RWKV-Instruct](https://huggingface.co/spaces/Hazzzardous/RWKV-Instruct)
 - (thai) chatbot : [https://github.com/telexyz/symato](https://github.com/telexyz/symato)
@@ -44,6 +45,7 @@ The following are various other RWKV links to community project, for specific us
 - [https://github.com/go-skynet/LocalAI](https://github.com/go-skynet/LocalAI)
 - [https://github.com/ZeldaHuang/rwkv-cpp-server](https://github.com/ZeldaHuang/rwkv-cpp-server)
 - [https://github.com/Atome-FE/llama-node](https://github.com/Atome-FE/llama-node)
+- [https://github.com/cgisky1980/ai00_rwkv_server](https://github.com/cgisky1980/ai00_rwkv_server)
 
 ## Python libraries
 
