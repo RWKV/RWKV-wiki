@@ -7,8 +7,8 @@ RWKV (pronounced as RwaKuv) is an RNN with GPT-level LLM performance, which can 
 So it's combining the best of RNN and transformer - great performance, fast inference, fast training, saves VRAM, "infinite" ctxlen, and free sentence embedding. Moreover it's 100% attention-free.
 
 - [Discord Forum](https://discord.gg/bDSBUMeFpc)
-- [14B demo](https://huggingface.co/spaces/BlinkDL/ChatRWKV-gradio)
-- [7B demo](https://huggingface.co/spaces/BlinkDL/Raven-RWKV-7B)
+- [7B world demo](https://huggingface.co/spaces/BlinkDL/Raven-RWKV-7B)
+- [14B raven demo](https://huggingface.co/spaces/BlinkDL/ChatRWKV-gradio)
 
 # RWKV architecture paper
 
@@ -35,3 +35,14 @@ So it's combining the best of RNN and transformer - great performance, fast infe
 - **Raven** - Official finetuned version of the base model, with instruction training
 - **RWKV World** - New base model that is being trained on a larger more diverse mix of dataset, which include samples from over a 100 languages. Partially instruction trained.
 - **Raven World** - Future? finetuned version of the RWKV World model, with more instruction training
+
+# Which RWKV models should I be using?
+
+- For the majority of use cases, you should be using the pretrained 7B world model
+    - [Model file link here](https://huggingface.co/BlinkDL/rwkv-4-world/blob/main/RWKV-4-World-7B-v1-20230626-ctx4096.pth) [HF Repo link here](https://huggingface.co/BlinkDL/rwkv-4-world)
+
+- On a case by case basis, you may find the older (smaller dataset), but larger raven model, to be bettter in certain specific benchmarks. When the 14B world model is ready, it is expected to replace the raven model in all use cases.
+    - [HF Repo link here](https://huggingface.co/BlinkDL/rwkv-4-raven)
+
+- If you want to finetune a model, for a very specific use case, without any existing instruction tuning, you may find the pile model more useful (rare, in most use cases its better to finetune the world or raven model)
+    - [HF Repo link here](https://huggingface.co/BlinkDL/rwkv-4-pile-14b)
