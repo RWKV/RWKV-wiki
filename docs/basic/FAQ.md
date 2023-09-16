@@ -85,8 +85,8 @@ The end result, ends up being a very complicated math of "how fast you want the 
 
 RWKV supports "Training Parallelization" across multiple GPUs via deepspeed. And in many cases outperforms transformer in training speed over similar param count.
 
-This is consistent with the definition [huggingface](https://huggingface.co/docs/transformers/v4.15.0/parallelism), or other [papers](https://www.researchgate.net/figure/Different-Training-Parallelization-Strategies_fig2_334821612)
+This is consistent with the definition [huggingface](https://huggingface.co/docs/transformers/v4.15.0/parallelism), or other [papers](https://www.researchgate.net/figure/Different-Training-Parallelization-Strategies_fig2_334821612) have adopted.
 
 RetNet defined "Training Parallelization" as the ability to train loss on a later token, without waiting for the previous token training to complete, a definition which RWKV fails. This has been [confirmed by the paper authors here](https://web.archive.org/web/20230916013316/https://github.com/microsoft/unilm/issues/1243), who seperately acknowledges that RWKV has no issue having high throughput across multiple GPUs (as per their testing)
 
-RWKV does not dispute the claims for this alternative definition (ie. it is true that first token layer 1 needs to be evaluated first before cascading to any other tokens or layers), and while we requested for there to be clarification on their paper for the definition, as it is misleading. We are unable to force changes on other papers publications beyond our control.
+RWKV does not dispute the validity of claims made in the context of this alternate definition, e.g. layer 1 tokens need to be evaluated first before cascading to any other tokens or layers. We have requested changes because the paper's definition is unclear and possibly misleading. We are unable to force changes on other papers publications beyond our control.
