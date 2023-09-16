@@ -83,7 +83,7 @@ The end result, ends up being a very complicated math of "how fast you want the 
 
 ## Does RWKV support "Training Parallelization"? Why does the retnet paper claim otherwise?
 
-RWKV supports "Training Parallelization" across multiple GPUs via deepspeed.
+RWKV supports "Training Parallelization" across multiple GPUs via deepspeed. And in many cases outperforms transformer in training speed over similar param count.
 
 This is consistent with the definition [huggingface](https://huggingface.co/docs/transformers/v4.15.0/parallelism), or other [papers](https://www.researchgate.net/figure/Different-Training-Parallelization-Strategies_fig2_334821612)
 
