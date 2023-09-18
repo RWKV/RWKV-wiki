@@ -14,6 +14,11 @@ The following are various other RWKV links to community project, for specific us
 - [https://huggingface.co/BlinkDL/rwkv-4-world](https://huggingface.co/BlinkDL/rwkv-4-world)
 - [https://huggingface.co/BlinkDL/rwkv-4-pileplus](https://huggingface.co/BlinkDL/rwkv-4-pileplus)
 
+## Trainer projects
+
+- [https://github.com/RWKV/RWKV-infctx-trainer/](https://github.com/RWKV/RWKV-infctx-trainer/)
+- [https://github.com/neromous/RWKV-Ouroboros](https://github.com/neromous/RWKV-Ouroboros)
+
 ## Main cpp / cpp cuda project
 
 - [https://github.com/harrisonvanderbyl/rwkv-cpp-cuda](https://github.com/harrisonvanderbyl/rwkv-cpp-cuda)
@@ -46,6 +51,10 @@ The following are various other RWKV links to community project, for specific us
 - [https://github.com/ZeldaHuang/rwkv-cpp-server](https://github.com/ZeldaHuang/rwkv-cpp-server)
 - [https://github.com/Atome-FE/llama-node](https://github.com/Atome-FE/llama-node)
 - [https://github.com/cgisky1980/ai00_rwkv_server](https://github.com/cgisky1980/ai00_rwkv_server)
+
+## Android port
+
+- [https://github.com/daquexian/faster-rwkv](https://github.com/daquexian/faster-rwkv)
 
 ## Python libraries
 
