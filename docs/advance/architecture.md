@@ -34,7 +34,9 @@ The follow gif, illustrates the parallel cascading nature over approximately 3 l
 
 Effectively, allowing the RNN network to run like a transformer network, when rolled out side by side. Where it can be trained "like a transformer" and "executed like an RNN" (the best of both worlds)
 
-All of this is achieved by using a combination of token shifting, channel and time mixing, to comptue the next layer / hidden state.
+All of this while achieved by using a combination of token shifting, channel and time mixing, to replace LSTM and compute the next layer / hidden state.
+
+> Note the cascading digram is the theorectical optimal, in practise some trainers and/or inference implementation may batch the cascade to chunks of tokens (32/64/128/256/512), to reduce VRAM lookup and usage, and improve overall performance.
 
 ## What is channel / time mixing, explain it in simple terms?
 
