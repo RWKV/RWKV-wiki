@@ -18,7 +18,7 @@ So it's combining the best of RNN and transformer - great performance, fast infe
 # TLDR vs Existing transformer models
 
 **Good**
-+ Lower resource usage (VRAM, CPU, GPU, etc) when running and training
++ Lower resource usage (VRAM, CPU, GPU, etc) when running and training. With 10x to a 100x lower compute requirements compared to transformers with large context sizes.
 + Scales to any context length linearly (transformers scales quadratically)
 + Perform just as well, in terms of answer quality and capability
 + RWKV models are generally better trained in other languages (e.g. Chinese, Japanese, etc), then most existing OSS models
