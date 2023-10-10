@@ -8,7 +8,7 @@ If you are not familiar with machine learning, I would highly recommend [Andrej 
 
 An RNN network, in its simplest form, is a type of AI neural network. It uses a hidden state, which is continually updated by a function as it processes each input token while predicting the next one (if needed).
 
-![Classic RNN digram](../img/classic-RNN.png)
+![Classic RNN diagram](../img/classic-RNN.png)
 
 As each token is processed, it is used to feed back into the RNN network to update its state and predict the next token, looping until the target completion state is reached. This hidden state can be viewed as the AI model's "state of mind."
 
@@ -21,13 +21,13 @@ RWKV can be viewed as a modified variant of RNN.
 
 Traditionally, RNNs, due to their sequential nature of needing to fully process one token and its hidden state before the next, are hard to parallelize and train with GPUs, making them difficult to train at scale for Large Language Models.
 
-![Digram showing the flow of the hiddenstates](../img/rwkv-hidden-state-flow.png)
+![Diagram showing the flow of the hiddenstates](../img/rwkv-hidden-state-flow.png)
 
 RWKV mitigates this issue by splitting the full RNN network into multiple smaller layers, where each layer's hidden state can be used independently to compute the next token hidden state for the same layer. This allows for the next token states to be computed partially in parallel, while awaiting the complete calculation of the first hidden state, in a cascading-like pattern.
 
 The following gif illustrates the parallel cascading nature over approximately 3 layers (height) and 25 tokens (width).
 
-![Digram showing the RWKV parallel cascading pattern, in transformer mode, generated via https://jsfiddle.net/buLswgem/31/ ](../img/rwkv-cascading-pattern.gif)
+![Diagram showing the RWKV parallel cascading pattern, in transformer mode, generated via https://jsfiddle.net/buLswgem/31/ ](../img/rwkv-cascading-pattern.gif)
 
 Effectively, this allows the RNN network to operate like a transformer network when rolled out side by side, where it can be trained "like a transformer" and "executed like an RNN" (the best of both worlds). 
 
@@ -58,3 +58,10 @@ Or watch [Yannic Kilcher break the paper down step by step on youtube](https://w
 If you would like a breakdown of the math involved, you can find it covered in a blog post here: [https://ben.bolte.cc/rwkv](https://ben.bolte.cc/rwkv)
 
 Finally, once you've gotten a grasp on the fundamentals, you can start studying the training and CUDA code respectively in the [main repo](https://github.com/BlinkDL/RWKV-LM)
+
+**Additional links/resources**
+- Notes on RWKV architecture: [https://www.ivanleo.com/blog/a_guide_to_rwkv](https://www.ivanleo.com/blog/a_guide_to_rwkv)
+- RWKV model math: [https://ben.bolte.cc/rwkv-model](https://ben.bolte.cc/rwkv-model)
+- RWKV explained: [https://fullstackdeeplearning.com/blog/posts/rwkv-explainer/](https://fullstackdeeplearning.com/blog/posts/rwkv-explainer/)
+- How RWKV works: [https://johanwind.github.io/2023/03/23/rwkv_details.html](https://johanwind.github.io/2023/03/23/rwkv_details.html)
+- RWKV training cost estimate (outdated): [https://johanwind.github.io/2023/03/23/rwkv_overview.html](https://johanwind.github.io/2023/03/23/rwkv_overview.html)

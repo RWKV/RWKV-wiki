@@ -29,6 +29,12 @@ Alternatively, you can use the official repo, to finetune the project without Lo
 
 - [https://github.com/BlinkDL/RWKV-LM/tree/main/RWKV-v4neo](https://github.com/BlinkDL/RWKV-LM/tree/main/RWKV-v4neo)
 
+Alternatively would be to do finetuning using the infctx trainer
+
+- [https://github.com/RWKV/RWKV-infctx-trainer/](https://github.com/RWKV/RWKV-infctx-trainer/)
+
+In general, use the BlinkDL trainer for better raw performance, and use infctx to trade in some speed for infctx size support.
+
 ## Training a model from scratch?
 
 Refer to the main project

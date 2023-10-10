@@ -14,6 +14,11 @@ The following are various other RWKV links to community project, for specific us
 - [https://huggingface.co/BlinkDL/rwkv-4-world](https://huggingface.co/BlinkDL/rwkv-4-world)
 - [https://huggingface.co/BlinkDL/rwkv-4-pileplus](https://huggingface.co/BlinkDL/rwkv-4-pileplus)
 
+## Trainer projects
+
+- [https://github.com/RWKV/RWKV-infctx-trainer/](https://github.com/RWKV/RWKV-infctx-trainer/)
+- [https://github.com/neromous/RWKV-Ouroboros](https://github.com/neromous/RWKV-Ouroboros)
+
 ## Main cpp / cpp cuda project
 
 - [https://github.com/harrisonvanderbyl/rwkv-cpp-cuda](https://github.com/harrisonvanderbyl/rwkv-cpp-cuda)
@@ -24,6 +29,7 @@ The following are various other RWKV links to community project, for specific us
 ## Chat bots / demos
 
 - RWKV runner : [https://github.com/josStorer/RWKV-Runner](https://github.com/josStorer/RWKV-Runner)
+- AI00 RWKV server : [https://github.com/cgisky1980/ai00_rwkv_server](https://github.com/cgisky1980/ai00_rwkv_server)
 - Chatbot demo : [https://github.com/harrisonvanderbyl/rwkv_chatbot](https://github.com/harrisonvanderbyl/rwkv_chatbot)
 - Hugging face UI : [https://huggingface.co/spaces/Hazzzardous/RWKV-Instruct](https://huggingface.co/spaces/Hazzzardous/RWKV-Instruct)
 - (thai) chatbot : [https://github.com/telexyz/symato](https://github.com/telexyz/symato)
@@ -44,6 +50,11 @@ The following are various other RWKV links to community project, for specific us
 - [https://github.com/go-skynet/LocalAI](https://github.com/go-skynet/LocalAI)
 - [https://github.com/ZeldaHuang/rwkv-cpp-server](https://github.com/ZeldaHuang/rwkv-cpp-server)
 - [https://github.com/Atome-FE/llama-node](https://github.com/Atome-FE/llama-node)
+- [https://github.com/cgisky1980/ai00_rwkv_server](https://github.com/cgisky1980/ai00_rwkv_server)
+
+## Android port
+
+- [https://github.com/daquexian/faster-rwkv](https://github.com/daquexian/faster-rwkv)
 
 ## Python libraries
 
@@ -149,6 +160,10 @@ The following are various other RWKV links to community project, for specific us
 - RWKV deconstructed : [https://github.com/cwhy/rwkv-decon](https://github.com/cwhy/rwkv-decon)
 - RWKV math breakdown : [https://ben.bolte.cc/rwkv](https://ben.bolte.cc/rwkv)
 
+- RWKV model math: [https://ben.bolte.cc/rwkv-model](https://ben.bolte.cc/rwkv-model)
+- RWKV explained: [https://fullstackdeeplearning.com/blog/posts/rwkv-explainer/](https://fullstackdeeplearning.com/blog/posts/rwkv-explainer/)
+- How RWKV works: [https://johanwind.github.io/2023/03/23/rwkv_details.html](https://johanwind.github.io/2023/03/23/rwkv_details.html)
+- RWKV training cost estimate (outdated): [https://johanwind.github.io/2023/03/23/rwkv_overview.html](https://johanwind.github.io/2023/03/23/rwkv_overview.html)
 
 ## Tooling
 

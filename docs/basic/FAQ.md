@@ -4,9 +4,10 @@
 
 RWKV does not have a fixed release schedule, nor make commitments on when the next model will be released. In general BlinkDL, who is in charge of the RWKV project, releases a new model as and when it is ready.
 
-So anywhere from next few days, to next few months.
+So anywhere from next few days, to next few months. 
 
-Generally speaking as the current version of the model is being released, the training process for the next version of the model is already underway.
+In addition, as an OSS model. Our training processes are also heavily subjected to GPU avaliability, provided by our sponsors.
+Generally speaking as the current version of the model is being released, the training / preperation process for the next version of the model is already underway.
 
 ## What is the dataset that RWKV is trained on?
 
@@ -79,3 +80,13 @@ As such, because no one wants to wait 190+ years for their model to finish - we 
 The end result, ends up being a very complicated math of "how fast you want the model" vs "how much can you pay" with faster training time, generally meaning increasing costs in overall. Making estimates of $5M to $1M all very possible numbers depending on how fast (or slow) would you want your model to be.
 
 > If you, do have GPU time you can donate to RWKV for training an OSS model, through your research institute, etc. Do get in touch with us 😉 (it does not need to be ~$1M worth, even small amount helps in a long way)
+
+## Does RWKV support "Training Parallelization"? Why does the retnet paper claim otherwise?
+
+RWKV supports "Training Parallelization" across multiple GPUs via deepspeed. And in many cases outperforms transformer in training speed over similar param count.
+
+This is consistent with the definition [huggingface](https://huggingface.co/docs/transformers/v4.15.0/parallelism), or other [papers](https://www.researchgate.net/figure/Different-Training-Parallelization-Strategies_fig2_334821612) have adopted.
+
+RetNet defined "Training Parallelization" as the ability to train loss on a later token, without waiting for the previous token training to complete, a definition which RWKV fails. This has been [confirmed by the paper authors here](https://web.archive.org/web/20230916013316/https://github.com/microsoft/unilm/issues/1243), who seperately acknowledges that RWKV has no issue having high throughput across multiple GPUs (as per their testing)
+
+RWKV does not dispute the validity of claims made in the context of this alternate definition, e.g. layer 1 tokens need to be evaluated first before cascading to any other tokens or layers. We have requested changes because the paper's definition is unclear and possibly misleading. We are unable to force changes on other papers publications beyond our control.
