@@ -2,7 +2,7 @@
 
 # RWKV Language Model
 
-RWKV (pronounced as RwaKuv) is an RNN with GPT-level LLM performance, which can also be directly trained like a GPT transformer (parallelizable).
+RWKV (pronounced as RWaKuV) is an RNN with GPT-level LLM performance, which can also be directly trained like a GPT transformer (parallelizable).
 
 So it's combining the best of RNN and transformer - great performance, fast inference, fast training, saves VRAM, "infinite" ctxlen, and free sentence embedding. Moreover it's 100% attention-free.
 
