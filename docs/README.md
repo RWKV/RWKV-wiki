@@ -28,6 +28,21 @@ So it's combining the best of RNN and transformer - great performance, fast infe
 + Is sensitive to prompt fomatting, you may need to change how you prompt the model
 + Is weaker at task that require lookback, so reorder your prompt accordingly
     + (e.g. Instead of saying "For the document above do X", which will require a lookback. Say "For the document below do X" instead)
+ 
+# Who sponsors the compute for RWKV?
+
+RWKV is made possible, as an Open Soure project, thanks to the large bulk of the GPU donations from
+- [Stability AI](https://stability.ai/)
+- [Eleuther AI (who also handled the bulk of the rwkv paper)](https://www.eleuther.ai/)
+
+Which helped made all the main foundation model training possible
+
+In addition, we would like to thank
+- [alpin @ pygmalionAI](https://pygmalion.ai/)
+- [AutoMeta @ AlignmentLab](https://twitter.com/alignment_lab)
+- Various other folks who donated small slices of GPU time / preferred not to be named
+
+For helping with GPU time, on smaller experiments, finetunes, and various models. Especially for those models that never get publically released in failed runs.
 
 # Quick RWKV community terminology
 
