@@ -34,8 +34,8 @@ So it's combining the best of RNN and transformer - great performance, fast infe
 RWKV is made possible, as an Open Soure project, thanks to the large bulk of the GPU donations from
 
 <div class="sponsor_logos">
-    <a href="https://stability.ai/"><img src="https://wiki.rwkv.com/img/Stability-AI.jpg" width="200px"/></a>
-    <a href="https://www.eleuther.ai/"><img src="https://wiki.rwkv.com/img/EleutherAI_logo.svg.png" width="200px"/></a>
+    <a href="https://stability.ai/" target="_blank"><img src="https://wiki.rwkv.com/img/Stability-AI.jpg" width="100px"/></a>
+    <a href="https://www.eleuther.ai/" target="_blank"><img src="https://wiki.rwkv.com/img/EleutherAI_logo.svg.png" width="100px"/></a>
 </div>
 
 Which helped made all the main foundation model training possible
