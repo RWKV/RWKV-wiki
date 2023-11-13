@@ -32,8 +32,9 @@ So it's combining the best of RNN and transformer - great performance, fast infe
 # Who sponsors the compute for RWKV?
 
 RWKV is made possible, as an Open Soure project, thanks to the large bulk of the GPU donations from
-- [Stability AI](https://stability.ai/)
-- [Eleuther AI (who also handled the bulk of the rwkv paper)](https://www.eleuther.ai/)
+
+![Stability AI logo](./img/sponsor/Stability-AI.jpg)
+![Eleuther AI logo](./img/sponsor/EleutherAI_logo.svg.png)
 
 Which helped made all the main foundation model training possible
 
