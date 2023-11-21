@@ -43,7 +43,7 @@ Without their invaluable support, we would not have been able to develop the cor
 ---
 
 In addition, we would like to thank
-- [alpin @ pygmalionAI](https://pygmalion.ai/)
+- [alpin @ pygmalionAI](https://pygmalion.chat/)
 - [AutoMeta @ AlignmentLab](https://twitter.com/alignment_lab)
 - Various other folks who donated slices of GPU time / preferred not to be named
 
