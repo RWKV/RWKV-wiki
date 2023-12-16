@@ -4,6 +4,8 @@
 
 RWKV (pronounced as RwaKuv) is an RNN with GPT-level LLM performance, which can also be directly trained like a GPT transformer (parallelizable).
 
+RWKV is an Open Source, non profit group, under the linux foundation. Supported by our sponsors.
+
 So it's combining the best of RNN and transformer - great performance, fast inference, fast training, saves VRAM, "infinite" ctxlen, and free sentence embedding. Moreover it's 100% attention-free.
 
 - [Discord Forum](https://discord.gg/bDSBUMeFpc)
@@ -57,6 +59,7 @@ Without their invaluable support, we would not have been able to develop the cor
 In addition, we would like to thank
 - [alpin @ pygmalionAI](https://pygmalion.chat/)
 - [AutoMeta @ AlignmentLab](https://twitter.com/alignment_lab)
+- [Recursal.AI](https://recursal.ai)
 - Various other folks who donated slices of GPU time / preferred not to be named
 
 For helping with GPU time, on smaller experiments, finetunes, and various models. Especially for those models that never get publically released in failed runs.
