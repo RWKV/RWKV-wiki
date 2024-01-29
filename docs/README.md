@@ -9,8 +9,7 @@ RWKV is an Open Source, non profit group, under the linux foundation. Supported 
 So it's combining the best of RNN and transformer - great performance, fast inference, fast training, saves VRAM, "infinite" ctxlen, and free sentence embedding. Moreover it's 100% attention-free.
 
 - [Discord Forum](https://discord.gg/bDSBUMeFpc)
-- [7B world demo](https://huggingface.co/spaces/BlinkDL/Raven-RWKV-7B)
-- [14B raven demo](https://huggingface.co/spaces/BlinkDL/ChatRWKV-gradio)
+- [HF Gradio](https://huggingface.co/spaces/BlinkDL/RWKV-Gradio-2)
 
 # RWKV architecture paper
 
