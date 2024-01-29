@@ -1,4 +1,4 @@
-# How to play with the Raven model?
+# How to play with the Eagle / RWKV model?
 
 ## Online public demos
 
