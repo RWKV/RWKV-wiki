@@ -20,17 +20,8 @@ If you are not familiar with python or hugging face, you can install chat models
 
 [![RWKV Runner Demo](/img/rwkv-runner-demo.png)](https://github.com/josStorer/RWKV-Runner)
 
-Or interact with the model via the following CLI, if you have NPM installed
-
-- [RWKV-cpp-node CLI](https://www.npmjs.com/package/rwkv-cpp-node)
-
-```bash
-# Install globally, do not use NPX as it has known display issues
-npm install -g rwkv-cpp-node
-
-# Run the setup, and use the chat demo
-rwkv-cpp-node
-```
+**Windows setup guide video**
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/LrrYJ1LeVqw?si=fd7HW7Wcog4AL3mQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 # Prompting guidelines for RWKV
 
@@ -119,3 +110,17 @@ The main RWKV repo can be found here, use v4neo to run current models
 ::: tip
 For new users, unless you plan to finetune, due to the complexity involved with python dependencies, it is recommmended to use the RWKV.cpp project instead.
 :::
+
+interact with the model via the following CLI, if you have NPM installed
+
+### RWKV cpp node (slightly out of date)
+
+- [RWKV-cpp-node CLI](https://www.npmjs.com/package/rwkv-cpp-node)
+
+```bash
+# Install globally, do not use NPX as it has known display issues
+npm install -g rwkv-cpp-node
+
+# Run the setup, and use the chat demo
+rwkv-cpp-node
+```
