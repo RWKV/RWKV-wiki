@@ -45,7 +45,7 @@ So it's combining the best of RNN and transformer - great performance, fast infe
  
 # Who sponsors the compute for RWKV?
 
-RWKV is made possible, as an Open Soure project, thanks to the large amount of GPU compute and researchers time contributions from
+RWKV is made possible, as an Open Source project, thanks to the large amount of GPU compute and researchers time contributions from
 
 <div class="sponsor_logos">
     <a href="https://stability.ai/" target="_blank"><img src="https://wiki.rwkv.com/img/Stability-AI.jpg" width="100px"/></a>
