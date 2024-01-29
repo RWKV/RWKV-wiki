@@ -4,8 +4,7 @@
 
 If you simply want to give the RWKV Raven a try, you can try the following public demos.
 
-- [7B Public Demo](https://huggingface.co/spaces/BlinkDL/Raven-RWKV-7B)
-- [14B Public demo](https://huggingface.co/spaces/BlinkDL/ChatRWKV-gradio)
+- [HF Gradio](https://huggingface.co/spaces/BlinkDL/RWKV-Gradio-2)
 
 ::: tip
 Chat is disabled in the above public demo
