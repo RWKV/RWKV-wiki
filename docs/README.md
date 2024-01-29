@@ -18,7 +18,7 @@ So it's combining the best of RNN and transformer - great performance, fast infe
 
 # Current Version Status
 
-| Version | v4 Raven | v4 World | v5 World | v6 World |
+| Version | v4 Raven | v4 Dove | v5 Eagle | v6 Finch |
 |---|---|---|---|---|
 | Paper | 🎓[Paper Accepted @ EMNLP 2023](https://arxiv.org/abs/2305.13048) | (no architecture change) | 🔧 wip | 🧪wip |
 | Overall Status | 🌚 EOL - Recommended to use v5 world instead | ✅ GA - Recommended to switch to v5 world when possible | 🔧 Training | 🧪 Prototyping |
