@@ -2,12 +2,12 @@
 
 ## When is the next RWKV model coming out?
 
-RWKV does not have a fixed release schedule, nor make commitments on when the next model will be released. In general BlinkDL, who is in charge of the RWKV project, releases a new model as and when it is ready.
+RWKV does not have a fixed release schedule, nor make commitments on when the next model will be released. In general, BlinkDL, who is in charge of the RWKV project, releases a new model as and when it is ready.
 
-So anywhere from next few days, to next few months. 
+So anywhere from the next few days, to the next few months. 
 
-In addition, as an OSS model. Our training processes are also heavily subjected to GPU avaliability, provided by our sponsors.
-Generally speaking as the current version of the model is being released, the training / preperation process for the next version of the model is already underway.
+In addition, as an OSS model. Our training processes are also heavily subjected to GPU availability, provided by our sponsors.
+Generally speaking as the current version of the model is being released, the training / preparation process for the next version of the model is already underway.
 
 ## What is the dataset that RWKV is trained on?
 
@@ -21,7 +21,7 @@ RWKV models are generally not censored. However while we remove common gotchas f
 
 ## Why does the various model have context length (4k/8k) listed in their name? 
 
-While RWKV on a technical level has "infinite" context length, it requires training data of a certain context length, to be able to perform tasks efficently. The listed model "context length" is the "effective context length" which the model has been trained with. Anything longer then that, and the model performance is expected to degrade drastically, as it has not been trained to handle such long context.
+While RWKV on a technical level has "infinite" context length, it requires training data of a certain context length, to be able to perform tasks efficiently. The listed model "context length" is the "effective context length" which the model has been trained with. Anything longer than that, and the model performance is expected to degrade drastically, as it has not been trained to handle such a long context.
 
 It is possible to train / finetune a model to longer context length, provided you have the training data to do so.
 
@@ -50,8 +50,8 @@ You can only use one of the following command per prompt.
 - `+gen` : Generate a response continuing from the prompt
     - `+++` : Continue the generation of response
     - `++` : Retry with an alternative response
-- `+i` : Generate a response using the prompt as an instruction (using instruction template)
-- `+qa` : Generate a response using the prompt as a question, from a blank state (using question answer template)
+- `+i` : Generate a response using the prompt as an instruction (using an instruction template)
+- `+qa` : Generate a response using the prompt as a question, from a blank state (using question-answer template)
 - `+` : Retry with an alternative chat reply (default mode is chat mode, unless you used the +gen / +i / +qa command)
 
 These commands are implemented by the `chat.py` code, and are not part of the model itself.
@@ -66,7 +66,7 @@ See the [architecture page](../advance/architecture.md)
 
 While the price of training a model keeps falling, training from scratch is a task most individuals underestimate the cost.
 
-There are lots of factors involved in training a model, most importantly is the dataset size (aka. number of tokens), the model size, and your timeline. Also you will need to budget in for mistakes, that could happen in the training process, and the human cost involved in setting up and preparing the whole process. All of which makes things hard to predict accurately. (Not to mention with that amount of money involved, you probably would want to have a say of the datasets being used, all of which takes even more time and labour to prepare)
+There are lots of factors involved in training a model, most important are the dataset size (aka. number of tokens), the model size, and your timeline. Also you will need to budget in for mistakes, that could happen in the training process, and the human cost involved in setting up and preparing the whole process. All of which makes things hard to predict accurately. (Not to mention with that amount of money involved, you probably would want to have a say of the datasets being used, all of which takes even more time and labour to prepare)
 
 For example, it is predicted that LLaMA2 [70B foundation model cost $2.6M to train from scratch, with 2 Trillion tokens](https://twitter.com/moinnadeem/status/1681393075367841792) in GPU time alone - so as a general rule of thumb, unless you have access to $1M worth of GPU time, and a decent amount to prepare the datasets, you should not be considering training anything >14B from scratch.
 
@@ -81,12 +81,12 @@ The end result, ends up being a very complicated math of "how fast you want the 
 
 > If you, do have GPU time you can donate to RWKV for training an OSS model, through your research institute, etc. Do get in touch with us 😉 (it does not need to be ~$1M worth, even small amount helps in a long way)
 
-## Does RWKV support "Training Parallelization"? Why does the retnet paper claim otherwise?
+## Does RWKV support "Training Parallelization"? Why does the RetNet paper claim otherwise?
 
 RWKV supports "Training Parallelization" across multiple GPUs via deepspeed. And in many cases outperforms transformer in training speed over similar param count.
 
 This is consistent with the definition [huggingface](https://huggingface.co/docs/transformers/v4.15.0/parallelism), or other [papers](https://www.researchgate.net/figure/Different-Training-Parallelization-Strategies_fig2_334821612) have adopted.
 
-RetNet defined "Training Parallelization" as the ability to train loss on a later token, without waiting for the previous token training to complete, a definition which RWKV fails. This has been [confirmed by the paper authors here](https://web.archive.org/web/20230916013316/https://github.com/microsoft/unilm/issues/1243), who seperately acknowledges that RWKV has no issue having high throughput across multiple GPUs (as per their testing)
+RetNet defined "Training Parallelization" as the ability to train loss on a later token, without waiting for the previous token training to complete, a definition which RWKV fails. This has been [confirmed by the paper authors here](https://web.archive.org/web/20230916013316/https://github.com/microsoft/unilm/issues/1243), who separately acknowledges that RWKV has no issue having high throughput across multiple GPUs (as per their testing)
 
 RWKV does not dispute the validity of claims made in the context of this alternate definition, e.g. layer 1 tokens need to be evaluated first before cascading to any other tokens or layers. We have requested changes because the paper's definition is unclear and possibly misleading. We are unable to force changes on other papers publications beyond our control.
