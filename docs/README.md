@@ -20,13 +20,13 @@ So it's combining the best of RNN and transformer - great performance, fast infe
 
 | Version | v4 - Raven | v4 - Dove | v5 - Eagle | v6 - Finch |
 |---|---|---|---|---|
-| Paper | 🎓[Paper Accepted @ EMNLP 2023](https://arxiv.org/abs/2305.13048) | (no architecture change) | 🔧 stable (current version) | 🧪 prototype |
-| Overall Status | 🌚 EOL - Recommended to use v5 world instead | 🌚 EOL - Recommended to use v5 world instead | ✅ General Availability | 🧪 Early Training |
-| 0.4B model | [Fully Trained : rwkv-pile-430m](https://huggingface.co/RWKV/rwkv-4-430m-pile) | [Fully Trained](https://huggingface.co/RWKV/rwkv-4-world-430m) | ✅ [Fully Trained](https://huggingface.co/BlinkDL/rwkv-5-world/blob/main/RWKV-5-World-0.4B-v2-20231113-ctx4096.pth) | 🧪 Early Training |
-| 1.5B model | [Fully Trained : rwkv-raven-1b5](https://huggingface.co/RWKV/rwkv-raven-1b5) | [Fully Trained](https://huggingface.co/RWKV/rwkv-4-world-1b5) | ✅ [Fully Trained](https://huggingface.co/BlinkDL/rwkv-5-world/blob/main/RWKV-5-World-1B5-v2-20231025-ctx4096.pth) | 🧪 Early Training |
-| 3B model | [Fully Trained : rwkv-raven-3b](https://huggingface.co/RWKV/rwkv-raven-3b) | [Fully Trained](https://huggingface.co/RWKV/rwkv-4-world-3b) | ✅  [Fully Trained](https://huggingface.co/BlinkDL/rwkv-5-world/blob/main/RWKV-5-World-3B-v2-20231118-ctx16k.pth) | 🧪 Early Training |
-| 7B model | [Fully Trained : rwkv-raven-7b](https://huggingface.co/RWKV/rwkv-raven-7b) | [Fully Trained](https://huggingface.co/RWKV/rwkv-4-world-7b) | ✅  [Fully Trained](https://huggingface.co/RWKV/v5-Eagle-7B/blob/main/RWKV-v5-Eagle-World-7B-v2-20240128-ctx4096.pth) | ... |
-| 14B model / 7B 2T model | [Fully Trained : rwkv-raven-14b](https://huggingface.co/RWKV/rwkv-raven-14b) | not-planned | scheduled | ... |
+| Paper | 🎓[Paper Accepted @ EMNLP 2023](https://arxiv.org/abs/2305.13048) | (no architecture change) | [🔧 stable](https://arxiv.org/abs/2404.05892) | [🔧 stable](https://arxiv.org/abs/2404.05892) |
+| Overall Status | 🌚 EOL - Recommended to use v6 instead | 🌚 EOL - Recommended to use v6 instead | ✅ General Availability | 🧪 Early Training |
+| 0.4B model | [Fully Trained : rwkv-pile-430m](https://huggingface.co/RWKV/rwkv-4-430m-pile) | [Fully Trained](https://huggingface.co/RWKV/rwkv-4-world-430m) | ✅ [Fully Trained](https://huggingface.co/BlinkDL/rwkv-5-world/blob/main/RWKV-5-World-0.4B-v2-20231113-ctx4096.pth) | ... |
+| 1.5B model | [Fully Trained : rwkv-raven-1b5](https://huggingface.co/RWKV/rwkv-raven-1b5) | [Fully Trained](https://huggingface.co/RWKV/rwkv-4-world-1b5) | ✅ [Fully Trained](https://huggingface.co/BlinkDL/rwkv-5-world/blob/main/RWKV-5-World-1B5-v2-20231025-ctx4096.pth) | ✅ [Fully Trained](https://huggingface.co/RWKV/v6-Finch-1B6-HF) |
+| 3B model | [Fully Trained : rwkv-raven-3b](https://huggingface.co/RWKV/rwkv-raven-3b) | [Fully Trained](https://huggingface.co/RWKV/rwkv-4-world-3b) | ✅  [Fully Trained](https://huggingface.co/BlinkDL/rwkv-5-world/blob/main/RWKV-5-World-3B-v2-20231118-ctx16k.pth) | ✅ [Fully Trained](https://huggingface.co/RWKV/v6-Finch-3B-HF) |
+| 7B model | [Fully Trained : rwkv-raven-7b](https://huggingface.co/RWKV/rwkv-raven-7b) | [Fully Trained](https://huggingface.co/RWKV/rwkv-4-world-7b) | ✅  [Fully Trained](https://huggingface.co/RWKV/v5-Eagle-7B/blob/main/RWKV-v5-Eagle-World-7B-v2-20240128-ctx4096.pth) | ✅ [Fully Trained](https://huggingface.co/RWKV/v6-Finch-7B-HF) |
+| 14B model / 7B 2T model | [Fully Trained : rwkv-raven-14b](https://huggingface.co/RWKV/rwkv-raven-14b) | not-planned | not-planned | ✅ [Fully Trained](https://huggingface.co/RWKV/v6-Finch-14B-HF) |
 | 8x7B MoE model | not-planned | not-planned | scheduled | ... |
 
 # TLDR vs Existing transformer models
