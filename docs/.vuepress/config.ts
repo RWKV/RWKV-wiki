@@ -1,6 +1,8 @@
 import { defaultTheme } from '@vuepress/theme-default'
 import { defineUserConfig } from '@vuepress/cli'
 import { searchPlugin } from '@vuepress/plugin-search'
+import { markdownMathPlugin } from '@vuepress/plugin-markdown-math'
+import { viteBundler } from '@vuepress/bundler-vite'
 
 export default defineUserConfig({
 	theme: defaultTheme({
@@ -49,11 +51,14 @@ export default defineUserConfig({
 			}
 		]
 	}),
-
+	bundler: viteBundler(),
 	// Adding search
 	plugins: [
 		searchPlugin({
 			// options
 		}),
+		markdownMathPlugin({
+			// options
+		  }),
 	]
 })
