@@ -40,28 +40,34 @@ The RWKV-6 architecture diagram was released by RWKV community developers under 
 
 ## RWKV Model Version Status
 
-Since the RWKV-4 architecture, RWKV has released multiple parameter-scale open-source models for each version.
+Starting from the RWKV-4 architecture, RWKV has released open-source models of various parameter scales for each architecture version.
 
-As of December 2024, the lifecycle of RWKV-4 and RWKV-5 models has ended. It is recommended to use the latest version of the RWKV-6-world-V3 model. Thanks to the latest architectural design, RWKV-6 models perform better on all tasks.
+As of February 2025, the lifecycle of RWKV-4 and RWKV-5 models has ended. It is recommended to use the **latest RWKV-7-world models**. Thanks to the latest architectural design, RWKV-7 models perform better on all tasks.
 
 | Version | RWKV-V4 | RWKV-v5-Eagle | RWKV-v6-Finch | RWKV-v7-Goose |
 | --- | --- | --- | --- | --- |
 | Paper | 🎓[Published](https://arxiv.org/abs/2305.13048) | 🎓[Published](https://arxiv.org/abs/2404.05892) | 🎓[Published](https://arxiv.org/abs/2404.05892) | **✍️ In Progress** |
 | Overall Status | **⚠ EOL** | **⚠ EOL**| **✨ Stable** | **⚙️ In Training** |
-| 0.4B Model | ✅ Released | ✅ Released | ❌ No Plan |**⚙️ Early January 2025** |
-| 1.5B Model | ✅ Released | ✅ Released| ✅ [Released](https://huggingface.co/BlinkDL/rwkv-6-world/blob/main/RWKV-x060-World-1B6-v2.1-20240328-ctx4096.pth) |**⚙️ Late January 2025** |
-| 3B Model | ✅ Released | ✅ Released | ✅ [Released](https://huggingface.co/BlinkDL/rwkv-6-world/blob/main/RWKV-x060-World-1B6-v2.1-20240328-ctx4096.pth) |**⚙️ Mid-February 2025** |
-| 7B Model | ✅ Released | ✅ Released| ✅ [Released](https://huggingface.co/BlinkDL/rwkv-6-world/blob/main/RWKV-x060-World-7B-v2.1-20240507-ctx4096.pth) |**📅 Planned Training** |
-| 14B Model | ✅ Released | ❌ No Plan | ✅ [Released](https://huggingface.co/BlinkDL/rwkv-6-world/blob/main/RWKV-x060-World-14B-v2.1-20240719-ctx4096.pth) |**📅 Planned Training** |
+| 0.4B Model | ✅ Released | ✅ Released | ❌ No Plan |✅ [Released](https://modelscope.cn/models/Blink_DL/rwkv-7-world/files) |
+| 1.5B Model | ✅ Released | ✅ Released| ✅ [Released](https://hf-mirror.com/BlinkDL/rwkv-6-world/blob/main/RWKV-x060-World-1B6-v2.1-20240328-ctx4096.pth) |✅ [Released](https://modelscope.cn/models/Blink_DL/rwkv-7-world/files) |
+| 3B Model | ✅ Released | ✅ Released | ✅ [Released](https://hf-mirror.com/BlinkDL/rwkv-6-world/blob/main/RWKV-x060-World-1B6-v2.1-20240328-ctx4096.pth) |✅ [Released](https://modelscope.cn/models/Blink_DL/rwkv-7-world/files) |
+| 7B Model | ✅ Released | ✅ Released| ✅ [Released](https://hf-mirror.com/BlinkDL/rwkv-6-world/blob/main/RWKV-x060-World-7B-v2.1-20240507-ctx4096.pth) |**📅 Planned** |
+| 14B Model | ✅ Released | ❌ No Plan | ✅ [Released](https://hf-mirror.com/BlinkDL/rwkv-6-world/blob/main/RWKV-x060-World-14B-v2.1-20240719-ctx4096.pth) |**📅 Planned** |
 | MoE Model | ❌ No Plan | ❌ No Plan | ❌ No Plan | ❌ No Plan |
 
 ## Which RWKV Models Should I Use?
 
+::: warning
 Due to performance issues caused by outdated architectures, the entire RWKV-5, RWKV-4 series (Raven / World / Pile ...), and earlier RWKV versions have ended their lifecycle, and existing models are only for archival purposes.
+:::
 
-**Please use the RWKV-6 series models**, which are based on the latest RWKV architecture and the largest dataset versions, thus offering stronger performance.
+**Please use RWKV-7 series models**. RWKV-7 models are based on the latest RWKV-7 architecture and latest datasets, therefore offering better performance.
 
-For most use cases, you should use the latest [RWKV-6-World-14B-V2.1](https://huggingface.co/BlinkDL/rwkv-6-world/blob/main/RWKV-x060-World-14B-v2.1-20240719-ctx4096.pth) model. If your hardware configuration is insufficient to use the 14B parameter model, consider using the [RWKV-6-World-7B-V3](https://huggingface.co/BlinkDL/rwkv-6-world/blob/main/RWKV-x060-World-7B-v3-20241112-ctx4096.pth) model.
+Since RWKV-7 7B and larger models are still in training, for 7B and larger parameter models, it is recommended to use the [RWKV-6-World-14B-V2.1](https://hf-mirror.com/BlinkDL/rwkv-6-world/blob/main/RWKV-x060-World-14B-v2.1-20240719-ctx4096.pth) model; if your hardware configuration is insufficient for using the 14B parameter model, you can consider using the [RWKV-6-World-7B-V3](https://hf-mirror.com/BlinkDL/rwkv-6-world/blob/main/RWKV-x060-World-7B-v3-20241112-ctx4096.pth) model.
+
+::: tip
+RWKV-7-World 7B/14B will replace the existing RWKV-6-World 7B/14B models once training is complete.
+:::
 
 ## Differences Between RWKV and Transformer
 
@@ -84,11 +90,11 @@ For most use cases, you should use the latest [RWKV-6-World-14B-V2.1](https://hu
 | --- | --- |
 | **RWKV** | The model architecture itself, training code can be found [here](https://github.com/BlinkDL/RWKV-LM). |
 | **ChatRWKV** | The official chatbot of RWKV (similar to ChatGPT but based on RWKV), code can be found [here](https://github.com/BlinkDL/ChatRWKV). |
-| **RWKV-4/5/6** | Different architecture versions of RWKV. Note, only RWKV-6 series models are recommended. |
+| **RWKV-4/5/6/7** | Different architecture versions of RWKV. Note that using the latest RWKV-7 series models is recommended. |
 | **RWKV World** | The base RWKV model trained with global languages, covering a broader and more diverse dataset, including training data in over 100 languages and some instruction training. |
 | **Raven** | The official fine-tuned version of the RWKV-4 base model, including instruction training. However, since the RWKV-4 series is no longer updated, it is not recommended for continued use. |
-| **RWKV ABC/MIDI** | RWKV music models based on ABC/MIDI format, recommended to use RWKV-5 / 6 series. |
-| **RWKV CHNtuned / one-state-chat / role_play / novel ...** | Fine-tuned models provided by the RWKV community, optimized for specific tasks or data types. Prefer using fine-tuned models of the RWKV-6 series. |
+| **RWKV ABC/MIDI** | RWKV music models based on ABC/MIDI format |
+| **RWKV CHNtuned / one-state-chat / role_play / novel ...** | Fine-tuned models provided by the RWKV community, optimized for specific tasks or data types. Please prioritize using RWKV-7 series fine-tuned models. |
 
 ## RWKV Model Naming Rules
 
