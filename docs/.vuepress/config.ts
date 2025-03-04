@@ -30,7 +30,6 @@ export default defineUserConfig({
 					"/basic/play.md",
 					"/basic/integrate.md",
 					"/basic/FAQ.md",
-					"/basic/Introduction.md",
 				]
 			},
 			{ 
