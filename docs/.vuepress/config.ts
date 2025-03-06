@@ -29,7 +29,7 @@ export default defineUserConfig({
 				children: [
 					"/basic/play.md",
 					"/basic/integrate.md",
-					"/basic/FAQ.md"
+					"/basic/FAQ.md",
 				]
 			},
 			{ 
