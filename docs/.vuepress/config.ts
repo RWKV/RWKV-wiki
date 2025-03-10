@@ -40,6 +40,17 @@ export default defineUserConfig({
 					"/advance/architecture.md"
 				]
 			},
+			{ 
+				text: 'Inference', 
+				link: '/inference/llamacpp.html',
+				children: [
+					"/inference/llamacpp.md",
+					"/inference/ollama.md",
+					"/inference/sillytraven.md",
+					"/inference/text-generation-webui.md",
+					"/inference/koboldcpp.md"
+				]
+			},
 			{
 				text: 'Community',
 				link: '/community/code-of-conduct.html',
