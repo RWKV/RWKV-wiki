@@ -102,7 +102,7 @@ By default, `./llama-cli` uses chat mode. Add `-no-cnv` to switch to **completio
 
 ![RWKV completion inference](./imgs/llama.cpp-RWKV-inference-single-prompt.png)  
 
-- `-p "User: What's mbti?tell me in chinese.\n\nAssistant:"`: Prompt for completion. For more prompt formats, see [RWKV Prompt Guide](https://rwkv.cn/RWKV-Prompts/Chat-Prompts).  
+- `-p "User: What's Spring Festival.\n\nAssistant:"`: The "prompt" parameter enables the model to continue writing based on this prompt word.
 - `-no-cnv`: Disables chat mode for completion.  
 
 ### Launch Web Service (Recommended)  
