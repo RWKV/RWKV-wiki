@@ -1,144 +1,177 @@
-# LlamaCpp Inference Tutorial
+# llama.cpp Inference - RWKV Inference Documentation  
 
-::: tip
-[llama.cpp](https://github.com/ggerganov/llama.cpp) is a lightweight framework for running large language models, specifically optimized for CPU performance.
-:::
+---  
+**description:** llama.cpp supports inference for RWKV models. This tutorial guides you on how to use llama.cpp to run RWKV model inference.  
+**keywords:** llama.cpp RWKV inference, RWKV model inference with llamacpp, RWKV model llama.cpp tutorial, RWKV model quantized inference  
 
-Thanks to the work of RWKV community member [@MollySophia](https://github.com/MollySophia), llama.cpp now supports RWKV-6 models.
+---  
+::: tip  
+[llama.cpp](https://github.com/ggerganov/llama.cpp) is a lightweight framework for running large language models, specifically optimized for CPU performance.  
+:::  
 
-This section will introduce how to use RWKV-6 models for inference in llama.cpp.
+Thanks to the efforts of RWKV community member [@MollySophia](https://github.com/MollySophia), llama.cpp now supports RWKV-6 models.  
 
-## Running RWKV Models with llama.cpp
+This guide explains how to perform inference with RWKV-6 models using llama.cpp.  
 
-### Building llama.cpp Locally
+## Inference with RWKV Models in llama.cpp  
 
-You can choose to download pre-compiled llama.cpp programs from the [llama.cpp release page](https://github.com/ggerganov/llama.cpp/releases).
+### Build llama.cpp Locally  
 
-llama.cpp provides various pre-compiled versions. Choose the appropriate version based on your GPU type:
+You can download precompiled binaries from the [llama.cpp releases page](https://github.com/ggerganov/llama.cpp/releases).  
 
-| System Type | GPU Type | Package Name Field |
-|------------|----------|-------------------|
-| macOS | Apple Silicon | macos-arm64.zip |
-| Windows | Intel GPU (including Arc/Xe) | win-sycl-x64.zip |
-| Windows | NVIDIA GPU (CUDA 11.7-12.3) | win-cuda-cu11.7-x64.zip |
-| Windows | NVIDIA GPU (CUDA 12.4+) | win-cuda-cu12.4-x64.zip |
-| Windows | AMD and other GPUs (including AMD iGPU) | win-vulkan-x64.zip |
-| Windows | No GPU | win-openblas-x64.zip |
+llama.cpp offers multiple precompiled versions. Choose the appropriate package based on your GPU type:  
 
-Alternatively, you can follow the [official llama.cpp build documentation](https://github.com/ggerganov/llama.cpp/blob/master/docs/build.md) to compile locally using your preferred method.
+| System | GPU Type | Package Name |  
+|--------|----------|--------------|  
+| macOS | Apple Silicon | `macos-arm64.zip` |  
+| Windows | Intel GPU (including Arc dGPU/Xe iGPU) | `win-sycl-x64.zip` |  
+| Windows | NVIDIA GPU (CUDA 11.7-12.3) | `win-cuda-cu11.7-x64.zip` |  
+| Windows | NVIDIA GPU (CUDA 12.4+) | `win-cuda-cu12.4-x64.zip` |  
+| Windows | AMD and other GPUs (including AMD iGPUs) | `win-vulkan-x64.zip` |  
+| Windows | No GPU | `win-openblas-x64.zip` |  
 
-### Getting GGUF Format Models
+Alternatively, follow the [official llama.cpp build instructions](https://github.com/ggerganov/llama.cpp/blob/master/docs/build.md) to compile from source.  
 
-llama.cpp supports models in `.gguf` format, but RWKV officially only releases `.pth` format models.
+### Obtain GGUF Format Models  
 
-Therefore, you can download quantized RWKV models converted to gguf format from the [RWKV - GGUF repository](https://hf-mirror.com/latestissue).
+llama.cpp uses `.gguf` format models, but RWKV officially releases `.pth` models. Use one of the methods below to obtain a `.gguf` model.  
 
-::: tip
-Please create a models folder in the llama.cpp directory and place the downloaded gguf models in it.
-:::
+::: tabs  
+@tab Download GGUF Models (Recommended)  
+Download pre-quantized GGUF models from the [RWKV-6-World-GGUF repository](https://modelscope.cn/collections/RWKV-6-World-GGUF-f06d2c9def1349).  
 
-::: warning
-It's recommended to download models with `Q8_0` and `Q5_1` quantization levels. Lower quantization may result in poor model responses.
-:::
+Create a `models` folder in your llama.cpp directory and place the downloaded GGUF model there.  
 
-### Running RWKV Model Inference
+::: warning  
+RWKV GGUF models come in various quantization levels. Higher precision (e.g., `FP16`) yields better responses but requires more resources.  
 
-Run the following command in the llama.cpp directory to generate text based on a prompt using the RWKV model:
+Recommended priority: `FP16` > `Q8_0` > `Q5_K_M` > `Q4_K_M`. Lower quantizations (e.g., `Q3_0`, `Q2_0`) may severely degrade performance.  
 
-```bash copy
-./llama-cli -m models/rwkv-6-world-7b-Q8_0.gguf -p "User: What's Spring Festival?\n\nAssistant:" -no-cnv -t 8 -ngl 99 -n 500
-```
+@tab Convert from HF to GGUF  
 
-This command runs the `models/rwkv-6-world-7b-Q8_0.gguf` model using llama-cli with 8 threads, skips warmup, and generates up to 500 tokens based on the given prompt.
+1. Download an RWKV Hugging Face model from the [RWKV HF Hub](https://huggingface.co/RWKV) or [mirror](https://hf-mirror.com/RWKV) (accessible in China), such as `RWKV/v6-Finch-1B6-HF`.  
+2. Run the following command in the llama.cpp directory to convert the HF model to GGUF:  
 
-::: warning
-Without the `-no-cnv` parameter, `./llama-cli` defaults to conversation mode. If you use the `-no-cnv` parameter to enable completion mode, the model continues text generation from the prompt.
-:::
+```bash copy  
+python llama.cpp/convert_hf_to_gguf.py ./v6-Finch-1B6-HF  
+```  
 
-![RWKV Model Inference](./imgs/llama.cpp-RWKV-inference-single-prompt.png)
+::: warning  
+Replace `./v6-Finch-1B6-HF` with your actual RWKV HF model directory.  
 
-**Parameter Explanation:**
+If you have a `.pth` model, use the [pth-to-HF script](#appendix-code) in the appendix to convert it to HF format first.  
+:::  
 
-- `./llama-cli`: Launches the compiled llama-cli program
-- `-m models/rwkv-6-world-7b-Q8_0.gguf`: Model path parameter
-- `-p "User: What's Spring Festival?\n\nAssistant:"`: Prompt parameter for text generation
-- `-t 8`: Specifies thread count, adjust based on available physical CPU cores
-- `-ngl`: Specifies the number of model layers to load on GPU, set `-ngl 99` to load all RWKV model layers on GPU
-- `-n 500`: Maximum number of tokens to generate
+### Run RWKV Model for Chat  
 
-::: tip
-The complete parameter list can be found in the [llama.cpp parameter documentation](https://github.com/ggerganov/llama.cpp/blob/master/examples/main/README.md).
-:::
+Execute the following command in the llama.cpp directory to start a **chat session**:  
 
-## Additional Features (Optional)
+```bash copy  
+./llama-cli -m models/rwkv-6-world-7b-Q8_0.gguf -p "You are a helpful assistant" -cnv -t 8 -ngl 99 -n 500  
+```  
 
-### Quantizing GGUF Models
+This command runs the `models/rwkv-6-world-7b-Q8_0.gguf` model with 8 threads, initial prompt `You are a helpful assistant`, and generates up to 500 tokens per response.  
 
-Run `./llama-quantize [input_model] [output_model] [quantization_type]` in the llama.cpp directory to quantize `.gguf` models in `fp32` or `fp16` format, for example:
+![llama.cpp-RWKV-inference-cnv-mode](./imgs/llama.cpp-RWKV-inference-cnv-mode.png)  
 
-```bash copy
-./llama-quantize models/rwkv-6-world-1.6b-F16.gguf models/rwkv-6-world-1b6-Q8_0.gguf Q8_0
-```
+**Parameter Explanation:**  
 
-::: warning
-Input model precision is limited to `fp32` and `fp16`. `Q5_1` and `Q8_0` quantization levels are recommended.
-:::
+- `./llama-cli`: Launches the compiled `llama-cli` executable.  
+- `-m models/rwkv-6-world-7b-Q8_0.gguf`: Path to the model.  
+- `-p "You are a helpful assistant"`: Initial prompt to start the chat.  
+- `-cnv`: Enables chat mode (default, can be omitted).  
+- `-t 8`: Thread count (adjust based on available CPU cores).  
+- `-ngl 99`: Loads all model layers onto the GPU.  
+- `-n 500`: Maximum tokens to generate.  
 
-Use `./llama-quantize --help` command to view all available quantization levels:
+::: tip  
+For a full list of parameters, see the [llama.cpp documentation](https://github.com/ggerganov/llama.cpp/blob/master/examples/main/README.md).  
+:::  
 
-![Available Quantization Levels](./imgs/llama.cpp-quantization-type.png)
+## Additional Features (Optional)  
 
-### Convert the `.pth` state file into a `.bin` file
+### Enable completion Mode  
 
-The following code can convert the `.pth` state file officially released by RWKV into a `.bin` format state file that can be used by llama.cpp:
+::: tip  
+By default, `./llama-cli` uses chat mode. Add `-no-cnv` to switch to **completion mode**, where the model extends the given prompt.  
+:::  
 
-``` python copy filename="convert_rwkv_state_to_llamacpp.py"
-import torch
-import argparse
-import struct
-import array
-from pathlib import Path
+```bash copy  
+./llama-cli -m models/rwkv-6-world-7b-Q8_0.gguf -p "User: What's Spring Festival.\n\nAssistant:" -no-cnv -t 8 -ngl 99 -n 500  
+```  
 
+![RWKV completion inference](./imgs/llama.cpp-RWKV-inference-single-prompt.png)  
 
-def convert_rwkv_state_to_llamacpp_cache(path_input, path_output):
-    state = torch.load(path_input, map_location='cpu')
-    n_head, head_size, _ = state['blocks.0.att.time_state'].shape
-    n_embd = n_head * head_size
-    n_layer = len(state.keys())
-    print(f'n_layer: {n_layer}, n_embd: {n_embd}')
-    
-    LLAMA_SESSION_MAGIC = 0x6767736e
-    LLAMA_SESSION_VERSION = 9
+- `-p "User: What's mbti?tell me in chinese.\n\nAssistant:"`: Prompt for completion. For more prompt formats, see [RWKV Prompt Guide](https://rwkv.cn/RWKV-Prompts/Chat-Prompts).  
+- `-no-cnv`: Disables chat mode for completion.  
 
-    with open(path_output, 'wb') as file:
-        # magic, version, n_token_count
-        file.write(struct.pack('3I', LLAMA_SESSION_MAGIC, LLAMA_SESSION_VERSION, 0))
-        # model arch
-        file.write(struct.pack('I5s', 5, b'rwkv6'))
-        # session output ids, logits, embeddings (skip)
-        file.write(struct.pack('=IQQ', 0, 0, 0))
-        # cell_count, pos, n_seq_id, v_trans, n_layer
-        file.write(struct.pack('=5I', 1, 0, 0, 0, n_layer))
-        for _ in range(n_layer):
-            # k_type = GGML_TYPE_F32, k_size = 2 * n_embd * sizeof(float)
-            file.write(struct.pack('=iq', 0, 2 * n_embd * 4))
-            for _ in range(2*n_embd):
-                file.write(struct.pack('=f', 0.0))
-            
-        for i in range(n_layer):
-            # v_type = GGML_TYPE_F32, v_size = n_head * head_size * head_size * sizeof(float)
-            file.write(struct.pack('=iq', 0, n_head * head_size * head_size * 4))
-            data = state[f'blocks.{i}.att.time_state'].float().transpose(1, 2).flatten().tolist()
-            file.write(struct.pack(f'{n_head * head_size * head_size}f', *data))
+### Launch Web Service (Recommended)  
 
-def main():
-    parser = argparse.ArgumentParser(description='Convert RWKV state to llama.cpp prompt cache')
-    parser.add_argument('input', type=Path, help='Path to RWKV state')
-    parser.add_argument('output', type=Path, help='File name for llama.cpp prompt cache')
-    args = parser.parse_args()
+Start a web server with:  
 
-    convert_rwkv_state_to_llamacpp_cache(args.input, args.output)
+```bash copy  
+./llama-server -m models/rwkv-6-world-7b-Q8_0.gguf -ngl 99  
+```  
 
-if __name__ == '__main__':
-    main()
+Access the Web UI at `http://127.0.0.1:8080`:  
+
+![WebUI](./imgs/llama.cpp-chatui-new-version.png)  
+
+### Quantize GGUF Models  
+
+Use `./llama-quantize` to quantize `fp16` or `fp32` GGUF models. Example:  
+
+```bash copy  
+./llama-quantize models/rwkv-6-world-1.6b-F16.gguf models/rwkv-6-world-1b6-Q8_0.gguf Q8_0  
+```  
+
+::: warning  
+Input models must be `fp32` or `fp16`. Recommended quantizations: `Q5_1`, `Q8_0`.  
+:::  
+
+Run `./llama-quantize --help` to view all quantization options:  
+
+![Quantization types](./imgs/llama.cpp-quantization-type.png)  
+
+## Appendix Code  
+
+### Convert `.pth` to HF Format  
+
+Use this script to convert `.pth` models to HF format (generates `pytorch_model.bin`):  
+
+```python copy  
+# Convert the model for the pytoch_model.bin  
+import torch  
+
+SOURCE_MODEL = "./v6-FinchX-14B-pth/rwkv-14b-final.pth"  
+TARGET_MODEL = "./v6-Finch-14B-HF/pytorch_model.bin"  
+
+# Delete target model if exists  
+import os  
+if os.path.exists(TARGET_MODEL):  
+    os.remove(TARGET_MODEL)  
+
+model = torch.load(SOURCE_MODEL, mmap=True, map_location='cpu')  
+
+# Rename keys to match HF format  
+new_model = {}  
+for key in model.keys():  
+    if key.startswith("blocks."):  
+        new_key = "rwkv." + key  
+        new_key = new_key.replace(".att.", ".attention.")  
+        new_key = new_key.replace(".ffn.", ".feed_forward.")  
+        new_key = new_key.replace("0.ln0.", "0.pre_ln.")  
+    else:  
+        new_key = key  
+        if key == "emb.weight":  
+            new_key = "rwkv.embeddings.weight"  
+        if key.startswith("ln_out."):  
+            new_key = "rwkv." + key  
+
+    print(f"Renaming key: {key} -> {new_key}")  
+    new_model[new_key] = model[key]  
+
+# Save the converted model  
+print(f"Saving to: {TARGET_MODEL}")  
+torch.save(new_model, TARGET_MODEL)  
 ```
