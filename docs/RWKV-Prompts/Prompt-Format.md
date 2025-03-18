@@ -49,7 +49,7 @@ Response:
 Reference response:
 
 ``` text copy
-At the developer conference of RWKV - 7 held in Caohejing, Shanghai, China, experts, enterprises, and people from the open - source community from different fields gathered to share RWKV - 7 and its application results. RWKV - 7 is considered to redefine the economic formula of AI infrastructure and was also demonstrated at the 2025 Global Developer Conference.
+The RWKV developer conference in Caohejing, Shanghai, China on February 22, 2025, attracted 10 guests from academia, enterprises, and the RWKV open-source community. The conference showcased the latest developments in RWKV-7 and its future trends. The on-site audience interacted with the guests and were impressed by the innovative energy on-site. The conference also featured presentations from other AI enterprises praising RWKV-7's redefinition of economic formula for AI infrastructure.
 ```
 
 ## Few - Shot
