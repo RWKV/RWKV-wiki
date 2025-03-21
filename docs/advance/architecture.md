@@ -520,7 +520,7 @@ In addition, the RWKV architecture design significantly reduces memory usage, ma
 
 For core concepts of the RWKV architecture, please refer to [RWKV in 150 lines of code](https://github.com/BlinkDL/ChatRWKV/blob/main/RWKV_in_150_lines.py).
 
-For the architectural design of RWKV-7, you can refer to the blog: [RWKV-7: An Extremely Advanced Large Model Architecture with Exceptional Long Text Capabilities](https://x.com/BlinkDL_AI/status/1861753903886561649).
+For the architectural design of RWKV-7, you can refer to the blog: [RWKV-7 as a meta-context learner](https://x.com/BlinkDL_AI/status/1861753903886561649).
 
 Alternatively, you can learn by reading RWKV papers:
 
