@@ -1,4 +1,4 @@
-# KoboldCpp Inference Tutorial
+# KoboldCpp Inference
 
 ::: tip
 [KoboldCpp](https://github.com/LostRuins/koboldcpp) is a simple and user-friendly AI model inference and text generation tool.

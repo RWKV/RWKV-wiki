@@ -1,17 +1,12 @@
-# llama.cpp Inference - RWKV Inference Documentation  
-
----  
-**description:** llama.cpp supports inference for RWKV models. This tutorial guides you on how to use llama.cpp to run RWKV model inference.  
-**keywords:** llama.cpp RWKV inference, RWKV model inference with llamacpp, RWKV model llama.cpp tutorial, RWKV model quantized inference  
-
----  
+# llama.cpp Inference
+ 
 ::: tip  
 [llama.cpp](https://github.com/ggerganov/llama.cpp) is a lightweight framework for running large language models, specifically optimized for CPU performance.  
 :::  
 
-Thanks to the efforts of RWKV community member [@MollySophia](https://github.com/MollySophia), llama.cpp now supports RWKV-6 models.  
+Thanks to the efforts of RWKV community member [@MollySophia](https://github.com/MollySophia), llama.cpp now supports RWKV-6/7 models.  
 
-This guide explains how to perform inference with RWKV-6 models using llama.cpp.  
+This guide explains how to perform inference with RWKV models using llama.cpp.  
 
 ## Inference with RWKV Models in llama.cpp  
 
@@ -34,11 +29,11 @@ Alternatively, follow the [official llama.cpp build instructions](https://github
 
 ### Obtain GGUF Format Models  
 
-llama.cpp uses `.gguf` format models, but RWKV officially releases `.pth` models. Use one of the methods below to obtain a `.gguf` model.  
+llama.cpp uses `.gguf` format models. Use one of the methods below to obtain a `.gguf` RWKV model.  
 
 ::: tabs  
 @tab Download GGUF Models (Recommended)  
-Download pre-quantized GGUF models from the [RWKV-6-World-GGUF repository](https://modelscope.cn/collections/RWKV-6-World-GGUF-f06d2c9def1349).  
+Download pre-quantized GGUF models from the [RWKV-6-World GGUF repository](https://huggingface.co/collections/zhiyuan8/rwkv-6-world-gguf-6790b87a42d4f541a2f6d92b) or [RWKV-7-World GGUF repository](https://huggingface.co/collections/zhiyuan8/rwkv-7-world-gguf-67dbb8f4baeae23ec791f49e).  
 
 Create a `models` folder in your llama.cpp directory and place the downloaded GGUF model there.  
 

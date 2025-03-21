@@ -1,11 +1,4 @@
-# Ollama Inference Tutorial - RWKV Inference
-
----
-*This tutorial will introduce how to use Ollama to run RWKV model inference and chat with the model.*
-
-*keywords: Ollama RWKV, RWKV Ollama tutorial, how to use RWKV model in Ollama*
-
----
+# Ollama Inference
 
 ::: tip
 [Ollama](https://github.com/ollama) is a simple and easy-to-use open-source local large language model running framework that supports one-click deployment and running of various open-source models on personal computers, featuring simple configuration and low resource consumption.
@@ -48,7 +41,7 @@ You can replace `1.6b` with `3b`, `7b`, or `14b` to run RWKV-6-World models with
 
 ### Download RWKV gguf model
 
-To customize the RWKV model, you need to first download the `gguf` format RWKV-6-World model from the [RWKV - GGUF repository](https://huggingface.co/latestissue) or [Hugging Face mirror site](https://hf-mirror.com/latestissue).
+To customize the RWKV model, you need to first download the `gguf` format RWKV-6-World model from the [RWKV-6 GGUF repository](https://huggingface.co/collections/zhiyuan8/rwkv-6-world-gguf-6790b87a42d4f541a2f6d92b) or [RWKV-7 GGUF repository](https://huggingface.co/collections/zhiyuan8/rwkv-7-world-gguf-67dbb8f4baeae23ec791f49e).
 
 ---
 ⚠️ **RWKV gguf models come in various quantized versions. It is recommended to use `Q5_1` or `Q8_0` quantization precision. Lower quantization precision (such as `Q4_0`, `Q3_0`, etc.) may significantly degrade the model's responses.**
