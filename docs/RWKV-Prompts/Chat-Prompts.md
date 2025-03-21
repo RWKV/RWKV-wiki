@@ -1,11 +1,9 @@
-# Chat Prompts
+# Chat Prompt Examples
 
-This page showcases the prompt references for various **chat modes**. You can copy the text with one click on the upper right of each prompt example and then paste it into the text box of RWKV Runner/Ai00 for use.
-
-![rwkv-prompts-copy-button](./rwkv-prompts-copy-button.png)
+This section showcases the prompt references for various **chat modes**. You can copy the text with one click on the upper right of each prompt example and then paste it into the text box of RWKV Runner/Ai00 for use.
 
 ::: warning
-The prompts on this page are only applicable to the **chat** mode of RWKV Runner or Ai00.
+The prompts on this page are only applicable to the **chat** mode.
 
 All the following prompt examples are based on the RWKV-6-7B-World model. As the model version and parameters are adjusted, the generated results may change.
 :::

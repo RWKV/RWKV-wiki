@@ -28,8 +28,28 @@ export default defineUserConfig({
 				link: '/basic/play.html',
 				children: [
 					"/basic/play.md",
+					"/basic/decoding-parameters.md",
 					"/basic/integrate.md",
 					"/basic/FAQ.md",
+				]
+			},
+			{ 
+				text: 'RWKV Prompting', 
+				link: '/RWKV-Prompts/prompt-guidelines.md',
+				children: [
+					"/RWKV-Prompts/prompt-guidelines.md",
+					"/RWKV-Prompts/Chat-Prompts.md",
+					"/RWKV-Prompts/Completion-Prompts.md",
+				]
+			},
+
+			{ 
+				text: 'Prompt Guide', 
+				link: '/RWKV-Prompts/Prompt-Format.html',
+				children: [
+					"/RWKV-Prompts/Prompt-Format.md",
+					"/RWKV-Prompts/Chat-Prompts.md",
+					"/RWKV-Prompts/Completion-Prompts.md"
 				]
 			},
 			{ 
@@ -41,14 +61,15 @@ export default defineUserConfig({
 				]
 			},
 			{ 
-				text: 'Inference', 
+				text: 'Inference Tutorials', 
 				link: '/inference/llamacpp.html',
 				children: [
 					"/inference/llamacpp.md",
 					"/inference/ollama.md",
 					"/inference/sillytraven.md",
 					"/inference/text-generation-webui.md",
-					"/inference/koboldcpp.md"
+					"/inference/koboldcpp.md",
+					"/inference/ai00.md"
 				]
 			},
 			{

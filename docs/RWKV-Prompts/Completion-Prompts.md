@@ -1,8 +1,6 @@
-# Completion Prompt
+# Completion Prompt Examples
 
-This page displays multiple prompt formats for **completion tasks**. Each prompt example features a copy button on the top right, enabling you to copy the prompt text with a single click and paste it into the RWKV Runner/Ai00 text box for use.
-
-![rwkv-prompts-copy-button](./rwkv-prompts-copy-button.png)
+This section displays multiple prompt formats for **completion tasks**. Each prompt example features a copy button on the top right, enabling you to copy the prompt text with a single click and paste it into the RWKV Runner/Ai00 input text box for use.
 
 ::: warning
 The prompts on this page are suitable for RWKV Runner or Ai00's completion mode.
