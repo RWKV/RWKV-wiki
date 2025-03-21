@@ -1,4 +1,4 @@
-# Text Generation WebUI Inference Tutorial
+# Text Generation WebUI Inference
 
 ::: tip
 [Text Generation WebUI](https://github.com/oobabooga/text-generation-webui) is a tool for running large language models. It provides a user-friendly web interface where users can easily configure and run models through a web page.
