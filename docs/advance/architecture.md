@@ -411,12 +411,22 @@ The architecture code of RWKV-7 is "Goose". RWKV-7 **surpasses the attention/lin
 
 The research of RWKV-7 began in September 2024, and its preview version `RWKV-7 "Goose" x070.rc2-2409-2r7a-b0b4a`'s training code was first released at the [commit](https://github.com/BlinkDL/RWKV-LM/commit/e1d143f526e28be61fc06571034dda179101a683) of the RWKV-LM repository.
 
+::: tip
+The paper on the RWKV-V7 architecture, "RWKV-7 "Goose" with Expressive Dynamic State Evolution", was officially released on March 18, 2025.
+
+Paper link: [https://arxiv.org/abs/2503.14456](https://arxiv.org/abs/2503.14456) 
+:::
+
 ![rwkv-7-architecture](../img/architecture/rwkv-7-architecture.jpg)
 
 #### RWKV-7 Architecture Optimization Details
 
 ::: tip
-RWKV-7 adopts **Dynamic State Evolution**, which breaks the fundamental limitations of the $TC0$ expressive power of attention/linear attention paradigms. RWKV-7 has $NC1$ expressive power, enabling it to solve many problems that attention cannot.
+RWKV-V7 adopts **Dynamic State Evolution**. Through a series of innovations (such as the Generalized Delta Rule), RWKV-7 comprehensively surpasses the Transformer and the previous RWKV-6 architecture in terms of computational efficiency, task performance, and model expressiveness.
+
+On the premise that the training data is much less than that of open-source models such as Qwen2.5 and Llama3.2, the **language modeling ability** of the RWKV-7-World model has reached the state-of-the-art (SoTA) level among all open-source models with a scale of 3 billion parameters.
+
+By introducing the Generalized Delta Rule, RWKV-7 can achieve the $S_5$ state tracking problem with a complexity of $NC^1$ using **only 2 layers**, and can recognize all regular languages using **4 layers**. Its expressiveness significantly exceeds the $TC^0$ limitation of Transformers.  
 :::
 
 In general, traditional attention mechanisms (such as the QKV-softmax-attention of Transformers) store multiple ${k, v}$ (key and value vector pairs) and use $q$ (query vector) to match the key to get the corresponding value output.
@@ -491,10 +501,6 @@ def ref_fwd(r, w, k, v, a, b):
 
 ```
 
-::: warning
-RWKV-7 is in the **early preview version**, and its paper is still being written by RWKV author BlinkDL and community members. As of November 2024, the paper is still in the writing stage, and there is no specific publication plan.
-:::
-
 ## RWKV Architecture Features
 
 The characteristics of the RWKV large model architecture include:
@@ -514,12 +520,13 @@ In addition, the RWKV architecture design significantly reduces memory usage, ma
 
 For core concepts of the RWKV architecture, please refer to [RWKV in 150 lines of code](https://github.com/BlinkDL/ChatRWKV/blob/main/RWKV_in_150_lines.py).
 
-For a code interpretation of the RWKV-6 architecture, please refer to [Introducing the model design of RWKV-6, with annotated code(Chinese)](https://zhuanlan.zhihu.com/p/694593540).
+For the architectural design of RWKV-7, you can refer to the blog: [RWKV-7: An Extremely Advanced Large Model Architecture with Exceptional Long Text Capabilities](https://x.com/BlinkDL_AI/status/1861753903886561649).
 
 Alternatively, you can learn by reading RWKV papers:
 
 - [RWKV-4 Architecture Paper | arXiv (2305.13048)](https://arxiv.org/abs/2305.13048)
 - [RWKV 5/6 Architecture Paper | arXiv (2404.05892)](https://arxiv.org/abs/2404.05892)
+- [RWKV-7 Architecture Paper | arXiv（2503.14456）](https://arxiv.org/abs/2503.14456)
 
 If you have mastered the basics, you can start studying the training and CUDA code of RWKV in the [RWKV main repository](https://github.com/BlinkDL/RWKV-LM).
 
