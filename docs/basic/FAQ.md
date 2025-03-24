@@ -2,12 +2,11 @@
 
 ## When is the next RWKV model coming out?
 
-RWKV does not have a fixed release schedule, nor make commitments on when the next model will be released. In general, BlinkDL, who is in charge of the RWKV project, releases a new model as and when it is ready.
+RWKV neither has a fixed release schedule nor makes commitments on when the next model will be released. BlinkDL, who is in charge of the RWKV project, releases new models when they're ready. This means a new release could happen within days or might take months.
 
-So anywhere from the next few days, to the next few months. 
+All RWKV models are OSS. Our training processes depend heavily on GPU availability, provided by our sponsors.
 
-In addition, as an OSS model. Our training processes are also heavily subjected to GPU availability, provided by our sponsors.
-Generally speaking as the current version of the model is being released, the training / preparation process for the next version of the model is already underway.
+Typically, as one model version is being released, training / preparation for the next version is already in progress.
 
 ## What is the dataset that RWKV is trained on?
 
@@ -17,23 +16,21 @@ Generally speaking as the current version of the model is being released, the tr
 
 ## Is the RWKV model censored?
 
-RWKV models are generally not censored. However while we remove common gotchas from the gpt4all training dataset (aka the "I cannot answer this as a LLM"), it is by no means a perfect dataset. As such it is possible for the model to still self-censor itself in some cases.
+RWKV models are generally not censored. While we remove common gotchas from the gpt4all training dataset (such as "I cannot answer this as a LLM" responses), it isn't perfect. Consequently, the model may still occasionally self-censor despite efforts to prevent this behavior.
 
 ## Why does the various model have context length (4k/8k) listed in their name? 
 
-While RWKV on a technical level has "infinite" context length, it requires training data of a certain context length, to be able to perform tasks efficiently. The listed model "context length" is the "effective context length" which the model has been trained with. Anything longer than that, and the model performance is expected to degrade drastically, as it has not been trained to handle such a long context.
-
-It is possible to train / finetune a model to longer context length, provided you have the training data to do so.
+While RWKV on a technical level has an "infinite" context length, it requires training data of a certain context length, to be able to perform tasks efficiently. The listed model "context length" is the "effective context length" which the model has been trained with. Anything longer than that, and the model performance is expected to degrade drastically, as it has not been trained to handle such a long context. But if you have the training data, you can to train / finetune a model to longer context length.
 
 ## What is RWKV licensed under?
 
-RWKV and its models is Apache 2.0 licensed, which means it is suitable for both commercial and non-commercial use.
+RWKV and all its models are released under the Apache 2.0 license, which means they can be used in both commercial and non-commercial applications.
 
-## What is racoon??
+## What is racoon?
 
 Racoon is a community finetuned model, for chat and general purpose use. And is made by @nath , you can find it here : https://huggingface.co/m8than/rwkv-v4-raccoon
 
-It has its own quirky personality, and is more then willing to insult you the user if needed be.
+It has its own quirky personality and is more then willing to insult you the user if needed be.
 
 ## What are the RWKV chat commands ?
 
@@ -62,24 +59,25 @@ See the [architecture page](../advance/architecture.md)
 
 ## How much would it cost to train RWKV >20B from scratch ? And why can't you give me a simple answer to how much I need ?
 
-> TLDR: If you do not have access to ~$1M worth of GPU time, do not consider this task
+> TLDR: Don't consider training a model from scratch unless you have access to ~$1M worth of GPU time.
 
-While the price of training a model keeps falling, training from scratch is a task most individuals underestimate the cost.
+The cost of training models continues to decrease, but most individuals still underestimate the cost of training from scratch.
 
-There are lots of factors involved in training a model, most important are the dataset size (aka. number of tokens), the model size, and your timeline. Also you will need to budget in for mistakes, that could happen in the training process, and the human cost involved in setting up and preparing the whole process. All of which makes things hard to predict accurately. (Not to mention with that amount of money involved, you probably would want to have a say of the datasets being used, all of which takes even more time and labour to prepare)
+There are lots of factors involved in training a model, most important are the dataset size (aka. number of tokens), the model size, and your timeline. Also you will need to budget for mistakes that could happen in the training process and the labor cost involved in setting up and preparing the whole process, making it difficult to predict costs accurately. (Not to mention with that amount of money involved, you probably would want to have a say of the datasets being used, all of which takes even more time and labour to prepare)
 
-For example, it is predicted that LLaMA2 [70B foundation model cost $2.6M to train from scratch, with 2 Trillion tokens](https://twitter.com/moinnadeem/status/1681393075367841792) in GPU time alone - so as a general rule of thumb, unless you have access to $1M worth of GPU time, and a decent amount to prepare the datasets, you should not be considering training anything >14B from scratch.
+For example, it is predicted that LLaMA2 [70B foundation model cost $2.6M to train from scratch, with 2 Trillion tokens](https://twitter.com/moinnadeem/status/1681393075367841792) in GPU time alone—so as a general rule of thumb, unless you have access to $1M worth of GPU time, and a decent amount to prepare the datasets, you should not be considering training anything >14B from scratch.
 
-While RWKV as a RNN, should in theory be cheaper to train than a transformer. Even 1/5 of $2.6M, is a cost most individuals or companies will not be able to afford.
+Even though RWKV as a recurrent neural network should theoretically be cheaper to train than a transformer, the cost—at roughly one-fifth of $2.6M—still costs more than what individuals or companies can afford.
+
 At this point, however some of you may ask: is it possible to just train on a single machine? instead of an expensive GPU farm?
 
-In theory, you can train on a single machine, as long as you have the [minimum required vram for the model size](https://wiki.rwkv.com/advance/finetune.html#how-much-gpu-vram-do-you-need). However with a large enough dataset, or in the case of 70B LLaMA2 2 Trillion tokens - it would have taken a single A100 a total of 1,720,320 hours, or a 196 years.
+In theory, you can train on a single machine, as long as you have the [minimum required vram for the model size](https://wiki.rwkv.com/advance/finetune.html#how-much-gpu-vram-do-you-need). However with a large enough dataset, or in the case of 70B LLaMA2, 2 Trillion tokens—it would have taken a single A100 a total of 1,720,320 hours, or a 196 years.
 
-As such, because no one wants to wait 190+ years for their model to finish - we split workload across multiple training nodes. This is sadly not a perfectly scalable process. As every node we add, adds a penalty in efficiencies, due to the high communication overheads involved.
+Since no one wants to wait 190+ years for their model to finish, we split workload across multiple training nodes. This is sadly not a perfectly scalable process. Every additional node adds a penalty in efficiencies, due to the high communication overheads involved.
 
 The end result, ends up being a very complicated math of "how fast you want the model" vs "how much can you pay" with faster training time, generally meaning increasing costs in overall. Making estimates of $5M to $1M all very possible numbers depending on how fast (or slow) would you want your model to be.
 
-> If you, do have GPU time you can donate to RWKV for training an OSS model, through your research institute, etc. Do get in touch with us 😉 (it does not need to be ~$1M worth, even small amount helps in a long way)
+> If you do have GPU time you can donate to RWKV for training an OSS model through your research institute, etc. Do get in touch with us 😉 (it does not need to be ~$1M worth, even small amount helps in a long way)
 
 ## Does RWKV support "Training Parallelization"? Why does the RetNet paper claim otherwise?
 
