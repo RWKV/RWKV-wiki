@@ -1,8 +1,8 @@
-# How to play with the Eagle / RWKV model?
+# How to play with the Goose / RWKV model?
 
 ## Online public demos
 
-If you simply want to give the RWKV Raven a try, you can try the following public demos.
+If you simply want to try RWKV Goose, checkout the following public demo.
 
 - [HF Gradio](https://huggingface.co/spaces/BlinkDL/RWKV-Gradio-2)
 
@@ -24,9 +24,9 @@ If you are not familiar with python or hugging face, you can install chat models
 
 # Prompting guidelines for RWKV
 
-RWKV is more sensitive to prompt format, then transformer based models. Due to its weaker ability in "looking back"
+RWKV is more sensitive to prompt format than transformer-based models, due to its weaker ability in "looking back".
 
-As such, instead of doing something like the following
+Thus, instead of doing something like the following:
 
 ```
 {{CONTEXT}}
@@ -49,7 +49,7 @@ Use the following format:
 For a human analogy, you can think of it as the instruction/input's are being read out loud to to model, without letting the model write it down.  If you present the context before any instructions, the model doesn't know what to focus on and may forget crucial parts since it hasn't been told what to do with the information yet.
 
 
-However if you tell the model the instruction first, then the context, it will understand the instruction first, and use that knowledge to process the context.
+However, if you give the model instructions first, and then the context, it understands what it needs to do before processing the information, allowing it to focus on relevant details.
 
 For Q&A tasks with context, the optimal approach is to repeat the question before and after the context as following:
 
@@ -71,13 +71,14 @@ If the above "guided" setups are not what you are looking for, and you would lik
 - [Raven](https://huggingface.co/BlinkDL/rwkv-4-raven/tree/main)
 
 ### Base Models download
-- [Pile 7B](https://huggingface.co/BlinkDL/rwkv-4-pile-7b)
-- [Pile 14B](https://huggingface.co/BlinkDL/rwkv-4-pile-14b)
-- [PilePlus models](https://huggingface.co/BlinkDL/rwkv-4-pileplus)
-- [RWKV World](https://huggingface.co/BlinkDL/rwkv-4-world)
+- [Pile 0.5](https://huggingface.co/fla-hub/rwkv7-421M-pile)
+- [Pile 1.5B](https://huggingface.co/fla-hub/rwkv7-1.47B-pile)
+- [World 0.5B](https://huggingface.co/fla-hub/rwkv7-0.4B-world)
+- [World 1.5B](https://huggingface.co/fla-hub/rwkv7-1.5B-world)
+- [World 3B](https://huggingface.co/fla-hub/rwkv7-2.9B-world)
 
 ::: tip
-It is strongly advised to try the raven instruction model, unless you are familiar with few shot prompting with the base models
+It is strongly advised to try the (older) raven instruction model, unless you are familiar with few shot prompting with the base models.
 :::
 
 ### RWKV.cpp / RWKV.cpp cuda project
@@ -87,7 +88,7 @@ After downloading the desired model, you can quantize or convert them for runnin
 - [RWKV.cpp](https://github.com/saharNooby/rwkv.cpp)
 - [RWKV-cpp-cuda](https://github.com/harrisonvanderbyl/rwkv-cpp-cuda)
 
-These projects are designed to run locally, without the need of python or hugging face. And can be ranned on CPU or GPU (or both) respectively
+These projects are designed to run locally on either run CPU or GPU (or both) respectively.
 
 ::: tip
 Despite the "cuda" name, rwkv-cpp-cuda does have vulkan support, so it could run on AMD GPUs
@@ -104,8 +105,8 @@ The official RWKV chat project can be found here
 
 ### RWKV main repo
 
-The main RWKV repo can be found here, use v4neo to run current models
-- [RWKV](https://github.com/BlinkDL/RWKV-LM/tree/main/RWKV-v4neo)
+The main RWKV repo can be found here, use v7 to run current models
+- [RWKV](https://github.com/BlinkDL/RWKV-LM/tree/main/RWKV-v7)
 
 ::: tip
 For new users, we recommend using the RWKV.cpp project unless you plan to finetune because of the complexity involved with python dependencies.
