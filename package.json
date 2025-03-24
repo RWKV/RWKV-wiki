@@ -17,5 +17,8 @@
     "mathjax-full": "^3.2.2",
     "sass-embedded": "^1.83.1",
     "vuepress": "^2.0.0-beta.62"
+  },
+  "dependencies": {
+    "@actions/artifact": "^2.3.2"
   }
 }
