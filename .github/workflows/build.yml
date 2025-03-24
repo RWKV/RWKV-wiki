@@ -24,14 +24,14 @@ jobs:
       - run: npm ci
       - run: npm run docs:build # Build VuePress dist files
       - name: Archive build artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: vuepress-build
           path: docs/.vuepress/dist/
       # This helps resolve an artifact deploy issue
       # See : https://github.com/orgs/community/discussions/40771
       - name: Upload artifact for pages
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v4
         with: 
           path: docs/.vuepress/dist/
   
