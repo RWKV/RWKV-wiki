@@ -16,11 +16,11 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - name: Use Node.js
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v3
         with:
-          node-version: 18
+          node-version: 22
       - run: npm ci
       - run: npm run docs:build # Build VuePress dist files
       - name: Archive build artifacts
@@ -30,10 +30,10 @@ jobs:
           path: docs/.vuepress/dist/
       # This helps resolve an artifact deploy issue
       # See : https://github.com/orgs/community/discussions/40771
-      - name: Upload artifact for pages
-        uses: actions/upload-pages-artifact@v1
-        with: 
-          path: docs/.vuepress/dist/
+      #- name: Upload artifact for pages
+        #uses: actions/upload-pages-artifact@v1
+       # with: 
+          #path: docs/.vuepress/dist/
   
   deploy:
     # Only run for the default branch
