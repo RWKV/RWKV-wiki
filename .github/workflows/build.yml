@@ -44,6 +44,8 @@ jobs:
     # Run the deploy steps
     runs-on: ubuntu-latest
     steps:
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
       - name: Deploy 🚀
         id: deployment
         uses: actions/deploy-pages@v4
