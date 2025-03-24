@@ -4,7 +4,7 @@
 
 RWKV neither has a fixed release schedule nor makes commitments on when the next model will be released. BlinkDL, who is in charge of the RWKV project, releases new models when they're ready. This means a new release could happen within days or might take months.
 
-All RWKV models are OSS. Our training processes depend heavily on GPU availability, provided by our sponsors.
+All RWKV models are OSS. Our training processes depend heavily on available GPUs provided by our sponsors.
 
 Typically, as one model version is being released, training / preparation for the next version is already in progress.
 
