@@ -12,7 +12,7 @@ Chat is disabled in the above public demo
 
 ## Minimal steps for local setup (Recommended route)
 
-If you are not familiar with python or hugging face, you can install chat models locally with the following app:
+If you are not familiar with Python or HuggingFace, you can install chat models locally with the following app:
 
 - [RWKV Runner Project](https://github.com/josStorer/RWKV-Runner)
     - [installer download (do read the installer README instructions)](https://github.com/josStorer/RWKV-Runner/releases/)
@@ -46,10 +46,7 @@ Use the following format:
 {{ANSWER}}
 ```
 
-For a human analogy, you can think of it as the instruction/input's are being read out loud to to model, without letting the model write it down.  If you present the context before any instructions, the model doesn't know what to focus on and may forget crucial parts since it hasn't been told what to do with the information yet.
-
-
-However, if you give the model instructions first, and then the context, it understands what it needs to do before processing the information, allowing it to focus on relevant details.
+In the first version, you give some context to model without letting the model write it down, and the model doesn't know what to focus on and may forget crucial parts. If you give the model instructions first, and then the context, it understands what it needs to do before processing the information, allowing it to focus on relevant details.
 
 For Q&A tasks with context, the optimal approach is to repeat the question before and after the context as following:
 
@@ -65,21 +62,18 @@ For Q&A tasks with context, the optimal approach is to repeat the question befor
 
 ## How to play with custom models instead?
 
-If the above "guided" setups are not what you are looking for, and you would like to experiment with different model sizes / quantization settings, here's a general list to find the various things you may need.
+If you'd like to experiment with different model sizes / quantization settings, here's a general list to find the various things you may need.
 
-### Instruction trained models download
-- [Raven](https://huggingface.co/BlinkDL/rwkv-4-raven/tree/main)
-
-### Base Models download
+### RWKV-7 Models
 - [Pile 0.5](https://huggingface.co/fla-hub/rwkv7-421M-pile)
 - [Pile 1.5B](https://huggingface.co/fla-hub/rwkv7-1.47B-pile)
 - [World 0.5B](https://huggingface.co/fla-hub/rwkv7-0.4B-world)
 - [World 1.5B](https://huggingface.co/fla-hub/rwkv7-1.5B-world)
 - [World 3B](https://huggingface.co/fla-hub/rwkv7-2.9B-world)
 
-::: tip
-It is strongly advised to try the (older) raven instruction model, unless you are familiar with few shot prompting with the base models.
-:::
+### RWKV-6 Models
+- [RWKV-6 World](https://huggingface.co/BlinkDL/rwkv-6-world)
+- [RWKV-6 Tunes](https://huggingface.co/BlinkDL/rwkv-6-misc)
 
 ### RWKV.cpp / RWKV.cpp cuda project
 
@@ -93,10 +87,6 @@ These projects are designed to run locally on either run CPU or GPU (or both) re
 ::: tip
 Despite the "cuda" name, rwkv-cpp-cuda does have vulkan support, so it could run on AMD GPUs
 :::
-
-### RWKV mobile projects
-
-- [AltaeraAI : Run RWKV on your android phone \(May require some CLI knowledge to get it running\)](https://altaera.ai/)
 
 ### Chat client projects
 
