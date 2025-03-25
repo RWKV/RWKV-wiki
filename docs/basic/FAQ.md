@@ -1,4 +1,4 @@
-# Frequently Ask Questions
+# Frequently Asked Questions
 
 ## When is the next RWKV model coming out?
 
