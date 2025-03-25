@@ -8,7 +8,7 @@ All RWKV models are OSS. Our training processes depend heavily on available GPUs
 
 Typically, as one model version is being released, training / preparation for the next version is already in progress.
 
-## What is the dataset that RWKV is trained on?
+## What dataset is RWKV trained on?
 
 - RWKV base model is trained primarily on ["the pile"](https://pile.eleuther.ai/), with additional datasets for various other languages.
 - RWKV raven is instruction trained on a filtered version of gpt4all
