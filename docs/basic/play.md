@@ -67,9 +67,11 @@ If you'd like to experiment with different model sizes / quantization settings, 
 ### RWKV-7 Models
 - [Pile 0.5](https://huggingface.co/fla-hub/rwkv7-421M-pile)
 - [Pile 1.5B](https://huggingface.co/fla-hub/rwkv7-1.47B-pile)
+- [Pile 165M-1.5B](https://huggingface.co/BlinkDL/rwkv-7-pile)
 - [World 0.5B](https://huggingface.co/fla-hub/rwkv7-0.4B-world)
 - [World 1.5B](https://huggingface.co/fla-hub/rwkv7-1.5B-world)
 - [World 3B](https://huggingface.co/fla-hub/rwkv7-2.9B-world)
+- [World 100M-3B](https://huggingface.co/BlinkDL/rwkv-7-world/tree/main)
 
 ### RWKV-6 Models
 - [RWKV-6 World](https://huggingface.co/BlinkDL/rwkv-6-world)
