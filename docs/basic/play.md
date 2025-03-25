@@ -1,8 +1,8 @@
-# How to play with the Eagle / RWKV model?
+# How to play with the Goose / RWKV model?
 
 ## Online public demos
 
-If you simply want to give the RWKV Raven a try, you can try the following public demos.
+If you simply want to try RWKV Goose, checkout the following public demo.
 
 - [HF Gradio](https://huggingface.co/spaces/BlinkDL/RWKV-Gradio-2)
 
@@ -12,7 +12,7 @@ Chat is disabled in the above public demo
 
 ## Minimal steps for local setup (Recommended route)
 
-If you are not familiar with python or hugging face, you can install chat models locally with the following app
+If you are not familiar with Python or HuggingFace, you can install chat models locally with the following app:
 
 - [RWKV Runner Project](https://github.com/josStorer/RWKV-Runner)
     - [installer download (do read the installer README instructions)](https://github.com/josStorer/RWKV-Runner/releases/)
@@ -24,9 +24,9 @@ If you are not familiar with python or hugging face, you can install chat models
 
 # Prompting guidelines for RWKV
 
-RWKV is more sensitive to prompt format, then transformer based models. Due to its weaker ability in "looking back"
+RWKV is more sensitive to prompt format than transformer-based models, due to its weaker ability in "looking back".
 
-As such, instead of doing something like the following
+Thus, instead of doing something like the following:
 
 ```
 {{CONTEXT}}
@@ -36,7 +36,7 @@ As such, instead of doing something like the following
 {{ANSWER}}
 ```
 
-As the format you should instead, do the following
+Use the following format:
 
 ```
 {{INSTRUCTION}}
@@ -46,11 +46,9 @@ As the format you should instead, do the following
 {{ANSWER}}
 ```
 
-For a human analogy, you can think of it as the instruction/input's are being read out loud to to model, without letting the model write it down. If the model is told the context first before instruction, it does not know what to do with the context, and may not remember parts that are crucial to the instruction. As it has not been told what to do with it yet.
+In the first version, you give some context to model without letting the model write it down, and the model doesn't know what to focus on and may forget crucial parts. If you give the model instructions first, and then the context, it understands what it needs to do before processing the information, allowing it to focus on relevant details.
 
-However if you tell the model the instruction first, then the context, it will understand the instruction first, and use that knowledge to process the context.
-
-For Q&A with context task, the most optimal is to repeat the question before and after the context like the following
+For Q&A tasks with context, the optimal approach is to repeat the question before and after the context as following:
 
 ```
 {{QUESTION}}
@@ -64,20 +62,20 @@ For Q&A with context task, the most optimal is to repeat the question before and
 
 ## How to play with custom models instead?
 
-If the above "guided" setups are not what you are looking for, and you want to experiment with different model sizes / quantization settings. The following are the general list to find the various things you may need.
+If you'd like to experiment with different model sizes / quantization settings, here's a general list to find the various things you may need.
 
-### Instruction trained models download
-- [Raven](https://huggingface.co/BlinkDL/rwkv-4-raven/tree/main)
+### RWKV-7 Models
+- [Pile 0.5](https://huggingface.co/fla-hub/rwkv7-421M-pile)
+- [Pile 1.5B](https://huggingface.co/fla-hub/rwkv7-1.47B-pile)
+- [Pile 165M-1.5B](https://huggingface.co/BlinkDL/rwkv-7-pile)
+- [World 0.5B](https://huggingface.co/fla-hub/rwkv7-0.4B-world)
+- [World 1.5B](https://huggingface.co/fla-hub/rwkv7-1.5B-world)
+- [World 3B](https://huggingface.co/fla-hub/rwkv7-2.9B-world)
+- [World 100M-3B](https://huggingface.co/BlinkDL/rwkv-7-world/tree/main)
 
-### Base Models download
-- [Pile 7B](https://huggingface.co/BlinkDL/rwkv-4-pile-7b)
-- [Pile 14B](https://huggingface.co/BlinkDL/rwkv-4-pile-14b)
-- [PilePlus models](https://huggingface.co/BlinkDL/rwkv-4-pileplus)
-- [RWKV World](https://huggingface.co/BlinkDL/rwkv-4-world)
-
-::: tip
-It is strongly advised to try the raven instruction model, unless you are familiar with few shot prompting with the base models
-:::
+### RWKV-6 Models
+- [RWKV-6 World](https://huggingface.co/BlinkDL/rwkv-6-world)
+- [RWKV-6 Tunes](https://huggingface.co/BlinkDL/rwkv-6-misc)
 
 ### RWKV.cpp / RWKV.cpp cuda project
 
@@ -86,15 +84,11 @@ After downloading the desired model, you can quantize or convert them for runnin
 - [RWKV.cpp](https://github.com/saharNooby/rwkv.cpp)
 - [RWKV-cpp-cuda](https://github.com/harrisonvanderbyl/rwkv-cpp-cuda)
 
-These projects are designed to run locally, without the need of python or hugging face. And can be ranned on CPU or GPU (or both) respectively
+These projects are designed to run locally on either run CPU or GPU (or both) respectively.
 
 ::: tip
-Despite the "cuda" name, rwkv-cpp-cuda does have vulkan support, meaning it can run on AMD GPU's
+Despite the "cuda" name, rwkv-cpp-cuda does have vulkan support, so it could run on AMD GPUs
 :::
-
-### RWKV mobile projects
-
-- [AltaeraAI : Run RWKV on your android phone \(May require some CLI knowledge to get it running\)](https://altaera.ai/)
 
 ### Chat client projects
 
@@ -103,14 +97,14 @@ The official RWKV chat project can be found here
 
 ### RWKV main repo
 
-The main RWKV repo can be found here, use v4neo to run current models
-- [RWKV](https://github.com/BlinkDL/RWKV-LM/tree/main/RWKV-v4neo)
+The main RWKV repo can be found here, use v7 to run current models
+- [RWKV](https://github.com/BlinkDL/RWKV-LM/tree/main/RWKV-v7)
 
 ::: tip
-For new users, unless you plan to finetune, due to the complexity involved with python dependencies, it is recommmended to use the RWKV.cpp project instead.
+For new users, we recommend using the RWKV.cpp project unless you plan to finetune because of the complexity involved with python dependencies.
 :::
 
-interact with the model via the following CLI, if you have NPM installed
+Interact with the model via the following CLI, if you have NPM installed:
 
 ### RWKV cpp node (slightly out of date)
 

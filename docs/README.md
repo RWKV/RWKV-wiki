@@ -4,7 +4,7 @@
 
 RWKV (pronounced RWaKuV) is an RNN with GPT-level large language model (LLM) performance, and can be trained directly like a GPT Transformer (parallelizable).
 
-RWKV combines the best features of RNN and Transformer: excellent performance, constant memory usage, constant inference generation speed, "infinite" ctxlen, and free sentence embeddings, and is 100% free of self-attention mechanisms.
+RWKV combines the best features of RNN and Transformer: excellent performance, constant memory usage, constant inference generation speed, "infinite" context length, and free sentence embeddings. It is also 100% free of self-attention mechanisms.
 
 The RWKV project was initially proposed by Bo Peng (Blink_DL), and as the project gained attention, it gradually developed into an open-source community.
 
@@ -28,7 +28,9 @@ RWKV 5/6 architectures have several improvements based on the RWKV-4 architectur
 - **RWKV 5/6 Paper**: "Eagle and Finch: RWKV with Matrix-Valued States and Dynamic Recurrence"
 - **Paper Link**: [arXiv:2404.05892](https://arxiv.org/abs/2404.05892)
 
-RWKV-7 is the latest version of the RWKV architecture. The training and inference code for the architecture has been finalized, and the architecture paper is being co-authored by Bo Peng and community members.
+RWKV-7 is the latest version of the RWKV architecture. The paper was co-authored by Bo Peng and the RWKV community, published on March 18, 2025. 
+- **RWKV-7 Paper**: "RWKV-7 Goose with Expressive Dynamic State Evolution"
+- **Paper Link**: [arXiv:2503.14456](https://arxiv.org/abs/2503.14456)
 
 RWKV-7 adopts Dynamic State Evolution, surpassing the fundamental limitations of the $TC$0 expressive power of the attention/linear attention paradigm.
 
@@ -41,7 +43,7 @@ RWKV-7 adopts Dynamic State Evolution, surpassing the fundamental limitations of
 Starting from the RWKV-4 architecture, RWKV has released open-source models of various parameter scales for each architecture version.
 
 ::: warning
-As of February 2025, the lifecycle of RWKV-4 and RWKV-5 models has ended. It is recommended to use the **latest RWKV-7-world models**. Thanks to the latest architectural design, RWKV-7 models perform better on all tasks.
+As of February 2025, the lifecycle of RWKV-4 and RWKV-5 models has ended. Please use the **latest RWKV-7-world models**. Thanks to the latest architectural improvements, RWKV-7 models perform better on all tasks.
 :::
 
 | Version | RWKV-V4 | RWKV-v5-Eagle | RWKV-v6-Finch | RWKV-v7-Goose |
