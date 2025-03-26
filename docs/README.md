@@ -111,7 +111,7 @@ The meaning of each field in the model name:
 RWKV is made possible, as an Open Source project, thanks to the large amount of GPU compute and researchers time contributions from
 
 <div class="sponsor_logos">
-    <a href="https://www.rwkv.com/" target="_blank"><img src="https://wiki.rwkv.com/img/rwkv.png" width="100px"/></a>
+    <a href="https://www.rwkv.com/" target="_blank"><img src="https://wiki.rwkv.com/img/RWKV.png" width="100px"/></a>
     <a href="https://www.yuanhuai.com" target="_blank"><img src="https://wiki.rwkv.com/img/SYIT.jpg" width="100px"/></a>
     <a href="https://www.stability.ai/" target="_blank"><img src="https://wiki.rwkv.com/img/Stability-AI.jpg" width="100px"/></a>
     <a href="https://www.eleuther.ai/" target="_blank"><img src="https://wiki.rwkv.com/img/EleutherAI_logo.svg.png" width="100px"/></a>
