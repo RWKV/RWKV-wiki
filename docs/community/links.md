@@ -1,170 +1,156 @@
 # Various RWKV related links
 
-The following are various other RWKV links to community project, for specific use cases and/or references.
+The following are links to various RWKV community projects (usually hosted on GitHub) for specific use cases or references.
 
-## Official RWKV links
+::: warning
+Marked as **(May be Outdated)** indicates that the project has been **archived** or has not been updated for a long time. However, even if some projects are outdated, their implementation ideas can still be used as a reference for development.
 
-- Main RWKV project : [https://github.com/BlinkDL/RWKV-LM](https://github.com/BlinkDL/RWKV-LM)
-- Hugging face doc : [https://huggingface.co/docs/transformers/model_doc/rwkv](https://huggingface.co/docs/transformers/model_doc/rwkv)
-- RWKV paper : [https://arxiv.org/abs/2305.13048](https://arxiv.org/abs/2305.13048)
+In addition, we would like to thank the developers who have contributed to the RWKV ecosystem, whether they are still active in the RWKV community or not.
+:::
 
-## Model links
+## Official RWKV Links
 
-- [https://huggingface.co/BlinkDL/rwkv-4-raven](https://huggingface.co/BlinkDL/rwkv-4-raven)
-- [https://huggingface.co/BlinkDL/rwkv-4-world](https://huggingface.co/BlinkDL/rwkv-4-world)
-- [https://huggingface.co/BlinkDL/rwkv-4-pileplus](https://huggingface.co/BlinkDL/rwkv-4-pileplus)
+- Torch implementation of various RWKV modules: [https://github.com/RWKV/RWKV-block](https://github.com/RWKV/RWKV-block)
+- Official RWKV repository: [https://github.com/BlinkDL/RWKV-LM](https://github.com/BlinkDL/RWKV-LM)
+- [RWKV pip package](https://pypi.org/project/rwkv/): The pip package of RWKV. For specific usage, you can refer to the [RWKV pip Usage Guide](https://rwkv.cn/RWKV-Developer/RWKVpip)
+- [RWKV-CUDA](https://github.com/BlinkDL/RWKV-CUDA): The official CUDA operator of RWKV
+- [Hugging face documentation](https://huggingface.co/docs/transformers/model_doc/rwkv): The introduction of RWKV on Hugging Face
+- RWKV-4 architecture paper: [arXiv (2305.13048)](https://arxiv.org/abs/2305.13048)
+- RWKV 5 /6 architecture paper: [arXiv (2404.05892)](https://arxiv.org/abs/2404.05892)
+- RWKV-7 architecture paper: [arXiv (2503.14456)](https://arxiv.org/abs/2503.14456)
 
-## Trainer projects
+## RWKV Fine-tuning/Training Tools
 
-- [https://github.com/RWKV/RWKV-infctx-trainer/](https://github.com/RWKV/RWKV-infctx-trainer/)
-- [https://github.com/neromous/RWKV-Ouroboros](https://github.com/neromous/RWKV-Ouroboros)
+### Fine-tuning Projects
 
-## Main cpp / cpp cuda project
+- **(Recommended)** [RWKV-PEFT](https://github.com/JL-er/RWKV-PEFT): An efficient fine-tuning repository for RWKV, which includes various fine-tuning methods such as LoRA, Pissa, Lisa, State, etc.
+- [RWKV-PEFT-Simple](https://github.com/Seikaijyu/RWKV-PEFT-Simple): A simplified version of RWKV-PEFT, providing convenient scripts and fine-tuning instructions
+- **(Under Development)** [RWKV-LM-RLHF](https://github.com/OpenMOSE/RWKV-LM-RLHF): An RWKV reinforcement learning (RLHF) toolkit, including SFT, alignment (DPO, ORPO), etc.
+- [RWKV-LM-RLHF-DPO](https://github.com/Triang-jyed-driung/RWKV-LM-RLHF-DPO): The DPO implementation (Direct Preference Optimization) of RWKV
+- **(May be Outdated)** [RWKV-LoRA](https://github.com/Blealtan/RWKV-LM-LoRA): The LoRA fine-tuning implementation of RWKV, which does not support fine-tuning RWKV-6 or later versions.
 
-- [https://github.com/harrisonvanderbyl/rwkv-cpp-cuda](https://github.com/harrisonvanderbyl/rwkv-cpp-cuda)
-- [https://github.com/saharNooby/rwkv.cpp](https://github.com/saharNooby/rwkv.cpp)
-- [https://github.com/RWKV/RWKV-cpp-node](https://github.com/RWKV/RWKV-cpp-node)
-- [https://github.com/RWKV/rwkv-onnx](https://github.com/RWKV/rwkv-onnx)
+### Training Projects
 
-## Chat bots / demos
+- [RWKV-infctx-trainer](https://github.com/RWKV/RWKV-infctx-trainer/): An RWKV infinite context trainer that supports training contexts of 10k length and above
+- [RWKV-Ouroboros](https://github.com/neromous/RWKV-Ouroboros): An rwkv-trainer project based on the API, which supports alternating training and inference
+- [nanoRWKV](https://github.com/Hannibal046/nanoRWKV): The nanoGPT-style implementation of the RWKV model
+- [RWKV_LM_EXT](https://github.com/yynil/RWKV_LM_EXT): Realizes the functional extension of RWKV, including sequence classification/embedding/peft/cross-encoder/dual-encoder/multimodal, etc.
+- [chunkRWKV6](https://github.com/00ffcc/chunkRWKV6): Optimizes the prefill and training speed of RWKV using block parallelism
 
-- RWKV runner : [https://github.com/josStorer/RWKV-Runner](https://github.com/josStorer/RWKV-Runner)
-- AI00 RWKV server : [https://github.com/cgisky1980/ai00_rwkv_server](https://github.com/cgisky1980/ai00_rwkv_server)
-- Chatbot demo : [https://github.com/harrisonvanderbyl/rwkv_chatbot](https://github.com/harrisonvanderbyl/rwkv_chatbot)
-- Hugging face UI : [https://huggingface.co/spaces/Hazzzardous/RWKV-Instruct](https://huggingface.co/spaces/Hazzzardous/RWKV-Instruct)
-- (thai) chatbot : [https://github.com/telexyz/symato](https://github.com/telexyz/symato)
-- gradio example : [https://github.com/gururise/rwkv_gradio](https://github.com/gururise/rwkv_gradio)
-- web chat UI : [https://github.com/hizkifw/WebChatRWKVstic](https://github.com/hizkifw/WebChatRWKVstic)
-- QQ chatbot : [https://github.com/cryscan/eloise](https://github.com/cryscan/eloise)
-- Another web UI : [https://github.com/oobabooga/text-generation-webui](https://github.com/oobabooga/text-generation-webui)
-- QQ bot / webapi : [https://github.com/TkskKurumi/rwkv_webapi](https://github.com/TkskKurumi/rwkv_webapi)
-- Web inference : [https://github.com/timestretch/rwkv-web-inference](https://github.com/timestretch/rwkv-web-inference)
-- (chinese) role play chatbot : [https://github.com/shengxia/RWKV_Role_Playing](https://github.com/shengxia/RWKV_Role_Playing)
-- (chinese) web UI : [https://github.com/wenda-LLM/wenda](https://github.com/wenda-LLM/wenda)
-- RWKV web : [https://github.com/iacore/rwkv-web](https://github.com/iacore/rwkv-web)
-- ESpirit university chatbot : [https://github.com/karim-aloulou/Espitchatbot-RASA-RAVEN](https://github.com/karim-aloulou/Espitchatbot-RASA-RAVEN)
-- Shady.ai : [https://github.com/BrutalCoding/shady.ai](https://github.com/BrutalCoding/shady.ai)
+## RWKV Inference Frameworks
 
-## RWKV servers
+### rwkv.cpp
+- [rwkv.cpp](https://github.com/RWKV/rwkv.cpp): Inferences the RWKV model on the CPU, supporting FP16, quantized INT4, INT5, and INT8 inferences
 
-- [https://github.com/go-skynet/LocalAI](https://github.com/go-skynet/LocalAI)
-- [https://github.com/ZeldaHuang/rwkv-cpp-server](https://github.com/ZeldaHuang/rwkv-cpp-server)
-- [https://github.com/Atome-FE/llama-node](https://github.com/Atome-FE/llama-node)
-- [https://github.com/cgisky1980/ai00_rwkv_server](https://github.com/cgisky1980/ai00_rwkv_server)
+### Pytorch Native Implementation
 
-## Android port
+- [RWKV_Explained](https://github.com/SmerkyG/RWKV_Explained): The Pytorch implementation and code explanation of RWKV
+- [RWKV_Pytorch](https://github.com/yuunnn-w/RWKV_Pytorch): The inference framework of the RWKV model implemented purely with native Pytorch
+- [rwkv-kit](https://github.com/TorchRWKV/rwkv-kit): The inference framework of the RWKV model, supporting various functions such as batch inference and parallel inference training
 
-- [https://github.com/daquexian/faster-rwkv](https://github.com/daquexian/faster-rwkv)
+### WebGPU Implementation
 
-## Python libraries
+- [web-rwkv](https://github.com/cryscan/web-rwkv): Implements the inference of the RWKV model in pure WebGPU/Rust
 
-- [https://pypi.org/project/langdash/](https://pypi.org/project/langdash/)
+### candle Implementation
 
-## RWKV in the browser
+- [candle-rwkv](https://github.com/nkypy/candle-rwkv): Implements the inference of the RWKV model (supporting quantization) in the minimalist machine learning framework candle of Rust
 
-- [https://github.com/josephrocca/rwkv-v4-web](https://github.com/josephrocca/rwkv-v4-web)
+### Keras Implementation
 
-## GO lang rewrites
+- [RWKV6-Keras](https://github.com/pass-lin/RWKV6-Keras): The Keras implementation of the RWKV model, supporting both training and inference
 
-- [https://github.com/nlpodyssey/verbaflow](https://github.com/nlpodyssey/verbaflow)
-- [https://github.com/nlpodyssey/rwkv](https://github.com/nlpodyssey/rwkv)
+### JAX Implementation
 
-## Onnx implementations
+- [rwkv-jax](https://github.com/saran-gangster/rwkv-jax): The JAX implementation of the RWKV language model, suitable for TPU training
+- **(May be Outdated)** [RWKV-LM-jax](https://github.com/mrsteyk/RWKV-LM-jax)
+- **(May be Outdated)** [tpu_rwkv](https://github.com/tensorpro/tpu_rwkv)
 
-- [https://github.com/RWKV/rwkv-onnx](https://github.com/RWKV/rwkv-onnx)
-- [https://github.com/imxcstar/CSharp-RWKV-V4](https://github.com/imxcstar/CSharp-RWKV-V4)
+### Mobile Inference
 
-## GGML implmentation
+- **(Under Development)** [rwkv-mobile](https://github.com/MollySophia/rwkv-mobile): The RWKV mobile inference engine
+- [rwkv-qualcomm](https://github.com/MollySophia/rwkv-qualcomm): Infers the RWKV model using the Qualcomm AI Engine Direct SDK
 
-- [https://github.com/cztomsik/ggml-js](https://github.com/cztomsik/ggml-js)
+### Other Inference Engines Supporting RWKV
 
-## JAX implementations
+- [RWKV-Infer](https://github.com/OpenMOSE/RWKV-Infer): Performs RWKV-V6 inference using FLA, supporting inference by combining multiple states
+- [MLC LLM](https://github.com/mlc-ai/mlc-llm): A machine learning compiler and high-performance deployment engine, supporting the RWKV model
 
-- [https://github.com/mrsteyk/RWKV-LM-jax](https://github.com/mrsteyk/RWKV-LM-jax)
-- [https://github.com/tensorpro/tpu_rwkv](https://github.com/tensorpro/tpu_rwkv)
+## RAG (Retrieval-Augmented Generation) System
 
-## Rust rewrites
+- [RWKV-RAG](https://github.com/AIIRWKV/RWKV-RAG): A one-click RAG deployment system based on the RWKV model, which can easily build and manage a local knowledge base, and also provides a question-answering robot based on the local knowledge base and the one-click fine-tuning function of RWKV
 
-- [https://github.com/mrsteyk/rwkvk-rs](https://github.com/mrsteyk/rwkvk-rs)
-- [https://github.com/KerfuffleV2/smolrsrwkv](https://github.com/KerfuffleV2/smolrsrwkv)
-- [https://github.com/cryscan/web-rwkv](https://github.com/cryscan/web-rwkv)
+## Chatbots/Inference API Servers
 
-## Tiny grad rewrites
+- **(Chinese, Recommended)** [RWKV runner](https://github.com/josStorer/RWKV-Runner): RWKV Runner is a management and startup tool for the RWKV model, with a user-friendly GUI interface, supporting both training and inference
+- **(Chinese, Recommended)** [AI00 RWKV server](https://github.com/cgisky1980/ai00_rwkv_server): The Ai00 Server is an **inference API server** for the RWKV model based on the web-rwkv inference engine
+- **(Chinese)** [Wenda web UI](https://github.com/wenda-LLM/wenda): An LLM calling platform for content generation in specific environments, supporting the RWKV model
+- **(Chinese)** [role play chatbot](https://github.com/shengxia/RWKV_Role_Playing): A role-playing webui based on RWKV, made using Gradio
+- [Easy_RWKV_webui](https://github.com/No-22-Github/Easy_RWKV_webui): An online chat room for the RWKV model based on PyWebIO
+- [Mini Model Daemon](https://github.com/recursal/minmodmon): An inference tool for the RWKV model based on the web-rwkv inference backend
+- [LocalAI](https://github.com/go-skynet/LocalAI): An open-source alternative to OpenAI, supporting RWKV
+- [GPT Academic](https://github.com/binary-husky/gpt_academic): Provides practical interactive interfaces for large language models such as GPT/GLM, supporting RWKV
+- [LLMFarm](https://github.com/guinmoon/LLMFarm): Uses the GGML library to use large language models offline on iOS and MacOS, supporting RWKV
 
-- [https://github.com/wozeparrot/tinyrwkv](https://github.com/wozeparrot/tinyrwkv)
+## RWKV Benchmark Tests
 
-## VSCode integration
+- [Uncheatable Eval](https://github.com/Jellyfish042/uncheatable_eval): Tests the performance of LLM using the latest dynamic data, including RWKV
+- [RULER_RWKV](https://github.com/Ojiyumm/RULER_RWKV): The [RULER](https://arxiv.org/abs/2404.06654) test scores of the RWKV model
+- [LongBench_RWKV](https://github.com/Ojiyumm/LongBench_RWKV): The [LongBench](https://arxiv.org/abs/2308.14508) test scores of RWKV
+- [rwkv_mmlu](https://github.com/Jellyfish042/rwkv_mmlu): The MMLU test scores of the RWKV model
 
-- [https://github.com/harrisonvanderbyl/rwkv-vscode-exension](https://github.com/harrisonvanderbyl/rwkv-vscode-exension)
-- [https://github.com/Tlntin/novel-copilot](https://github.com/Tlntin/novel-copilot)
+## RWKV Multimodal
 
-## Other rwkv.cpp implmentation
+::: tip
+Multimodal refers to tasks other than text tasks.
+:::
 
-- [https://github.com/harrisonvanderbyl/rwkv-cpp](https://github.com/harrisonvanderbyl/rwkv-cpp)
-- [https://github.com/donomii/go-rwkv.cpp](https://github.com/donomii/go-rwkv.cpp)
+### Any Modality
 
-## WebGPU implementation
+- **(Under Development)** [WorldRWKV](https://github.com/JL-er/WorldRWKV): Uses the pure RWKV7 architecture to implement the training and inference of any modality
 
-- [https://github.com/cryscan/web-rwkv](https://github.com/cryscan/web-rwkv)
+### Image/Graphic-related
 
-## ALEXA integration
+- [RwkvCompress](https://github.com/sjtu-medialab/RwkvCompress): An image compression model based on RWKV, which can efficiently compress and reconstruct images
+- [VisualRWKV](https://github.com/howard-hou/VisualRWKV): A visual language model based on RWKV, which can handle visual tasks
+- [Vision-RWKV](https://github.com/OpenGVLab/Vision-RWKV): A visual perception model based on RWKV, which can smoothly process high-resolution images
+- [Diffusion-RWKV](https://github.com/feizc/Diffusion-RWKV): A model for image generation tasks based on RWKV, which is good at handling high-resolution images
+- [RWKV-CLIP](https://github.com/deepglint/RWKV-CLIP): The CLIP (visual-language representation learning) model driven by RWKV
+- [RWKV-SAM](https://github.com/HarborYuan/ovsam): The image segmentation method "RWKV-SAM" based on RWKV
+- [PointRWKV](https://github.com/hithqd/PointRWKV): A 3D point cloud learning framework based on RWKV
+- [Restore-RWKV](https://github.com/Yaziwel/Restore-RWKV): Uses RWKV for efficient and effective medical image restoration (PyTorch implementation)
+- [LION](https://github.com/happinesslz/LION): A Linear Group RNN for 3D object detection in point clouds (supporting RWKV)
+- [LineRWKV](https://github.com/diegovalsesia/linerwkv): LineRWKV is a method for lossless and lossy compression of hyperspectral images
 
-- [https://github.com/RafaRed/RWKV-alexa](https://github.com/RafaRed/RWKV-alexa)
+### Audio-related
 
-## Tensorflow integration
+- [RWKV-ASR](https://github.com/AGENDD/RWKV-ASR): Uses the pre-trained RWKV language model for **speech recognition**
 
-- [https://github.com/RWKV/rwkv-tensorflow](https://github.com/RWKV/rwkv-tensorflow)
+### Time Series
 
-## PaddlePaddle integration
+- [BlackGoose Rimer](https://github.com/Alic-Li/BlackGoose_Rimer): A pure RWKV time series task model that surpasses the Transformer in both speed and performance
+- [RWKV-TS](https://github.com/howard-hou/RWKV-TS): A time series task model based on RWKV, with low latency and memory usage
 
-- [https://github.com/HighCWu/rwkv-paddle](https://github.com/HighCWu/rwkv-paddle)
+### Robotics/Embodied Intelligence
 
-## Pico implementation
+- [DecisionRWKV](https://github.com/ancorasir/DecisionRWKV): Experience replay (experience replay) + Decision-RWKV model, a lifelong learning algorithm suitable for robots.
+- [OccRWKV](https://github.com/jmwang0117/OccRWKV): An efficient 3D semantic occupancy prediction with linear complexity
 
-- [https://github.com/guanyilun/picollms](https://github.com/guanyilun/picollms)
+## RWKV Tokenizers
 
-## RWKV music ??
+- [rwkv-tokenizer](https://github.com/cahya-wirawan/rwkv-tokenizer): A fast RWKV Tokenizer written in Rust, supporting the RWKV-V5/6 World model
+- [rwkv_tokenizer.c](https://github.com/mrsteyk/rwkv_tokenizer.c): The RWKV Trie tokenizer written in C language
+- [rwkv-tokenizer-go](https://github.com/Ronsor/rwkv-tokenizer-go): The RWKV tokenizer in Go language
+- [RWKV-World-Tokenizer-CPP](https://github.com/m8than/RWKV-World-Tokenizer-CPP): A highly optimized trie tokenizer for the RWKV World model written in C++
 
--  playing the paino : [https://huggingface.co/brianflakes/rwkv-midi-piano/tree/main](https://huggingface.co/brianflakes/rwkv-midi-piano/tree/main)
+## Prompt Collections
 
-## Distributed inference
+- [Awesome-RWKV-Prompts](https://github.com/shoumenchougou/Awesome-RWKV-Prompts): User-friendly and ready-to-use RWKV Prompts examples, suitable for all users.
+- **(May be Outdated)** [RWKV_chains](https://github.com/jiamingkong/RWKV_chains): Prompts that enable the RWKV model to work with Langchain
 
-- [https://github.com/Pathos14489/RWKVDistributedInference](https://github.com/Pathos14489/RWKVDistributedInference)
+## Other RWKV Projects
 
-## Finetuning / Training forks
-
-- Another LoRa / Finetuning fork : [https://github.com/m8than/RWKV-LM-LoRA](https://github.com/m8than/RWKV-LM-LoRA)
-- DeepSpeed Stage 3 : [https://github.com/mrsteyk/RWKV-LM-deepspeed](https://github.com/mrsteyk/RWKV-LM-deepspeed)
-- LoRa : [https://github.com/Blealtan/RWKV-LM-LoRA](https://github.com/Blealtan/RWKV-LM-LoRA)
-- Finetuning : [https://github.com/Durham/RWKV-finetune-script](https://github.com/Durham/RWKV-finetune-script)
-- 4bit finetuning : [https://blog.kinglycrow.com/rwkv-qlora-4bit/](https://blog.kinglycrow.com/rwkv-qlora-4bit/)
-
-## Prompt / Notebook collections
-
-- Various notebooks : [https://github.com/resloved/RWKV-notebooks](https://github.com/resloved/RWKV-notebooks)
-- Chatbot notebook : [https://colab.research.google.com/github/harrisonvanderbyl/rwkvstic/blob/master/notebooks/chatbot.ipynb](https://colab.research.google.com/github/harrisonvanderbyl/rwkvstic/blob/master/notebooks/chatbot.ipynb)
-- Interprability research : [https://github.com/UnstoppableCurry/RWKV-LM-Interpretability-Research](https://github.com/UnstoppableCurry/RWKV-LM-Interpretability-Research)
-- Langchain prompts : [https://github.com/jiamingkong/RWKV_chains](https://github.com/jiamingkong/RWKV_chains)
-
-## Spike GPT
-
-- AI Model inspired by RWKV : [https://github.com/ridgerchu/SpikeGPT](https://github.com/ridgerchu/SpikeGPT)
-
-## Educational (RWKV < X lines)
-
-- RWKV paper : [https://arxiv.org/abs/2305.13048](https://arxiv.org/abs/2305.13048)
-- Yannic Kilcher break the paper down step by step on youtube : [https://www.youtube.com/watch?v=x8pW19wKfXQ&pp=ygUEUldLVg%3D%3D](https://www.youtube.com/watch?v=x8pW19wKfXQ&pp=ygUEUldLVg%3D%3D)
-- 150 lines explained 
-    - [https://github.com/uasi/rwkv-in-150-lines-ex](https://github.com/uasi/rwkv-in-150-lines-ex)
-    - [https://johanwind.github.io/2023/03/23/rwkv_details.html](https://johanwind.github.io/2023/03/23/rwkv_details.html)
-- RWKV deconstructed : [https://github.com/cwhy/rwkv-decon](https://github.com/cwhy/rwkv-decon)
-- RWKV math breakdown : [https://ben.bolte.cc/rwkv](https://ben.bolte.cc/rwkv)
-
-- RWKV model math: [https://ben.bolte.cc/rwkv-model](https://ben.bolte.cc/rwkv-model)
-- RWKV explained: [https://fullstackdeeplearning.com/blog/posts/rwkv-explainer/](https://fullstackdeeplearning.com/blog/posts/rwkv-explainer/)
-- How RWKV works: [https://johanwind.github.io/2023/03/23/rwkv_details.html](https://johanwind.github.io/2023/03/23/rwkv_details.html)
-- RWKV training cost estimate (outdated): [https://johanwind.github.io/2023/03/23/rwkv_overview.html](https://johanwind.github.io/2023/03/23/rwkv_overview.html)
-
-## Tooling
-
-- JSONL to binidx : [https://github.com/Abel2076/json2binidx_tool](https://github.com/Abel2076/json2binidx_tool)
+- [SpikeGPT](https://github.com/ridgerchu/SpikeGPT): A new model inspired by RWKV
+- [JSONL to binidx](https://github.com/Abel2076/json2binidx_tool): This tool is used to convert `.jsonl` files into `.bin /.idx` (binidx) data suitable for RWKV training.
+- [AI Town - RWKV Proxy](https://github.com/recursal/ai-town-rwkv-proxy?tab=readme-ov-file): Operate a large AI town locally through RWKV!
+- [Bot-Ani-RWKV-twitter-bot-detection](https://github.com/Max-SF1/Bot-Ani-RWKV-twitter-bot-detection): A Twitter bot detection tool based on RWKV 
