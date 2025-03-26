@@ -124,7 +124,7 @@ Without their invaluable support, we would not have been able to develop the cor
 In addition, we would like to thank
 - [alpin @ pygmalionAI](https://pygmalion.chat/)
 - [AutoMeta @ AlignmentLab](https://twitter.com/alignment_lab)
-- [Recursal.AI](https://recursal.ai)
+- [FeatherlessAI](https://featherless.ai)
 - Various other folks who donated slices of GPU time / preferred not to be named
 
 For helping with GPU time, on smaller experiments, finetunes, and various models. Especially for those models that never get publically released in failed runs.
