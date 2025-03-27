@@ -1,6 +1,4 @@
-# Fine tuning
-
-## Fine tuning with LoRa
+# Fine-tuning
 
 ::: tip
 You are generally expected to know what you are doing, if you are attempting to finetune RWKV with LoRa. If you are new to RWKV, you are adviced to play with the base model first, before attempting to finetune with LoRa.
@@ -8,84 +6,45 @@ You are generally expected to know what you are doing, if you are attempting to 
 In many cases what most people want to achieve can be done with tuning their prompts, which is much easier then finetuning.
 :::
 
-For a complete guide on finetuning with lora, you can find it at
-- [https://mysymphony.jp.net/a/rwkv-character/](https://mysymphony.jp.net/a/rwkv-character/)
-- [https://zhuanlan.zhihu.com/p/638326262 (blinks guide to finetuning in chinese)](https://zhuanlan.zhihu.com/p/638326262)
+## Why Fine-tune the RWKV Model?
 
-For finetuning with LoRa, use either of the following LoRa implementation
+Currently, all the publicly released RWKV models are base models (also known as pre-trained models). These base models are trained on large-scale datasets in fields such as natural language processing and possess strong generalization ability and rich knowledge reserves.
 
-- [https://github.com/m8than/RWKV-LM-LoRA](https://github.com/m8than/RWKV-LM-LoRA)
-- [https://github.com/Blealtan/RWKV-LM-LoRA](https://github.com/Blealtan/RWKV-LM-LoRA)
+However, to maintain generalization ability and universality, the RWKV base model is not optimized for a specific type of task. Therefore, the performance of the RWKV model on certain specific tasks may not be satisfactory.
 
-For best performance, it is adviced to convert your dataset to a binary format first.
+Fine-tuning the RWKV model, simply put, means retraining the RWKV model using high-quality datasets from specific domains (such as law, literature, medicine, etc.) or tasks (such as material summarization, novel continuation, etc.). The fine-tuned RWKV model will exhibit higher-quality and more stable performance on the corresponding tasks.
 
-- [https://github.com/Abel2076/json2binidx_tool](https://github.com/Abel2076/json2binidx_tool)
+Compared with training a brand-new model from scratch, fine-tuning only requires adjusting the parameters of the pre-trained model to achieve satisfactory task results, which requires fewer training cycles and less computing resources.
 
-> Most of the existing finetune script, should work with the world model, provided you pretokenize your dataset with the world tokenizer, using the json2binidx tool
+In summary, we can optimize the performance of the RWKV model on various tasks through fine-tuning, thereby quickly building application scenarios and implementing applications based on the RWKV model.
 
-## Fine tuning without LoRa
+## What Do I Need to Prepare for Fine-tuning Training?
 
-Alternatively, you can use the official repo, to finetune the project without LoRa (or the above LoRa projects, without the LoRa flags)
+To fine-tune the RWKV model, you need to 
 
-- [https://github.com/BlinkDL/RWKV-LM/tree/main/RWKV-v4neo](https://github.com/BlinkDL/RWKV-LM/tree/main/RWKV-v4neo)
+- prepare **a Linux system** and basic knowledge of Linux
+- prepare a **high-performance NVIDIA graphics card**
+- configure a **virtual environment and software packages** for training the RWKV model in the Linux system
+- prepare a **dataset** for fine-tuning training
 
-Alternatively would be to do finetuning using the infctx trainer
+## VRAM Requirements for Fine-tuning
 
-- [https://github.com/RWKV/RWKV-infctx-trainer/](https://github.com/RWKV/RWKV-infctx-trainer/)
+The following is a reference for fine-tuning models with consumer-grade graphics cards (4090 or lower):
 
-In general, use the BlinkDL trainer for better raw performance, and use infctx to trade in some speed for infctx size support.
+| Model Size | Full-parameter Fine-tuning | LoRA/Pissa | QLoRA/QPissa | State Tuning |
+| --------- | ---- | ---- | ---- | ---- |
+| RWKV6-1.6B | Out of VRAM | 7.4GB GPU | 5.6GB GPU | 6.4GB GPU |
+| RWKV6-3B | Out of VRAM | 12.1GB GPU | 8.2GB GPU | 9.4GB GPU |
+| RWKV6-7B | Out of VRAM | 23.7GB GPU (out of VRAM at batch size 8) | 14.9GB GPU (19.5GB required at batch size 8) | 18.1GB GPU |
 
-## Training a model from scratch?
+## Recommended fine-tuning repositories
 
-Refer to the main project
+- [RWKV-PEFT](https://github.com/JL-er/RWKV-PEFT): RWKV-PEFT is the official implementation for efficient parameter fine-tuning of RWKV models, supporting various advanced fine-tuning methods across multiple hardware platforms.
+- [OpenMOSE/RWKV-LM-RLHF](https://github.com/OpenMOSE/RWKV-LM-RLHF): Reinforcement Learning Toolkit for RWKV.(v6,v7,ARWKV) Distillation,SFT,RLHF(DPO,ORPO)
 
-- [https://github.com/BlinkDL/RWKV-LM/](https://github.com/BlinkDL/RWKV-LM/)
+read the tutorials for different fine-tuning methods of RWKV-PEFT:
 
-## How much GPU vRAM do you need?
-
-The following is the rough estimate on the minimum GPU vram you will need to finetune RWKV
-
-- **1.5b** : 15gb
-- **3b** : 24gb
-- **7b** : 48gb
-- **14b** : 80gb
-
-Note that you probably need more, if you want the finetune to be fast and stable
-
-With LoRa & DeepSpeed you can probably get away with 1/2 or less the vram requirements.
-
-## Resolving Python dependency issues
-
-If you have issues with python dependencies, you can try the following for a clean setup on Ubuntu 20.04 on an AWS instance
-
-```bash
-# Make sure haveged, ninja and python itself is installed
-sudo apt-get install -y haveged ninja-build python3-pip python-is-python3
-
-# Check if you have nvidia-smi working
-nvidia-smi
-
-# If nvidia SMI is not working: you will need the following steps to install nvidia drivers
-# sudo apt install -y  nvidia-driver-515 nvidia-dkms-515
-
-# If conda is not installed, see its instructions online to install it
-# https://www.anaconda.com/download#downloads
-
-# Update conda
-conda update conda
-
-# You might need to reinit for your shell
-conda init bash
-
-# Create and activate the conda env
-conda create -y --name rwkv_4neo python=3.10
-conda activate rwkv_4neo
-
-# Install cuda toolkits
-conda install -y -c conda-forge cudatoolkit=11.7 cudatoolkit-dev=11.7 
-
-# Setting up pytorch 1.13.1 with cuda 1.17 specifically
-python -m pip install torch==1.13.1+cu117 torchvision==0.14.1+cu117 torchaudio==0.13.1 --extra-index-url https://download.pytorch.org/whl/cu117
-python -m pip install deepspeed==0.7.0 pytorch-lightning==1.9
-python -m pip install ninja wandb transformers
-```
+- [State Tuning](./State-Tuning.md)
+- [Pissa Fine-Tuning](./Pissa-Fine-Tuning.md)
+- [DiSHA Fine-Tuning](./DiSHA-Fine-Tuning.md)
+- [LoRA Fine-Tuning](./LoRA-Fine-Tuning.md)

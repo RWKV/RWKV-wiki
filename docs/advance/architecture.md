@@ -1,4 +1,4 @@
-# RWKV Architecture
+# RWKV Architecture History
 
 ::: tip
 If you are not familiar with machine learning, I would highly recommend [Andrej Karpathy's series on neural networks](https://www.youtube.com/watch?v=VMj-3S1tku0&list=PLAqhIrjkxbuWI23v9cThsA9GvCAUhRvKZ&ab_channel=AndrejKarpathy) - that would help provide a good foundation on various neural network architecture concepts.
