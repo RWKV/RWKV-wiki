@@ -49,7 +49,8 @@ export default defineUserConfig({
 					"/advance/finetune.md",
 					"/advance/training-datasets.md",
 					"/advance/training-enviroment.md",
-					"/advance/architecture.md"
+					"/advance/architecture.md",
+					"/advance/RWKVpip.md"
 				]
 			},
 			{ 
