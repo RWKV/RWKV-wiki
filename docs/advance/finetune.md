@@ -20,22 +20,74 @@ In summary, we can optimize the performance of the RWKV model on various tasks t
 
 ## What Do I Need to Prepare for Fine-tuning Training?
 
-To fine-tune the RWKV model, you need to 
+To fine-tune the RWKV model, you need:
 
 - prepare **a Linux system** and basic knowledge of Linux
 - prepare a **high-performance NVIDIA graphics card**
 - configure a **virtual environment and software packages** for training the RWKV model in the Linux system
 - prepare a **dataset** for fine-tuning training
 
-## VRAM Requirements for Fine-tuning
+## VRAM Requirements for RWKV-PEFT Fine-tuning Methods
 
-The following is a reference for fine-tuning models with consumer-grade graphics cards (4090 or lower):
+::: tip
+Below are the VRAM requirements for various RWKV-PEFT fine-tuning methods with different training precisions. Our tests were conducted on an RTX 4090 GPU with 24GB of VRAM.
+:::
 
-| Model Size | Full-parameter Fine-tuning | LoRA/Pissa | QLoRA/QPissa | State Tuning |
+### VRAM Requirements for RWKV-7 Fine-tuning
+
+::: tabs
+
+@tab State tuning
+**VRAM requirements for [State tuning](./State-Tuning.mdx) of RWKV-7 models:**
+
+| Model Size | bf16  | int8 quantization | nf4 quantization |
+|------------|---------|--------|--------|
+| RWKV7-0.1B | 2.6GB GPU   | 2.4GB GPU  | 2.5GB GPU  |
+| RWKV7-0.4B | 3.1GB GPU   | 2.9GB GPU  | 2.8GB GPU  |
+| RWKV7-1.5B | 5.3GB GPU   | 4.1GB GPU  | 3.7GB GPU  |
+| RWKV7-3B   | 8.2GB GPU   | 5.7GB GPU  | 4.7GB GPU  |
+
+@tab LoRA
+**VRAM requirements for [LoRA fine-tuning](./LoRA-Fine-Tuning.mdx) of RWKV-7 models:**
+
+| Model Size | bf16  | int8 quantization | nf4 quantization |
+|------------|---------|--------|--------|
+| RWKV7-0.1B | 2.7GB GPU   | 2.5GB GPU  | 2.4GB GPU  |
+| RWKV7-0.4B | 3.4GB GPU   | 2.9GB GPU  | 2.7GB GPU  |
+| RWKV7-1.5B | 5.6GB GPU   | 4.6GB GPU  | 3.9GB GPU  |
+| RWKV7-3B   | 8.8GB GPU   | 6.7GB GPU  | 5.7GB GPU  |
+
+@tab DiSHA
+**VRAM requirements for [DiSHA fine-tuning](./DiSHA-Fine-Tuning.mdx) of RWKV-7 models:**
+
+| Model Size | bf16  | int8 quantization | nf4 quantization |
+|------------|---------|--------|--------|
+| RWKV7-0.1B | 2.7GB GPU   | 2.5GB GPU  | 2.4GB GPU  |
+| RWKV7-0.4B | 3.1GB GPU   | 2.9GB GPU  | 2.7GB GPU  |
+| RWKV7-1.5B | 5.6GB GPU   | 4.5GB GPU  | 3.9GB GPU  |
+| RWKV7-3B   | 8.8GB GPU   | 6.7GB GPU  | 5.7GB GPU  |
+
+@tab PiSSA
+**VRAM requirements for [PiSSA fine-tuning](./Pissa-Fine-Tuning.mdx) of RWKV-7 models:**
+
+| Model Size | bf16  | int8 quantization | nf4 quantization |
+|------------|---------|--------|--------|
+| RWKV7-0.1B | 2.6GB GPU   | 2.5GB GPU  | 2.4GB GPU  |
+| RWKV7-0.4B | 3.4GB GPU   | 3.0GB GPU  | 2.7GB GPU  |
+| RWKV7-1.5B | 5.6GB GPU   | 4.6GB GPU  | 3.9GB GPU  |
+| RWKV7-3B   | 8.8GB GPU   | 6.7GB GPU  | 5.7GB GPU  |
+
+:::
+
+### VRAM Requirements for RWKV-6 Fine-tuning
+
+RWKV-6 models require slightly more VRAM for fine-tuning compared to RWKV-7. The following VRAM requirements are for reference:
+
+|   Model Size   | Full Fine-tuning | DiSHA/LoRA/PISSA  | QLoRA/QPissa | State tuning |
 | --------- | ---- | ---- | ---- | ---- |
-| RWKV6-1.6B | Out of VRAM | 7.4GB GPU | 5.6GB GPU | 6.4GB GPU |
-| RWKV6-3B | Out of VRAM | 12.1GB GPU | 8.2GB GPU | 9.4GB GPU |
-| RWKV6-7B | Out of VRAM | 23.7GB GPU (out of VRAM at batch size 8) | 14.9GB GPU (19.5GB required at batch size 8) | 18.1GB GPU |
+| RWKV6-1.6B | OOM | 7.4GB GPU | 5.6GB GPU | 6.4GB GPU |
+| RWKV6-3B | OOM  | 12.1GB GPU | 8.2GB GPU | 9.4GB GPU |
+| RWKV6-7B | OOM  | 23.7GB GPU(batch size 8 causes OOM) | 14.9GB GPU(batch size 8 requires 19.5GB) | 18.1GB GPU |
 
 ## Recommended fine-tuning repositories
 
