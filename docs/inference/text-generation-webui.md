@@ -65,7 +65,7 @@ https://github.com/oobabooga/llama-cpp-python-cuBLAS-wheels/releases/download/me
 
 Text Generation WebUI supports multiple model loaders, among which the llama.cpp model loader supports RWKV models.
 
-llama.cpp only supports RWKV models in `gguf` format. We need to download `gguf` RWKV models from the [RWKV-GGUF repository](https://huggingface.co/latestissue).
+llama.cpp only supports RWKV models in `gguf` format. We need to download `gguf` RWKV models from the [RWKV-GGUF repository](https://huggingface.co/collections/zhiyuan8/rwkv-7-world-gguf-67dbb8f4baeae23ec791f49e).
 
 ::: tip
 The RWKV-GGUF repository provides `gguf` model files with different quantization precisions for RWKV models of different parameters.
@@ -82,7 +82,7 @@ After the model download is complete, place the model file in the `models` folde
 ```
 text-generation-webui
 └── models
-    └── rwkv-6-world-7b-iq4_nl.gguf
+    └── rwkv7-0.4B-world-F16.gguf
 ```
 
 ## Load RWKV Model

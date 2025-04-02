@@ -34,7 +34,7 @@ Please read the [llama.cpp inference method](./llamacpp.html) to install and sta
 After installing llama.cpp, use the following command to set up a local llama.cpp service:
 
 ```bash copy
-./llama-server -m models/rwkv-6-world-1.6b-Q8_0.gguf --port 8080 -ngl 99
+./llama-server -m models/rwkv7-0.4B-world-F16.gguf --port 8080 -ngl 99
 ```
 
 After the llama.cpp server starts, follow these steps in SillyTavern to connect to the locally set up llama.cpp service:

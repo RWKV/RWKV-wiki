@@ -33,12 +33,12 @@ To fine-tune the RWKV model, you need:
 Below are the VRAM requirements for various RWKV-PEFT fine-tuning methods with different training precisions. Our tests were conducted on an RTX 4090 GPU with 24GB of VRAM.
 :::
 
-### VRAM Requirements for RWKV-7 Fine-tuning
+### RWKV-7 Fine-tuning
 
 ::: tabs
 
 @tab State tuning
-**VRAM requirements for [State tuning](./State-Tuning.mdx) of RWKV-7 models:**
+**VRAM requirements for [State tuning](../RWKV-Fine-Tuning/State-Tuning.md) of RWKV-7 models:**
 
 | Model Size | bf16  | int8 quantization | nf4 quantization |
 |------------|---------|--------|--------|
@@ -48,7 +48,7 @@ Below are the VRAM requirements for various RWKV-PEFT fine-tuning methods with d
 | RWKV7-3B   | 8.2GB GPU   | 5.7GB GPU  | 4.7GB GPU  |
 
 @tab LoRA
-**VRAM requirements for [LoRA fine-tuning](./LoRA-Fine-Tuning.mdx) of RWKV-7 models:**
+**VRAM requirements for [LoRA fine-tuning](../RWKV-Fine-Tuning/LoRA-Fine-Tuning.md) of RWKV-7 models:**
 
 | Model Size | bf16  | int8 quantization | nf4 quantization |
 |------------|---------|--------|--------|
@@ -58,7 +58,7 @@ Below are the VRAM requirements for various RWKV-PEFT fine-tuning methods with d
 | RWKV7-3B   | 8.8GB GPU   | 6.7GB GPU  | 5.7GB GPU  |
 
 @tab DiSHA
-**VRAM requirements for [DiSHA fine-tuning](./DiSHA-Fine-Tuning.mdx) of RWKV-7 models:**
+**VRAM requirements for [DiSHA fine-tuning](../RWKV-Fine-Tuning/DiSHA-Fine-Tuning.md) of RWKV-7 models:**
 
 | Model Size | bf16  | int8 quantization | nf4 quantization |
 |------------|---------|--------|--------|
@@ -68,7 +68,7 @@ Below are the VRAM requirements for various RWKV-PEFT fine-tuning methods with d
 | RWKV7-3B   | 8.8GB GPU   | 6.7GB GPU  | 5.7GB GPU  |
 
 @tab PiSSA
-**VRAM requirements for [PiSSA fine-tuning](./Pissa-Fine-Tuning.mdx) of RWKV-7 models:**
+**VRAM requirements for [PiSSA fine-tuning](../RWKV-Fine-Tuning//Pissa-Fine-Tuning.md) of RWKV-7 models:**
 
 | Model Size | bf16  | int8 quantization | nf4 quantization |
 |------------|---------|--------|--------|
@@ -79,7 +79,7 @@ Below are the VRAM requirements for various RWKV-PEFT fine-tuning methods with d
 
 :::
 
-### VRAM Requirements for RWKV-6 Fine-tuning
+### RWKV-6 Fine-tuning
 
 RWKV-6 models require slightly more VRAM for fine-tuning compared to RWKV-7. The following VRAM requirements are for reference:
 
@@ -96,7 +96,7 @@ RWKV-6 models require slightly more VRAM for fine-tuning compared to RWKV-7. The
 
 read the tutorials for different fine-tuning methods of RWKV-PEFT:
 
-- [State Tuning](./State-Tuning.md)
-- [Pissa Fine-Tuning](./Pissa-Fine-Tuning.md)
-- [DiSHA Fine-Tuning](./DiSHA-Fine-Tuning.md)
-- [LoRA Fine-Tuning](./LoRA-Fine-Tuning.md)
+- [State Tuning](../RWKV-Fine-Tuning/State-Tuning.md)
+- [Pissa Fine-Tuning](../RWKV-Fine-Tuning/Pissa-Fine-Tuning.md)
+- [DiSHA Fine-Tuning](../RWKV-Fine-Tuning/DiSHA-Fine-Tuning.md)
+- [LoRA Fine-Tuning](../RWKV-Fine-Tuning/LoRA-Fine-Tuning.md)
