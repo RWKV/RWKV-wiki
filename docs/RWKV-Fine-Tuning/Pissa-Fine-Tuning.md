@@ -20,17 +20,33 @@ Before starting the PiSSA fine-tuning, make sure you have a Linux workspace and 
 
 The GPU VRAM requirements for RWKV PiSSA fine-tuning can be referred to in the following table:
 
+::: tabs
+@tab RWKV-7
+
 | Model Parameters | bf16  | int8 | nf4 |
 | --------- | ---- | ---- | ---- |
-| RWKV-6-1.6B | 7.3GB  | 5.9GB  | 5.4GB  |
-| RWKV-6-3B  | 11.8GB  | 9.4GB  | 8.1GB  |
-| RWKV-6-7B | 23.7GB| 17.3GB | 14.9GB  |
+| RWKV7-0.1B | 2.6GB GPU | 2.4GB GPU  | 2.5GB GPU  |
+| RWKV7-0.4B | 3.4GB GPU  | 3GB GPU  | 2.7GB GPU  |
+| RWKV7-1.5B | 5.6GB GPU  | 4.6GB GPU  | 3.9GB GPU  |
+| RWKV7-3B | 8.8GB GPU  | 6.7GB GPU  | 5.7GB GPU  |
+
+@tab RWKV-6
+
+| Model Parameters | bf16  | int8 | nf4 |
+| --------- | ---- | ---- | ---- |
+| RWKV6-1.6B | 7.3GB GPU  | 5.9GB GPU  | 5.4GB GPU  |
+| RWKV6-3B  | 11.8GB GPU  | 9.4GB GPU  | 8.1GB GPU  |
+| RWKV6-7B | 23.7GB GPU | 17.3GB GPU | 14.9GB GPU  |
+
+:::
 
 The data in the above table is based on the following training parameters:
 
-- ctxlen=1024 
+- ctxlen=1024
 - micro_bsz=1
 - strategy=deepspeed_stage_1
+- pissa_r=32
+- svd_niter=4
 
 As the training parameters change, the VRAM required for RWKV PiSSA fine-tuning will also change.
 
