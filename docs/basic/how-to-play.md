@@ -1,6 +1,15 @@
-# How to Experience RWKV 
+# How to Experience RWKV
 
 This section will guide you on how to experience the RWKV model (either through online services or local deployment):
+
+The following content can guide you in experiencing the RWKV model (online service or local deployment).
+
+::: tip
+Before experiencing the RWKV model, it is recommended to read the following chapter:
+
+- [RWKV Decoding Parameters](./decoding-parameters.md)
+- [Prompting Format Guidelines](../RWKV-Prompts/prompt-guidelines.md)
+:::
 
 ## RWKV Online DEMO
 
@@ -40,6 +49,25 @@ In this demo, you can experience the fully trained RWKV-7 G1 0.1B/0.4B models an
 
 ::: info
 This beautifully designed RWKV chat interface is open-sourced by RWKV community member [@Leon](https://leoncat.top/), with the repository available at: [web-rwkv-realweb](https://github.com/SolomonLeon/web-rwkv-realweb).
+:::
+
+### RWKV APP Demo
+
+The RWKV community has completed the development of Android and iOS apps, and now everyone can experience locally deployed RWKV-7 series models on their mobile phones!!!
+
+After loading the model, RWKV models can run locally on your device.
+
+- Android download link: [https://www.pgyer.com/rwkvchat](https://www.pgyer.com/rwkvchat)
+- iOS download link: [https://testflight.apple.com/join/DaMqCNKh](https://testflight.apple.com/join/DaMqCNKh)
+
+Below is the actual performance on a phone equipped with the Qualcomm Snapdragon 8Gen2 chip:
+
+![App-demo](./images/App-demo-en.png)
+
+RWKV7-G1 0.4B can consistently achieve an output speed of 30 tokens per second on this mid-range phone!
+
+::: info
+These two apps are open-sourced by RWKV community members [@MollySophia](https://github.com/MollySophia) and [@HaloWang](https://github.com/HaloWang), repository link: [rwkv_mobile_flutter](https://github.com/MollySophia/rwkv_mobile_flutter)
 :::
 
 ### RWKV WebGPU Demo

@@ -10,15 +10,29 @@ Before you start, make sure you have a Linux workspace and an NVIDIA graphics ca
 
 The VRAM requirements for State tuning can be referred to in the following table:
 
-| Model Size | fp16  | int8  | nf4  |
-|------------|---------|--------|--------|
-| RWKV6-1.6B | 5.8GB GPU   | 4.5GB GPU  | 3.9GB GPU  | 
-| RWKV6-3B      | 8.7GB GPU  | 6.2GB GPU  | 4.9GB GPU  | 
-| RWKV6-7B      | 17.8GB GPU    | 11.9GB GPU  | 8.5GB GPU  | 
+::: tabs
+@tab RWKV-7
+
+| Model Parameters | bf16 | int8 | nf4 |
+| --------- | ---- | ---- | ---- |
+| RWKV7-0.1B | 2.6GB GPU  | 2.4GB GPU  | 2.5GB GPU  |
+| RWKV7-0.4B | 3.1GB GPU  | 2.9GB GPU  | 2.8GB GPU  |
+| RWKV7-1.5B | 5.3GB GPU  | 4.1GB GPU  | 3.7GB GPU  |
+| RWKV7-3B   | 8.2GB GPU  | 5.7GB GPU  | 4.7GB GPU  |
+
+@tab RWKV-6
+
+| Model Parameters | bf16  | int8 | nf4 |
+| --------- | ---- | ---- | ---- |
+| RWKV6-1.6B | 5.8GB GPU   | 4.5GB GPU  | 3.9GB GPU  |
+| RWKV6-3B   | 8.7GB GPU   | 6.2GB GPU  | 4.9GB GPU  |
+| RWKV6-7B   | 17.8GB GPU  | 11.9GB GPU | 8.5GB GPU  |
+
+:::
 
 The data in the above table is based on the following test parameters:
 
-- ctxlen=1024 
+- ctxlen=1024
 - micro_bsz=1
 - strategy=deepspeed_stage_1
 

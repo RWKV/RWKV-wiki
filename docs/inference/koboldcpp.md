@@ -26,7 +26,7 @@ This tutorial will guide you through running RWKV models in KoboldCpp and having
 
 KoboldCpp is compatible with both `ggml` and `gguf` model formats. It is recommended to use RWKV models in `gguf` format.
 
-You can download `gguf` RWKV models from the [RWKV-GGUF Repository](https://huggingface.co/latestissue). On the Hugging Face page, click the download button next to the model file to download:
+You can download `gguf` RWKV models from the [RWKV-GGUF Repository](https://huggingface.co/collections/zhiyuan8/rwkv-7-world-gguf-67dbb8f4baeae23ec791f49e). On the Hugging Face page, click the download button next to the model file to download:
 
 ![rwkv-model-list](./imgs/text-generation-webui-rwkv-model-list.png)
 
