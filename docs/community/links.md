@@ -73,6 +73,7 @@ In addition, we would like to thank the developers who have contributed to the R
 
 ### Other Inference Engines Supporting RWKV
 
+- [rwkv-by-hand-excel](https://github.com/playaswd/rwkv-by-hand-excel):rwkv by Hand ✍️ Exercises in Excel
 - [RWKV-Infer](https://github.com/OpenMOSE/RWKV-Infer): Performs RWKV-V6 inference using FLA, supporting inference by combining multiple states
 - [MLC LLM](https://github.com/mlc-ai/mlc-llm): A machine learning compiler and high-performance deployment engine, supporting the RWKV model
 
