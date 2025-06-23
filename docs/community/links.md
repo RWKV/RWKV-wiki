@@ -33,6 +33,8 @@ In addition, we would like to thank the developers who have contributed to the R
 
 - [RWKV-infctx-trainer](https://github.com/RWKV/RWKV-infctx-trainer/): An RWKV infinite context trainer that supports training contexts of 10k length and above
 - [RWKV-Ouroboros](https://github.com/neromous/RWKV-Ouroboros): An rwkv-trainer project based on the API, which supports alternating training and inference
+- [RWKV-LM-V7](https://github.com/RWKV-Vibe/RWKV-LM-V7)：RWKV-LM-V7 is a user-friendly RWKV-7 multi-class model training project that enables developers to quickly get started with RWKV-7 model training within 15 minutes.
+- [RWKV-LM-V7-AMD-ROCm](https://github.com/Alic-Li/RWKV-LM-V7-AMD-ROCm)：RWKV-LM-V7 AMD ROCm version, supporting RWKV-7 model training on AMD GPUs
 - [nanoRWKV](https://github.com/Hannibal046/nanoRWKV): The nanoGPT-style implementation of the RWKV model
 - [RWKV_LM_EXT](https://github.com/yynil/RWKV_LM_EXT): Realizes the functional extension of RWKV, including sequence classification/embedding/peft/cross-encoder/dual-encoder/multimodal, etc.
 - [chunkRWKV6](https://github.com/00ffcc/chunkRWKV6): Optimizes the prefill and training speed of RWKV using block parallelism
@@ -40,6 +42,7 @@ In addition, we would like to thank the developers who have contributed to the R
 ## RWKV Inference Frameworks
 
 ### rwkv.cpp
+
 - [rwkv.cpp](https://github.com/RWKV/rwkv.cpp): Inferences the RWKV model on the CPU, supporting FP16, quantized INT4, INT5, and INT8 inferences
 
 ### Pytorch Native Implementation
@@ -62,7 +65,8 @@ In addition, we would like to thank the developers who have contributed to the R
 
 ### JAX Implementation
 
-- [rwkv-jax](https://github.com/saran-gangster/rwkv-jax): The JAX implementation of the RWKV language model, suitable for TPU training
+- [jaxrwkv](https://github.com/bsarkar321/jaxrwkv)：RWKV model implementation in JAX, supporting RWKV-4/5/6/7
+- **(May be Outdated)** [rwkv-jax](https://github.com/saran-gangster/rwkv-jax): The JAX implementation of the RWKV language model, suitable for TPU training
 - **(May be Outdated)** [RWKV-LM-jax](https://github.com/mrsteyk/RWKV-LM-jax)
 - **(May be Outdated)** [tpu_rwkv](https://github.com/tensorpro/tpu_rwkv)
 
@@ -115,6 +119,7 @@ Multimodal refers to tasks other than text tasks.
 - [RwkvCompress](https://github.com/sjtu-medialab/RwkvCompress): An image compression model based on RWKV, which can efficiently compress and reconstruct images
 - [VisualRWKV](https://github.com/howard-hou/VisualRWKV): A visual language model based on RWKV, which can handle visual tasks
 - [Vision-RWKV](https://github.com/OpenGVLab/Vision-RWKV): A visual perception model based on RWKV, which can smoothly process high-resolution images
+- [U-RWKV](https://github.com/hbyecoding/U-RWKV): Image segmentation model based on RWKV.
 - [Diffusion-RWKV](https://github.com/feizc/Diffusion-RWKV): A model for image generation tasks based on RWKV, which is good at handling high-resolution images
 - [RWKV-CLIP](https://github.com/deepglint/RWKV-CLIP): The CLIP (visual-language representation learning) model driven by RWKV
 - [RWKV-SAM](https://github.com/HarborYuan/ovsam): The image segmentation method "RWKV-SAM" based on RWKV
@@ -122,9 +127,12 @@ Multimodal refers to tasks other than text tasks.
 - [Restore-RWKV](https://github.com/Yaziwel/Restore-RWKV): Uses RWKV for efficient and effective medical image restoration (PyTorch implementation)
 - [LION](https://github.com/happinesslz/LION): A Linear Group RNN for 3D object detection in point clouds (supporting RWKV)
 - [LineRWKV](https://github.com/diegovalsesia/linerwkv): LineRWKV is a method for lossless and lossy compression of hyperspectral images
+- [RWKV-VG](https://github.com/nianfd/RWKV-VG): Encoder-decoder structured object detection framework based on RWKV.
 
 ### Audio-related
 
+- [MIDI-RWKV](https://github.com/christianazinn/MIDI-RWKV):MIDI music generation model based on RWKV
+- [RWKV-TTS](https://github.com/yynil/RWKVTTS)：RWKV speech synthesis model, supporting text-to-speech in multiple languages
 - [RWKV-ASR](https://github.com/AGENDD/RWKV-ASR): Uses the pre-trained RWKV language model for **speech recognition**
 
 ### Time Series
@@ -151,7 +159,9 @@ Multimodal refers to tasks other than text tasks.
 
 ## Other RWKV Projects
 
+- [RWKV-IF](https://github.com/Lyttr/RWKVInverseFolding): RWKV inverse folding model that uses RWKV models for RNA folding prediction
+- [Muon-RMS-Norm](https://github.com/xTimeCrystal/Muon-RMS-Norm): Training RWKV using an alternative normalization method
 - [SpikeGPT](https://github.com/ridgerchu/SpikeGPT): A new model inspired by RWKV
 - [JSONL to binidx](https://github.com/Abel2076/json2binidx_tool): This tool is used to convert `.jsonl` files into `.bin /.idx` (binidx) data suitable for RWKV training.
 - [AI Town - RWKV Proxy](https://github.com/recursal/ai-town-rwkv-proxy?tab=readme-ov-file): Operate a large AI town locally through RWKV!
-- [Bot-Ani-RWKV-twitter-bot-detection](https://github.com/Max-SF1/Bot-Ani-RWKV-twitter-bot-detection): A Twitter bot detection tool based on RWKV 
+- [Bot-Ani-RWKV-twitter-bot-detection](https://github.com/Max-SF1/Bot-Ani-RWKV-twitter-bot-detection): A Twitter bot detection tool based on RWKV
