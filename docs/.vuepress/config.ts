@@ -46,6 +46,7 @@ export default defineUserConfig({
 				text: 'Advanced', 
 				link: '/advance/finetune.html',
 				children: [
+					"/advance/pretrain.md",
 					"/advance/RWKV-FLA.md",
 					"/advance/finetune.md",
 					"/advance/training-datasets.md",

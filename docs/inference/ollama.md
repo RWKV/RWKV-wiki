@@ -46,14 +46,11 @@ All available Ollama/RWKV7-G1 models:
 - `mollysama/rwkv-7-g1:1.5b-thinkdisabled-q6_k`: Thinking mode disabled, Quantization: `Q6_K`
 
 
-::: tip
-If you have previously downloaded the `mollysama/rwkv-7-g1:2.9b` model, please run the `ollama pull mollysama/rwkv-7-g1:2.9b` command to pull the latest changes.
-
+**If you have previously downloaded the `mollysama/rwkv-7-g1:2.9b` model, please run the `ollama pull mollysama/rwkv-7-g1:2.9b` command to pull the latest changes.**
 
 @tab RWKV-7-World Model
-::: warning
-The RWKV7-G1 model is a comprehensive upgrade to the RWKV-7-World model. It is recommended to use the RWKV7-G1 model.
-:::
+
+**The RWKV7-G1 model is a comprehensive upgrade to the RWKV-7-World model. It is recommended to use the RWKV7-G1 model.**
 
 Run the `ollama run mollysama/rwkv-7-world:2.9b` command in the terminal, and Ollama will **automatically download and run** the RWKV7-World 2.9B model. You can have a conversation with the RWKV model in the terminal, as shown in the figure below:
 
@@ -164,10 +161,10 @@ PARAMETER top_p 0.5
 PARAMETER repeat_penalty 1.2
 ```
 
+:::
 Please change `rwkv-xxx.gguf` after `FROM` in the first line to the filename of your local RWKV model.
 
 Decoding parameters like `PARAMETER temperature 1`, `PARAMETER top_p 0.5`, etc., can be adjusted as needed.
-:::
 
 **3. Create and Run the Custom RWKV Model**
 
