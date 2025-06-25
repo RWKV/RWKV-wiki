@@ -11,8 +11,8 @@ The RWKV project was initially proposed by Bo Peng (Blink_DL), and as the projec
 On September 20, 2023, the RWKV open-source project officially joined the Linux Foundation. Today, the RWKV project is an open-source non-profit organization under the Linux Foundation, with some computing power previously supported by sponsors.
 
 - [Discord Forum](https://discord.gg/bDSBUMeFpc)
-- [HF Gradio-1 | RWKV-7-World-2.9B-v3](https://huggingface.co/spaces/BlinkDL/RWKV-Gradio-1)
-- [HF Gradio-2 | RWKV-7-G1-0.4B](https://huggingface.co/spaces/BlinkDL/RWKV-Gradio-2)
+- [HF Gradio-1 | RWKV7-G1 2.9B](https://huggingface.co/spaces/BlinkDL/RWKV-Gradio-1)
+- [HF Gradio-2 | RWKV7-G1](https://huggingface.co/spaces/BlinkDL/RWKV-Gradio-2)
 
 # RWKV Architecture and Papers
 
@@ -43,22 +43,28 @@ RWKV has released open-source models of various parameter scales for each archit
 
 | Version | RWKV-V4 | RWKV-v5-Eagle | RWKV-v6-Finch | RWKV-v7-Goose | RWKV-v7-G1 |
 | --- | --- | --- | --- | --- | --- | 
-| Paper | [Published](https://arxiv.org/abs/2305.13048) | [Published](https://arxiv.org/abs/2404.05892) | [Published](https://arxiv.org/abs/2404.05892) | [Published](https://arxiv.org/abs/2503.14456) | Coming Soon |
+| Paper | [Published](https://arxiv.org/abs/2305.13048) | [Published](https://arxiv.org/abs/2404.05892) | [Published](https://arxiv.org/abs/2404.05892) | [Published](https://arxiv.org/abs/2503.14456) | [Published](https://arxiv.org/abs/2503.14456) |
 | Overall Status | **EOL** | **EOL**| **Stable** | **Stable** | **In Progress**| 
 | 0.4B Model |  Released |  Released |  No Plan | [Released](https://huggingface.co/BlinkDL/rwkv-7-world/tree/main) | [Released](https://huggingface.co/BlinkDL/rwkv7-g1/blob/main/rwkv7-g1-0.4b-20250324-ctx4096.pth) | 
 | 1.5B Model |  Released |  Released|  [Released](https://huggingface.co/BlinkDL/rwkv-6-world/blob/main/RWKV-x060-World-1B6-v2.1-20240328-ctx4096.pth) | [Released](https://huggingface.co/BlinkDL/rwkv-7-world/tree/main) | [Released](https://huggingface.co/BlinkDL/rwkv7-g1/blob/main/rwkv7-g1-1.5b-20250429-ctx4096.pth) |
 | 3B Model |  Released |  Released |  [Released](https://huggingface.co/BlinkDL/rwkv-6-world/blob/main/RWKV-x060-World-1B6-v2.1-20240328-ctx4096.pth) | [Released](https://huggingface.co/BlinkDL/rwkv-7-world/tree/main) | [Released](https://huggingface.co/BlinkDL/rwkv7-g1/blob/main/rwkv7-g1-2.9b-20250519-ctx4096.pth)|
-| 7B Model | Released |  Released|  [Released](https://huggingface.co/BlinkDL/rwkv-6-world/blob/main/RWKV-x060-World-7B-v2.1-20240507-ctx4096.pth) |**📅 Planned** | **📅 Planned** |
-| 14B Model |  Released |  No Plan |  [Released](https://huggingface.co/BlinkDL/rwkv-6-world/blob/main/RWKV-x060-World-14B-v2.1-20240719-ctx4096.pth) |**📅 Planned** | **📅 Planned** |
+| 7B Model | Released |  Released|  [Released](https://huggingface.co/BlinkDL/rwkv-6-world/blob/main/RWKV-x060-World-7B-v2.1-20240507-ctx4096.pth) | No Plan  | ⚙️ **训练中**  |
+| 14B Model |  Released |  No Plan |  [Released](https://huggingface.co/BlinkDL/rwkv-6-world/blob/main/RWKV-x060-World-14B-v2.1-20240719-ctx4096.pth) | No Plan  | **📅 Planned** |
 
 # Which RWKV Models Should I Use?
 
-**Please use RWKV-7 series models**. RWKV-7 models are based on the latest RWKV-7 architecture and latest datasets, therefore offering better performance.
-
-Since RWKV-7 7B and larger models are still in training for 7B and larger parameter models, please use the [RWKV-6-World-14B-V2.1](https://huggingface.co/BlinkDL/rwkv-6-world/blob/main/RWKV-x060-World-14B-v2.1-20240719-ctx4096.pth) model; consider using the [RWKV-6-World-7B-V3](https://huggingface.co/BlinkDL/rwkv-6-world/blob/main/RWKV-x060-World-7B-v3-20241112-ctx4096.pth) model if your hardware cannot run the 14B model.
+Here's the English translation:
 
 ::: tip
-RWKV-7-World 7B/14B will replace the existing RWKV-6-World 7B/14B models once training is complete. Earlier RWKV versions have come to the end of their lifecycle, and existing models are only for archival purposes.
+Due to performance issues caused by outdated architectures, all RWKV-5, RWKV-4 series models (Raven / World / Pile ...) and earlier RWKV versions have reached end-of-life, with existing models serving only as archives.
+:::
+
+- **Models with 7B parameters and below**: Please use the [RWKV7-G1 2.9B model](https://modelscope.cn/models/RWKV/rwkv7-g1/files). Thanks to the latest architectural design and the newest World v3.5 dataset (totaling 5.16T tokens), the RWKV7-G1 model has strong **reasoning, coding, and mathematical capabilities**, performing better than previous models across all tasks.
+
+- **Models with more than 7B parameters**: Since RWKV7-G1 7B and larger models are currently in training, we recommend using the [RWKV-6-World-14B-V2.1](https://hf-mirror.com/BlinkDL/rwkv-6-world/blob/main/RWKV-x060-World-14B-v2.1-20240719-ctx4096.pth) model.
+
+::: tip
+After the RWKV7-G1 7B/14B models complete training, they will completely replace the existing RWKV-6-World 7B/14B models.
 :::
 
 # Differences Between RWKV and Transformer
@@ -72,19 +78,21 @@ RWKV-7-World 7B/14B will replace the existing RWKV-6-World 7B/14B models once tr
 
 - Disadvantages
   - RWKV base models are very sensitive to the format of prompts, and the format of prompts significantly affects the generation results.
-  - Due to architectural design, RWKV models are weaker in **tasks requiring retrospection**, so prompts need to be appropriately ordered. For example, provide task instructions to the model first, then provide the material text needed to perform the task.
+  - Due to architectural design, RWKV models are weaker on **tasks requiring lookback/review**, and we are working on various optimizations to address this issue.
 
 # Basic Terminology of the RWKV Community
 
 | Concept | Description |
 | --- | --- |
-| **RWKV** | The model architecture itself, training code can be found [here](https://github.com/BlinkDL/RWKV-LM). |
-| **ChatRWKV** | The official chatbot of RWKV (similar to ChatGPT but based on RWKV), code can be found [here](https://github.com/BlinkDL/ChatRWKV). |
-| **RWKV-4/5/6/7** | Different architecture versions of RWKV. Note that using the latest RWKV-7 series models is recommended. |
-| **RWKV World** | The base RWKV model trained with global languages, covering a broader and more diverse dataset, including training data in over 100 languages and some instruction training. |
-| **Raven** | The official fine-tuned version of the RWKV-4 base model, including instruction training. However, since the RWKV-4 series is no longer updated, it is not recommended for continued use. |
+| **RWKV** | The model architecture itself, training code available [here](https://github.com/BlinkDL/RWKV-LM) |
+| **state** | RWKV is a variant of RNN architecture, state is the hidden state that RWKV passes across time steps during inference, used to retain historical context information |
+| **ChatRWKV** | Official chatbot for RWKV (similar to ChatGPT, but based on RWKV), code available [here](https://github.com/BlinkDL/ChatRWKV) |
+| **RWKV-4/5/6/7** | Different architectural versions of RWKV. Note that the latest RWKV-7 series models are recommended |
+| **RWKV World** | Base RWKV models trained on data from over 100 languages worldwide. These models cover a broader and more diverse dataset, including training data from over 100 languages, as well as some instruction tuning |
+| **Raven** | Official fine-tuned version of the RWKV-4 base model, including instruction training. However, since the RWKV-4 series has been discontinued, continued use is not recommended |
 | **RWKV ABC/MIDI** | RWKV music models based on ABC/MIDI format |
-| **RWKV CHNtuned / one-state-chat / role_play / novel ...** | Fine-tuned models provided by the RWKV community, optimized for specific tasks or data types. Please prioritize using RWKV-7 series fine-tuned models. |
+| **RWKV CHNtuned / one-state-chat / role_play / novel ...** | Fine-tuned models provided by the RWKV community, optimized for specific tasks or data types. Please prioritize using fine-tuned models from the RWKV-7 series |
+| **RWKV7-G1 (Goose One)** | Base model trained on RWKV-7 architecture and World v3.5 dataset, supports **reasoning/thinking** (Think), with stronger performance |
 
 # RWKV Model Naming Rules
 

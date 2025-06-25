@@ -17,8 +17,8 @@ If you simply want to try RWKV Goose, checkout the following public demo.
 
 ### Hugging Face (Completion Mode)
 
-- [HF-Gradio-1: RWKV-7-World-2.9B](https://huggingface.co/spaces/BlinkDL/RWKV-Gradio-1)
-- [HF-Gradio-2: The latest RWKV-7 G1 model](https://huggingface.co/spaces/BlinkDL/RWKV-Gradio-2)
+- [HF-Gradio-1: RWKV7-G1 2.9B](https://huggingface.co/spaces/BlinkDL/RWKV-Gradio-1)
+- [HF-Gradio-2: The latest RWKV7-G1 model](https://huggingface.co/spaces/BlinkDL/RWKV-Gradio-2)
 
 ::: warning
 The above public demos only support Completion mode and do not support direct dialogue.
@@ -45,7 +45,7 @@ We also provide an online chat demo for the RWKV-7 G1 series reasoning models:
 
 - [RWKV-7 G1 Series Reasoning Models](https://huggingface.co/spaces/RWKV-Red-Team/RWKV-LatestSpace)
 
-In this demo, you can experience the fully trained RWKV-7 G1 0.1B/0.4B models and switch to other ongoing training G1 models, such as the G1 1.5B/2.9B models in training.
+You can experience the completed RWKV7-G1 series models in this Demo.
 
 ::: info
 This beautifully designed RWKV chat interface is open-sourced by RWKV community member [@Leon](https://leoncat.top/), with the repository available at: [web-rwkv-realweb](https://github.com/SolomonLeon/web-rwkv-realweb).
@@ -80,9 +80,9 @@ After loading the model, the RWKV model will run offline in the browser without 
 
 **Chat Function**
 
-In the chat interface, select an RWKV-7-World model (0.1B or 0.4B), click the Load Model button to download and run the model for dialogue.
+In the chat interface, select an RWKV-7 model, click the Load Model button to download and run the model for dialogue.
 
-You can also drag an RWKV-7-World model (`.st` format) from the **local directory** into the gray box to run, skipping the download process.
+You can also drag an RWKV-7 model (`.st` format) from the **local directory** into the gray box to run, skipping the download process.
 
 ![WebGPU Demo Chat Function](./images/web-rwkv-15-chat-demo.gif)
 

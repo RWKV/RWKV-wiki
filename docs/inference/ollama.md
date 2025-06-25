@@ -16,170 +16,190 @@ After downloading, double-click the exe file to install. After installation, `Ol
 
 ![ollama-icon](./imgs/ollama-icon.png)
 
-## Run RWKV model
+## Running RWKV Models Provided by Ollama
 
-There are two ways to run the gguf format RWKV model in Ollama:
-
-- **Download from [Ollama's RWKV repository](https://ollama.com/mollysama)**: Simple to operate, but the RWKV model provided by Ollama **only has the `q4_k_m` quantized version**
-- **Custom RWKV model**: Requires manually downloading the `gguf` format RWKV model and creating a `Modelfile` configuration file, but you can **freely run any quantized RWKV model**
-
+::: tip
+Ollama's RWKV repository provides [RWKV7-G1](https://ollama.com/mollysama/rwkv-7-g1) (recommended) and [RWKV7-World](https://ollama.com/mollysama/rwkv-7-world) models.
+:::
+::: danger
+The RWKV-6 World model is outdated and no longer recommended.
+:::
 ::: tabs
 
-@tab Download from Ollama repository
-[Ollama's RWKV repository](https://ollama.com/mollysama) provides the RWKV7-G1 (recommended), RWKV7-World, and RWKV-6 models.
+@tab RWKV7-G1 Model (Recommended)
+Run the `ollama run mollysama/rwkv-7-g1:2.9b` command in the terminal, and Ollama will **automatically download and run** the RWKV7-G1 2.9B model. You can then have a conversation with the RWKV model in the terminal.
 
-![ollama-rwkv-7-model-repo](./imgs/ollama-rwkv-7-model-repo.png)
+![ollama-run-rwkv-7-g1-2.9b](./imgs/ollama-run-rwkv-7-g1-2.9b.png)
 
-Execute the command `ollama run mollysama/rwkv-7-world:2.9b` in your terminal to automatically **download and run** the `q4_k_m` quantized version of the RWKV-7-World 2.9B model.
+::: tip
+By default, Ollama's RWKV7-G1 model has thinking mode enabled, which can be flexibly toggled on and off with the `/set nothink` and `/set think` commands.
+
+All available Ollama/RWKV7-G1 models:
+
+- `mollysama/rwkv-7-g1:2.9b`: Quantization: `Q8_0`
+- `mollysama/rwkv-7-g1:2.9b-q6_k`: Quantization: `Q6_K`
+- `mollysama/rwkv-7-g1:2.9b-thinkdisabled`: Thinking mode disabled, Quantization: `Q8_0`
+- `mollysama/rwkv-7-g1:2.9b-thinkdisabled-q6_k`: Thinking mode disabled, Quantization: `Q6_K`
+- `mollysama/rwkv-7-g1:1.5b`: Quantization: `Q8_0`
+- `mollysama/rwkv-7-g1:1.5b-q6_k`: Quantization: `Q6_K`
+- `mollysama/rwkv-7-g1:1.5b-thinkdisabled`: Thinking mode disabled, Quantization: `Q8_0`
+- `mollysama/rwkv-7-g1:1.5b-thinkdisabled-q6_k`: Thinking mode disabled, Quantization: `Q6_K`
+
+
+::: tip
+If you have previously downloaded the `mollysama/rwkv-7-g1:2.9b` model, please run the `ollama pull mollysama/rwkv-7-g1:2.9b` command to pull the latest changes.
+
+
+@tab RWKV-7-World Model
+::: warning
+The RWKV7-G1 model is a comprehensive upgrade to the RWKV-7-World model. It is recommended to use the RWKV7-G1 model.
+:::
+
+Run the `ollama run mollysama/rwkv-7-world:2.9b` command in the terminal, and Ollama will **automatically download and run** the RWKV7-World 2.9B model. You can have a conversation with the RWKV model in the terminal, as shown in the figure below:
 
 ![ollama-run-rwkv-7-world-2.9b](./imgs/ollama-run-rwkv-7-world-2.9b.png)
 
+All available Ollama/RWKV-7 World models:
+
+- `mollysama/rwkv-7-world:1.5b`: Quantization: `Q4_K_M`
+- `mollysama/rwkv-7-world:2.9b`: Quantization: `Q4_K_M`
+
 ::: tip
-Ollama has not yet adapted to support inference for the RWKV7-G1 series models.
-
-@tab Custom RWKV-7 model
-
-### Download RWKV gguf model
-
-To customize the RWKV model, you need to first download the `gguf` format RWKV-7-World model from the [RWKV-7 GGUF repository](https://huggingface.co/collections/zhiyuan8/rwkv-7-world-gguf-67dbb8f4baeae23ec791f49e).
-
----
-⚠️ **RWKV gguf models come in various quantized versions. It is recommended to use `Q5_1` or `Q8_0` quantization precision. Lower quantization precision (such as `Q4_0`, `Q3_0`, etc.) may significantly degrade the model's responses.**
-
----
-
-If you have fine-tuned an RWKV-7 model and wish to convert it from pth to gguf format, see the [llama.cpp documentation](./llamacpp.html#obtain-gguf-format-models).
-
----
-
-### Create Modelfile for the model
-
-Create a text file named `Modelfile` in the folder where the RWKV gguf model file is stored, without any file extension.
-
-![Modelfile](./imgs/ollama-Modelfile.png)
-
-Then open this text file with a text editor like "Notepad" and write the following content:
-
-```bash copy
-FROM rwkv7-1.5B-world-Q8_0.gguf
-
-TEMPLATE """
-{{- range .Messages }}
-{{- if eq .Role "user" }}User: {{ .Content }}{{- else if eq .Role "assistant" }}Assistant:{{ .Content }}{{- end }}
-
-{{ end }}Assistant:"""
-
-PARAMETER stop "\n\n"
-PARAMETER stop "\nUser:"
-PARAMETER stop "User:"
-PARAMETER stop "<s>"
-```
-
-Modify the `rwkv7-1.5B-world-Q8_0.gguf` after the first line `FROM` to the filename of the RWKV model you downloaded.
-
----
-⚠️ **It is recommended to directly copy the above content into the `Modelfile` to ensure there is a space after `User:` and no space after `Assistant:`; there is an empty line above `{{ end }}Assistant:"""` and no extra characters after it.**
-
----
-
-![Modelfile-RWKV-7](./imgs/ollama-Modelfile-content-rwkv7.jpg)
-
-### Run custom RWKV model
-
-Open the terminal in the RWKV gguf model folder and execute the `ollama create` command:
-
-``` bash copy
-ollama create rwkv-7-world-1.5b-Q8_0 -f Modelfile
-```
-
----
-Change the model name after `ollama create` to your local RWKV model, ensuring it matches the model name in the `Modelfile`.
-
----
-![ollama-create](./imgs/ollama-create.png)
-
-After creation, use the `ollama run` command to directly run the model:
-
-``` bash copy
-ollama run rwkv-7-world-1.5b-Q8_0
-```
-
-After successfully running, you can chat with the model:
-
-![ollama-chat](./imgs/ollama-chat-rwkv7.png)
-
-@tab Custom RWKV-6 model
-
-To customize the RWKV model, you need to first download the `gguf` format RWKV-6-World model from the [RWKV-6 GGUF repository](https://huggingface.co/collections/zhiyuan8/rwkv-6-world-gguf-6790b87a42d4f541a2f6d92b).
-
----
-⚠️ **RWKV gguf models come in various quantized versions. It is recommended to use `Q5_1` or `Q8_0` quantization precision. Lower quantization precision (such as `Q4_0`, `Q3_0`, etc.) may significantly degrade the model's responses.**
-
----
-
-### Create Modelfile for the model
-
-Create a text file named `Modelfile` in the folder where the RWKV gguf model file is stored, without any file extension.
-
-![Modelfile](./imgs/ollama-Modelfile.png)
-
-Then open this text file with a text editor like "Notepad" and write the following content:
-
-```bash copy
-FROM rwkv-6-world-1.6b-Q8_0.gguf
-
-TEMPLATE """
-{{- range .Messages }}
-{{- if eq .Role "user" }}User: 
-{{- else if eq .Role "assistant" }}Assistant:
-{{- end }}{{ .Content }}
-
-{{ end }}Assistant:"""
-
-PARAMETER stop "\n\n"
-PARAMETER stop "\nUser:"
-```
-
-Modify the `rwkv-6-world-1.6b-Q8_0.gguf` after the first line `FROM` to the filename of the RWKV model you downloaded.
-
----
-⚠️ **It is recommended to directly copy the above content into the `Modelfile` to ensure there is a space after `User:` and no space after `Assistant:`; there is an empty line above `{{ end }}Assistant:"""` and no extra characters after it.**
-
----
-
-![Modelfile](./imgs/ollama-Modelfile-content.png)
-
-### Run custom RWKV model
-
-Open the terminal in the RWKV gguf model folder and execute the `ollama create` command:
-
-``` bash copy
-ollama create rwkv-6-world-1.6b-Q8_0 -f Modelfile
-```
-
----
-Change the model name after `ollama create` to your local RWKV model, ensuring it matches the model name in the `Modelfile`.
-
----
-![ollama-create](./imgs/ollama-create.png)
-
-After creation, use the `ollama run` command to directly run the model:
-
-``` bash copy
-ollama run rwkv-6-world-1.6b-Q8_0
-```
-
-After successfully running, you can chat with the model:
-
-![ollama-chat](./imgs/ollama-chat.png)
-
+If you have previously downloaded the `mollysama/rwkv-7-world:2.9b` model, please run the `ollama pull mollysama/rwkv-7-world:2.9b` command to pull the latest changes.
 :::
 
-## Ollama GUI and Desktop Programs
+## Running a Custom RWKV Model
 
-Ollama itself does not provide GUI or WebUI services, but its community offers third-party GUI and desktop programs.
+To run a custom RWKV model, you need a model file in `.gguf` format and a `Modelfile` for configuring the **chat template and decoding parameters**. Then, use the `ollama create` command to create a custom Ollama model.
 
-You can view all third-party Ollama tools in the [Ollama GitHub documentation](https://github.com/ollama/ollama?tab=readme-ov-file#web--desktop).
+After creation is complete, you can use the `ollama run` command to run the custom model.
+
+**1. Download the RWKV gguf Model**
+
+You can download RWKV models in `gguf` format from the [RWKV GGUF Collection](https://huggingface.co/zhiyuan8/models).
+
+::: warning
+RWKV gguf models have various quantized versions. It is recommended to use `FP16` and `Q8_0` quantization levels. Lower quantization levels (like `Q5_K_M`, `Q4_K_M`, etc.) may degrade the model's responses.
+:::
+
+::: tip
+Fine-tuned an RWKV-7 model yourself and want to convert it from pth to gguf format? Check the [llama.cpp docs - Convert pth model to gguf](../llamacpp#get-gguf-models).
+:::
+
+---
+
+**2. Create the Model's Modelfile**
+
+In the folder where the RWKV gguf model file is stored, create a text file named `Modelfile`, with no file extension.
+
+![Modelfile](./imgs/ollama-Modelfile.png)
+
+Open the `Modelfile` with a text editor like "Notepad", and then **create different Modelfile content** based on whether the model supports thinking mode.
+
+::: tabs
+@tab For RWKV Models that Support Thinking
+For RWKV G1 series models that support thinking, please write the following content into the `Modelfile`:
+
+```bash
+FROM rwkv7-g1-2.9b-20250519-ctx4096-Q8_0.gguf
+
+TEMPLATE """{{- if .System }}System: {{ .System }}{{ end }}
+{{- range $i, $_ := .Messages }}
+{{- $last := eq (len (slice $.Messages $i)) 1}}
+{{- if eq .Role "user" }}
+{{- if eq $i 0}}User: {{ .Content }}{{- else }}
+
+User: {{ .Content }}{{- end }}
+{{- else if eq .Role "assistant" }}
+
+Assistant: <{{- if and $last .Thinking -}}think>{{ .Thinking }}</think>{{- else }}think>
+</think>{{- end }}{{ .Content }}{{- end }}
+{{- if and $last (ne .Role "assistant") }}
+
+Assistant:{{- if $.IsThinkSet }} <{{- if not $.Think }}think>
+</think>{{- end }}{{- end }}{{- end }}{{- end }}"""
+
+PARAMETER stop """
+
+"""
+PARAMETER stop """
+User"""
+
+PARAMETER stop "User"
+PARAMETER stop "Assistant"
+
+PARAMETER temperature 1
+PARAMETER top_p 0.5
+PARAMETER repeat_penalty 1.2
+```
+
+@tab For RWKV Models that Do Not Support Thinking
+For RWKV-World and other models that do not support thinking, please write the following content into the `Modelfile`:
+
+```bash
+FROM rwkv7-g1-1.5b-20250429-ctx4096-Q8_0.gguf
+
+TEMPLATE """{{- if .System }}System: {{ .System }}{{ end }}
+{{- range $i, $_ := .Messages }}
+{{- $last := eq (len (slice $.Messages $i)) 1}}
+{{- if eq .Role "user" }}
+{{- if eq $i 0}}User: {{ .Content }}{{- else }}
+
+User: {{ .Content }}{{- end }}
+{{- else if eq .Role "assistant" }}
+
+Assistant:{{ .Content }}{{- end }}
+{{- if and $last (ne .Role "assistant") }}
+
+Assistant:{{- end -}}{{- end }}"""
+
+PARAMETER stop """
+
+"""
+PARAMETER stop """
+User"""
+
+PARAMETER temperature 1
+PARAMETER top_p 0.5
+PARAMETER repeat_penalty 1.2
+```
+
+Please change `rwkv-xxx.gguf` after `FROM` in the first line to the filename of your local RWKV model.
+
+Decoding parameters like `PARAMETER temperature 1`, `PARAMETER top_p 0.5`, etc., can be adjusted as needed.
+:::
+
+**3. Create and Run the Custom RWKV Model**
+
+In the directory where the RWKV gguf model and `Modelfile` are located, open a terminal and execute the `ollama create` command:
+
+``` bash
+ollama create rwkv-xxx -f Modelfile
+```
+
+::: tip
+Change the model name after `ollama create` to your local RWKV model's name (it should be consistent with the model name in the `Modelfile`), but **without the `.gguf` suffix**.
+:::
+
+After creation is complete, use the `ollama run` command to run the model directly:
+
+``` bash
+ollama run rwkv-xxx
+```
+
+Once it runs successfully, you can start a chat conversation with the model.
+
+## Stopping Ollama
+
+Please use the `ollama stop mollysama/rwkv-7-g1:2.9b` command to stop the current model instance, which will **reset the conversation context**.
+
+Otherwise, Ollama will **continuously retain the current session's context** (history messages) as a reference for subsequent conversations.
+
+## Ollama GUIs and Desktop Applications
+
+Ollama itself does not provide a GUI or WebUI service, but its community offers third-party GUIs and desktop applications.
+
+You can view all third-party Ollama tools in [Ollama's GitHub documentation](https://github.com/ollama/ollama?tab=readme-ov-file#web--desktop).
 
 ## References
 
