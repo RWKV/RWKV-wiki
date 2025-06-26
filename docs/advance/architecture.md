@@ -516,6 +516,118 @@ According to the comparison of the inference complexity of different models, the
 
 In addition, the RWKV architecture design significantly reduces memory usage, making the model efficient  on standard configuration CPUs or non-professional GPUs rather than expensive or high-end computing hardware. This breakthrough progress makes large-scale deep learning models no longer limited to specific hardware platforms, thus broadening the application range.
 
+#### RWKV-V7 Model Release[#rwkv-v7-model-release]
+
+RWKV-V7 has released three series of pre-trained models: Pile, World, and G1.
+
+- **[RWKV-7-Pile](https://hf-mirror.com/BlinkDL/rwkv-7-pile)** represents experimental models pre-trained on the [EleutherAI/pile](https://huggingface.co/datasets/EleutherAI/pile) dataset
+- RWKV-7 "Goose" World models are multilingual pre-trained models based on the World V3 dataset and its sampled subsets
+- RWKV7-G1 ("GooseOne") series are reasoning models that continue training the RWKV-7 "Goose" World series models on the World v3.5 dataset
+
+::: tabs
+@tab RWKV7-G1
+The RWKV7-G1 series models are trained on the latest World v3.5 dataset, featuring strong reasoning, coding, and mathematical capabilities.
+
+| Model Name         | Model Description          | 
+| ----------------- | -------- | 
+| rwkv7-g1-0.1b     | Trained on 1T tokens randomly sampled from the World v3.5 dataset            | 
+| rwkv7-g1-0.4b      | Trained on 2T tokens randomly sampled from the World v3.5 dataset         |
+| rwkv7-g1-1.5b     | Trained on 5T tokens randomly sampled from the World v3.5 dataset         |
+| rwkv7-g1-2.9b     | Trained on 10T tokens randomly sampled from the World v3.5 dataset         |
+
+All RWKV7-G1 series models can be viewed at the [RWKV7-G1 model repository](https://huggingface.co/BlinkDL/rwkv7-g1/tree/main).
+::: tip
+The World v3.5 dataset is an expanded version of the World V3 dataset, containing additional novels, web pages, mathematics, code, and reasoning data, totaling 5.16T tokens.
+
+@tab RWKV-7-World
+RWKV-7-World models are pre-trained on the World V3 dataset and its sampled subsets, available in four parameter sizes: 0.1B/0.4B/1.5B/2.9B.
+
+| Model Category          | Model Description          | 
+| ----------------- | -------- | 
+| RWKV-7-World-0.1B-v2.8      | Multilingual pre-trained model based on the World-v2.8 dataset, available only in 0.1B parameter version            | 
+| RWKV-7-World-0.4B-v2.9     | Multilingual pre-trained model based on the World-v2.9 dataset, available only in 0.4B parameter version         |
+| RWKV-7-World-1.5B/2.9B-v3   | Pre-trained models based on the complete World V3 dataset, available in 1.5B and 2.9B parameter versions    |
+
+All RWKV-7-World series models can be viewed at the [RWKV-7-World model repository](https://huggingface.co/BlinkDL/rwkv-7-world/tree/main).
+
+::: tip
+World-v2.8 dataset: 1T tokens sampled from the World v3 dataset as training data
+
+World-v2.9 dataset: 2T tokens sampled from the World v3 dataset as training data
+
+@tab RWKV-7-Pile
+RWKV-7-Pile models are experimental models based on the Pile dataset, featuring various layer counts and dimensional designs:
+
+- RWKV-x070-Pile-1.47B
+- RWKV-x070-Pile-164M-L33-D512
+- RWKV-x070-Pile-165M-L25-D576
+- RWKV-x070-Pile-168M
+- RWKV-x070-Pile-421M
+
+All RWKV-7-Pile series models can be viewed at the [RWKV-7-Pile model repository](https://huggingface.co/BlinkDL/rwkv-7-pile/tree/main).
+:::
+
+### RWKV-V8
+
+RWKV-V8's architecture codename is "Heron."
+RWKV-V8's first feature `DeepEmbed` was [announced](https://rwkv.cn/news/read?id=20250527) in May 2025. `DeepEmbed` can achieve excellent reasoning performance similar to MoE without consuming VRAM or even RAM, enabling truly sparse large models to be deployed on all edge devices.
+
+#### RWKV-V8's DeepEmbed
+
+DeepEmbed trains a learnable high-dimensional vector for each token in the vocabulary within the FFN of every model layer, which can be written as an Embed layer. These vectors can be learned during training and stored in RAM/SSD during inference, requiring only minimal parameter prefetching for each token, thus significantly reducing VRAM usage.
+
+During inference, the model can prefetch the embedding vectors for the current layer based on the token index, which are used for channelwise multiplicative modulation (channelwise scaling) of the FFN output.
+
+These token-based embedding vectors form a massive but sparse knowledge base that significantly enhances the model's ability to store and retrieve world knowledge. Although these vectors seemingly increase the model's parameter count, they **do not require VRAM**, and during training, they can avoid gradient synchronization bandwidth overhead in DP (Data Parallelism) through TP (Tensor Parallelism), and can be further offloaded to RAM or SSD.
+
+In edge inference scenarios, these vectors can likewise be stored in memory or loaded on-demand directly from disk through mechanisms like `mmap`. Each token introduces only tens of KB of additional memory access overhead, making this mechanism highly suitable for deployment on edge devices.
+
+**DeepEmbed Code Examples:**
+
+Original ReLuSq FFN:
+
+```
+x = torch.relu(self.key(x)) ** 2  
+return self.value(x)
+```
+
+DeepEmbed_1x ReLuSq FFN:
+
+```
+self.deepemb = nn.Embedding(d_vocab, d_emb)
+...
+x = torch.relu(self.key(x)) ** 2
+return self.value(x) * self.deepemb(idx)
+```
+
+DeepEmbed_4x ReLuSq FFN (better performance, more parameters): 
+
+```
+self.deepemb = nn.Embedding(d_vocab, d_emb * 4)
+...
+x = torch.relu(self.key(x)) ** 2
+return self.value(x * self.deepemb(idx))
+```
+
+::: tip
+Since lookup operations do not consume VRAM during inference, these vectors are essentially "free" in terms of parameter count. Therefore, n-grams (such as `bigram`, `trigram`) can be further introduced to enhance the model's ability to model phrases/segments. If the vocabulary size is large, LoRA techniques can also be combined to reduce VRAM and training overhead.
+:::
+
+## RWKV Architecture Features
+
+The characteristics of the RWKV large model architecture include:
+
+- Efficient and stable inference speed
+- Low and fixed VRAM usage (supports CPU execution)
+- Ability to handle infinite context, making it ideal for long text processing and multi-turn conversations
+- Hardware-friendly design, performing only matrix-vector multiplications without requiring KV cache
+
+The RWKV architecture consists of a series of stacked residual blocks, each composed of time-mixing and channel-mixing sub-blocks with recurrent structures. This recurrence is achieved through linear interpolation between the current input and the input from the previous time step (referred to as token shift in the RWKV-4 architecture paper). RWKV-6 optimizes the token shift process by borrowing from LoRA techniques, transforming the simple linear interpolation (lerp) of RWKV-4/5 into data-dependent, dynamic linear interpolation (ddlerp).
+
+Comparing inference complexity across different models, Transformers have time complexity of O(T²) and space complexity of O(T²), resulting in increasingly slower inference and higher memory consumption. In contrast, RWKV has time complexity of O(T) and space complexity of O(1). Through computational flow optimization, RWKV large models achieve constant inference speed, dramatically reducing time consumption during inference.
+
+Furthermore, the RWKV architecture design significantly reduces VRAM usage, enabling efficient model operation even on standard CPU configurations or non-professional GPUs, without dependence on expensive or high-end computing hardware. This breakthrough advancement removes the hardware platform constraints on large-scale deep learning models, broadening their application scope.
+
 ## RWKV Architecture References
 
 For core concepts of the RWKV architecture, please refer to [RWKV in 150 lines of code](https://github.com/BlinkDL/ChatRWKV/blob/main/RWKV_in_150_lines.py).

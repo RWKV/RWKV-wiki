@@ -23,7 +23,7 @@ The GPU VRAM requirements for RWKV LoRA fine-tuning can be referred to in the fo
 | RWKV7-0.1B | 2.7GB GPU  | 2.5GB GPU  | 2.4GB GPU  |
 | RWKV7-0.4B | 3.4GB GPU  | 2.9GB GPU  | 2.7GB GPU  |
 | RWKV7-1.5B | 5.6GB GPU  | 4.6GB GPU  | 3.9GB GPU  |
-| RWKV7-3B | 8.8GB GPU  | 6.7GB GPU  | 5.7GB GPU  |
+| RWKV7-2.9B | 8.8GB GPU  | 6.7GB GPU  | 5.7GB GPU  |
 
 @tab RWKV-6
 
@@ -94,7 +94,7 @@ The following are the corresponding n_layer/n_embd values for RWKV model paramet
 | 0.1B       | 12      | 768    |
 | 0.4B       | 24      | 1024   |
 | 1.5B       | 24      | 2048   |
-| 3B         | 32      | 2560   |
+| 2.9B       | 32      | 2560   |
 | 7B         | 32      | 4096   |
 | 14B        | 61      | 4096   |
 

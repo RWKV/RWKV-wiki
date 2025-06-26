@@ -18,7 +18,7 @@ The VRAM requirements for State tuning can be referred to in the following table
 | RWKV7-0.1B | 2.6GB GPU  | 2.4GB GPU  | 2.5GB GPU  |
 | RWKV7-0.4B | 3.1GB GPU  | 2.9GB GPU  | 2.8GB GPU  |
 | RWKV7-1.5B | 5.3GB GPU  | 4.1GB GPU  | 3.7GB GPU  |
-| RWKV7-3B   | 8.2GB GPU  | 5.7GB GPU  | 4.7GB GPU  |
+| RWKV7-2.9B | 8.2GB GPU  | 5.7GB GPU  | 4.7GB GPU  |
 
 @tab RWKV-6
 
@@ -109,7 +109,7 @@ The parameter sizes of the base RWKV models are different, and the values of n_l
 | 0.1B       | 12      | 768    |
 | 0.4B       | 24      | 1024   |
 | 1.5B       | 24      | 2048   |
-| 3B         | 32      | 2560   |
+| 2.9B       | 32      | 2560   |
 | 7B         | 32      | 4096   |
 | 14B        | 61      | 4096   |
 
