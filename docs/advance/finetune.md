@@ -45,7 +45,7 @@ Below are the VRAM requirements for various RWKV-PEFT fine-tuning methods with d
 | RWKV7-0.1B | 2.6GB GPU   | 2.4GB GPU  | 2.5GB GPU  |
 | RWKV7-0.4B | 3.1GB GPU   | 2.9GB GPU  | 2.8GB GPU  |
 | RWKV7-1.5B | 5.3GB GPU   | 4.1GB GPU  | 3.7GB GPU  |
-| RWKV7-3B   | 8.2GB GPU   | 5.7GB GPU  | 4.7GB GPU  |
+| RWKV7-2.9B   | 8.2GB GPU   | 5.7GB GPU  | 4.7GB GPU  |
 
 @tab LoRA
 **VRAM requirements for [LoRA fine-tuning](../RWKV-Fine-Tuning/LoRA-Fine-Tuning.md) of RWKV-7 models:**
@@ -55,7 +55,7 @@ Below are the VRAM requirements for various RWKV-PEFT fine-tuning methods with d
 | RWKV7-0.1B | 2.7GB GPU   | 2.5GB GPU  | 2.4GB GPU  |
 | RWKV7-0.4B | 3.4GB GPU   | 2.9GB GPU  | 2.7GB GPU  |
 | RWKV7-1.5B | 5.6GB GPU   | 4.6GB GPU  | 3.9GB GPU  |
-| RWKV7-3B   | 8.8GB GPU   | 6.7GB GPU  | 5.7GB GPU  |
+| RWKV7-2.9B   | 8.8GB GPU   | 6.7GB GPU  | 5.7GB GPU  |
 
 @tab DiSHA
 **VRAM requirements for [DiSHA fine-tuning](../RWKV-Fine-Tuning/DiSHA-Fine-Tuning.md) of RWKV-7 models:**
@@ -65,7 +65,7 @@ Below are the VRAM requirements for various RWKV-PEFT fine-tuning methods with d
 | RWKV7-0.1B | 2.7GB GPU   | 2.5GB GPU  | 2.4GB GPU  |
 | RWKV7-0.4B | 3.1GB GPU   | 2.9GB GPU  | 2.7GB GPU  |
 | RWKV7-1.5B | 5.6GB GPU   | 4.5GB GPU  | 3.9GB GPU  |
-| RWKV7-3B   | 8.8GB GPU   | 6.7GB GPU  | 5.7GB GPU  |
+| RWKV7-2.9B   | 8.8GB GPU   | 6.7GB GPU  | 5.7GB GPU  |
 
 @tab PiSSA
 **VRAM requirements for [PiSSA fine-tuning](../RWKV-Fine-Tuning//Pissa-Fine-Tuning.md) of RWKV-7 models:**
@@ -75,7 +75,7 @@ Below are the VRAM requirements for various RWKV-PEFT fine-tuning methods with d
 | RWKV7-0.1B | 2.6GB GPU   | 2.5GB GPU  | 2.4GB GPU  |
 | RWKV7-0.4B | 3.4GB GPU   | 3.0GB GPU  | 2.7GB GPU  |
 | RWKV7-1.5B | 5.6GB GPU   | 4.6GB GPU  | 3.9GB GPU  |
-| RWKV7-3B   | 8.8GB GPU   | 6.7GB GPU  | 5.7GB GPU  |
+| RWKV7-2.9B   | 8.8GB GPU   | 6.7GB GPU  | 5.7GB GPU  |
 
 :::
 

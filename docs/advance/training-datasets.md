@@ -232,7 +232,7 @@ You should be able to find the converted bin/idx files in the `data` folder:
 
 At this time, our preparatory work is over. Next, we need to **select a fine-tuning method** and read the corresponding documentation in the following articles.
 
-- [State Tuning](./State-Tuning.md)
-- [Pissa Fine-Tuning](./Pissa-Fine-Tuning.md)
-- [DiSHA Fine-Tuning](./DiSHA-Fine-Tuning.md)
-- [LoRA Fine-Tuning](./LoRA-Fine-Tuning.md)
+- [State Tuning](../RWKV-Fine-Tuning/State-Tuning.md)
+- [Pissa Fine-Tuning](../RWKV-Fine-Tuning/Pissa-Fine-Tuning.md)
+- [DiSHA Fine-Tuning](../RWKV-Fine-Tuning/DiSHA-Fine-Tuning.md)
+- [LoRA Fine-Tuning](../RWKV-Fine-Tuning/LoRA-Fine-Tuning.md)

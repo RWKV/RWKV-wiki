@@ -1,5 +1,5 @@
 # llama.cpp Inference
- 
+
 ::: tip  
 [llama.cpp](https://github.com/ggerganov/llama.cpp) is a lightweight framework for running large language models, specifically optimized for CPU performance.  
 :::  
@@ -27,7 +27,7 @@ llama.cpp offers multiple precompiled versions. Choose the appropriate package b
 
 Alternatively, follow the [official llama.cpp build instructions](https://github.com/ggerganov/llama.cpp/blob/master/docs/build.md) to compile from source.  
 
-### Obtain GGUF Format Models  
+### Obtain GGUF Format Models
 
 llama.cpp uses `.gguf` format models. Use one of the methods below to obtain a `.gguf` RWKV model.  
 
@@ -42,23 +42,20 @@ RWKV GGUF models come in various quantization levels. Higher precision (e.g., `F
 
 Recommended priority: `FP16` > `Q8_0` > `Q5_K_M` > `Q4_K_M`. Lower quantizations (e.g., `Q3_0`, `Q2_0`) may severely degrade performance.  
 
-@tab Convert from HF to GGUF  
+@tab Convert from pth to GGUF  
 
-1. Download an RWKV Hugging Face model from the [RWKV HF Hub](https://huggingface.co/RWKV), such as `RWKV/RWKV7-Goose-World3-2.9B-HF`.  
-2. Use the following command to download the source code of `llama.cpp`:
-
-```bash copy
-git clone https://github.com/ggml-org/llama.cpp.git
-```
-
-3. Run the following command in the llama.cpp directory to convert the HF model to GGUF:  
+1. First, download an RWKV model in `pth` format from [Hugging Face](https://huggingface.co/BlinkDL).
+2. Download the `convert_hf_to_gguf.py` conversion script from the [MollySophia/rwkv-mobile repository](https://github.com/MollySophia/rwkv-mobile/blob/master/converter/convert_rwkv_pth_to_gguf.py).
+3. Download the RWKV vocabulary file [rwkv_vocab_v20230424.txt](https://github.com/MollySophia/rwkv-mobile/blob/master/assets/rwkv_vocab_v20230424.txt). Ensure the vocabulary file and the conversion script are in the same directory.
+4. Run the command `pip install torch gguf` to install the dependencies required by the conversion script.
+5. Run the following command in the directory of the conversion script to convert the model from `pth` format to `gguf` format：  
 
 ```bash copy  
-python llama.cpp/convert_hf_to_gguf.py ./RWKV7-Goose-World3-2.9B-HF 
+python convert_rwkv_pth_to_gguf.py [The path of the pth model file] rwkv_vocab_v20230424.txt 
 ```  
 
 ::: warning  
-Replace `./RWKV7-Goose-World3-2.9B-HF` with your actual RWKV HF model directory.
+Replace `[The path of the pth model file]` with your actual RWKV pth model directory.
 :::  
 
 ### Run RWKV Model for Chat  

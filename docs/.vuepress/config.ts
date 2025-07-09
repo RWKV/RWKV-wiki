@@ -46,6 +46,8 @@ export default defineUserConfig({
 				text: 'Advanced', 
 				link: '/advance/finetune.html',
 				children: [
+					"/advance/pretrain.md",
+					"/advance/RWKV-FLA.md",
 					"/advance/finetune.md",
 					"/advance/training-datasets.md",
 					"/advance/training-enviroment.md",
@@ -67,7 +69,7 @@ export default defineUserConfig({
 			},
 			{ 
 				text: 'Fine Tune Tutorials', 
-				link: '/RWKV-Fine-Tuning/Introduction.html',
+				link: '/RWKV-Fine-Tuning/State-Tuning.html',
 				children: [
 					"/RWKV-Fine-Tuning/State-Tuning.md",
 					"/RWKV-Fine-Tuning/LoRA-Fine-Tuning.md",
