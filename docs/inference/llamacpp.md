@@ -81,7 +81,7 @@ This command runs the `models/rwkv-7-world-2.9b-Q8_0.gguf` model with 8 threads,
 - `-n 500`: Maximum tokens to generate.  
 
 ::: tip  
-For a full list of parameters, see the [llama.cpp documentation](https://github.com/ggerganov/llama.cpp/blob/master/examples/main/README.md).  
+For a full list of parameters, see the [llama.cpp documentation](https://github.com/ggml-org/llama.cpp/blob/master/tools/main/README.md#input-prompts).  
 :::  
 
 ## Additional Features (Optional)  

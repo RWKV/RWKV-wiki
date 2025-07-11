@@ -50,10 +50,6 @@ pip install torch --upgrade --extra-index-url https://download.pytorch.org/whl/c
 pip install pytorch-lightning==1.9.5 deepspeed wandb ninja --upgrade
 ```
 
-::: tip
-Slow download? Try adding the `-i https://mirrors.aliyun.com/pypi/simple` argument to the command to use the Aliyun mirror for faster downloads.
-:::
-
 After installation, use the following command to verify the PyTorch and CUDA versions:
 
 ```bash

@@ -53,8 +53,6 @@ RWKV has released open-source models of various parameter scales for each archit
 
 # Which RWKV Models Should I Use?
 
-Here's the English translation:
-
 ::: tip
 Due to performance issues caused by outdated architectures, all RWKV-5, RWKV-4 series models (Raven / World / Pile ...) and earlier RWKV versions have reached end-of-life, with existing models serving only as archives.
 :::
