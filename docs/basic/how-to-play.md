@@ -57,7 +57,8 @@ The RWKV community has completed the development of Android and iOS apps, and no
 
 After loading the model, RWKV models can run locally on your device.
 
-- [https://github.com/RWKV-APP/RWKV_APP](https://github.com/RWKV-APP/RWKV_APP)
+- Android download link: [https://huggingface.co/datasets/rwkv-app/RWKV-Chat/tree/main](https://huggingface.co/datasets/rwkv-app/RWKV-Chat/tree/main)
+- iOS download link: [https://testflight.apple.com/join/DaMqCNKh](https://testflight.apple.com/join/DaMqCNKh)
 
 Below is the actual performance on a phone equipped with the Qualcomm Snapdragon 8Gen2 chip:
 
