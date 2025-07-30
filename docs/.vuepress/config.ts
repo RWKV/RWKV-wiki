@@ -30,6 +30,7 @@ export default defineUserConfig({
 					"/basic/how-to-play.md",
 					"/basic/decoding-parameters.md",
 					"/basic/integrate.md",
+					"/basic/rwkv-performance-data.md",
 					"/basic/FAQ.md",
 				]
 			},

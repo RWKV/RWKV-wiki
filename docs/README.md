@@ -12,7 +12,7 @@ On September 20, 2023, the RWKV open-source project officially joined the Linux 
 
 - [Discord Forum](https://discord.gg/bDSBUMeFpc)
 - [HF Gradio-1 | RWKV7-G1 2.9B](https://huggingface.co/spaces/BlinkDL/RWKV-Gradio-1)
-- [HF Gradio-2 | RWKV7-G1](https://huggingface.co/spaces/BlinkDL/RWKV-Gradio-2)
+- [HF Gradio-2 | RWKV7-G0](https://huggingface.co/spaces/BlinkDL/RWKV-Gradio-2)
 
 # RWKV Architecture and Papers
 
