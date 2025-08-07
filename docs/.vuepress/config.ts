@@ -27,6 +27,7 @@ export default defineUserConfig({
 				text: 'Getting Started', 
 				link: '/basic/how-to-play.html',
 				children: [
+					"/basic/architecture.md",
 					"/basic/how-to-play.md",
 					"/basic/decoding-parameters.md",
 					"/basic/integrate.md",
@@ -51,15 +52,14 @@ export default defineUserConfig({
 					"/advance/RWKV-FLA.md",
 					"/advance/finetune.md",
 					"/advance/training-datasets.md",
-					"/advance/training-enviroment.md",
-					"/advance/architecture.md",
-					"/advance/RWKVpip.md"
+					"/advance/training-enviroment.md"
 				]
 			},
 			{ 
 				text: 'Inference Tutorials', 
 				link: '/inference/llamacpp.html',
 				children: [
+					"/inference/RWKVpip.md",
 					"/inference/llamacpp.md",
 					"/inference/ollama.md",
 					"/inference/sillytraven.md",

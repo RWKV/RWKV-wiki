@@ -18,7 +18,7 @@ If you simply want to try RWKV Goose, checkout the following public demo.
 ### Hugging Face (Completion Mode)
 
 - [HF-Gradio-1: RWKV7-G1 2.9B](https://huggingface.co/spaces/BlinkDL/RWKV-Gradio-1)
-- [HF-Gradio-2: The latest RWKV7-G1 model](https://huggingface.co/spaces/BlinkDL/RWKV-Gradio-2)
+- [HF-Gradio-2: The latest RWKV model](https://huggingface.co/spaces/BlinkDL/RWKV-Gradio-2)
 
 ::: warning
 The above public demos only support Completion mode and do not support direct dialogue.
@@ -57,8 +57,7 @@ The RWKV community has completed the development of Android and iOS apps, and no
 
 After loading the model, RWKV models can run locally on your device.
 
-- Android download link: [https://huggingface.co/datasets/rwkv-app/RWKV-Chat/tree/main](https://huggingface.co/datasets/rwkv-app/RWKV-Chat/tree/main)
-- iOS download link: [https://testflight.apple.com/join/DaMqCNKh](https://testflight.apple.com/join/DaMqCNKh)
+- [https://github.com/RWKV-APP/RWKV_APP](https://github.com/RWKV-APP/RWKV_APP)
 
 Below is the actual performance on a phone equipped with the Qualcomm Snapdragon 8Gen2 chip:
 
@@ -178,10 +177,6 @@ Below are the VRAM requirements and generation speed for locally deploying and r
 - Memory: 32GB
 :::
 
-::: tabs
-
-@tab VRAM Requirements
-
 Below are the VRAM/memory requirements for different inference backends and corresponding quantization methods (**default quantization for all layers**):
 
 | Inference Backend | 1B6 Model | 3B Model | 7B Model | 14B Model |
@@ -197,28 +192,6 @@ Below are the VRAM/memory requirements for different inference backends and corr
 | webgpu(python)-FP16 | 3GB VRAM | 6.3GB VRAM | 14GB VRAM | About 28GB VRAM  |
 | webgpu(python)-INT8 | 1.9GB VRAM | 4.2GB VRAM | 7.7GB VRAM | 15GB VRAM (Quantized 41 layers) |
 | webgpu(python)-NF4  | 1.2GB VRAM | 2.5GB VRAM | 4.8GB VRAM | 14.3GB VRAM (Quantized 41 layers) |
-
-@tab Generation Speed
-
-Generation speed (unit: TPS, approximately equal to the number of words per second) for different inference backends/quantization (**default quantization for all layers**).
-
-| Inference Backend | 1B6 Model | 3B Model | 7B Model | 14B Model |
-| --- | --- | --- | --- | --- |
-| CPU-FP32 | 4.36 | 2.3 | Very Slow | OOM (Not Recommended) |
-| rwkv.cpp-FP16 | 8.6 | 4.5 | 2 | 1 |
-| rwkv.cpp-Q5_1 | 14 | 8 | 3.7 | 2.1 |
-| CUDA-FP16 | 25 | 18 | 15 |  |
-| CUDA-INT8  | 22 | 16 | 18 | 7.4 |
-| webgpu-FP16 | 45 | 38 | 21 | OOM, Unable to Test |
-| webgpu-INT8  | 60 | 44 | 30 | 18 |
-| webgpu-NF4  | 60 | 47 | 34 | 20 |
-| webgpu(python)-FP16 | 40 | 29 | 17 | OOM, Unable to Test |
-| webgpu(python)-INT8  | 45 | 35 | 23 | 15 |
-| webgpu(python)-NF4  | 43 | 32 | 21 | 18 |
-
-:::
-
-:::info
 
 - `CUDA`, `CPU` from [RWKV pip Package](https://pypi.org/project/rwkv/)
 - `rwkv.cpp` from [rwkv.cpp](https://github.com/RWKV/rwkv.cpp) Project
