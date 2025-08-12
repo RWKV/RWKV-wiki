@@ -40,7 +40,7 @@ A repository downloaded as a zip file does not contain git information, so you c
 
 ## Prepare the Training Environment
 
-Please refer to [RWKV Fine-Tuning Environment Setup](./Fine-Tune/FT-Environment.mdx) to configure a Conda environment, and then install the following software in the new environment:
+Please refer to [RWKV Traing Environment](./training-enviroment.md) to configure a Conda environment, and then install the following software in the new environment:
 
 ``` bash copy
 # Install the CUDA 12.1 version of torch via a specific URL, or you can choose the latest version of torch + your CUDA version.
@@ -49,10 +49,6 @@ pip install torch --upgrade --extra-index-url https://download.pytorch.org/whl/c
 # The --upgrade flag means that if the corresponding package is already installed, it will be upgraded.
 pip install pytorch-lightning==1.9.5 deepspeed wandb ninja --upgrade
 ```
-
-::: tip
-Slow download? Try adding the `-i https://mirrors.aliyun.com/pypi/simple` argument to the command to use the Aliyun mirror for faster downloads.
-:::
 
 After installation, use the following command to verify the PyTorch and CUDA versions:
 
@@ -64,7 +60,7 @@ The output `2.5.1+cu121 True` indicates that PyTorch 2.5.1 for CUDA 12.1 is inst
 
 ## Prepare the Training Data
 
-Please refer to the [Prepare Training Data](./Fine-Tune/FT-Dataset.mdx) document to prepare a pre-training dataset in `jsonl` format and place it in the `RWKV-LM/RWKV-v5` directory.
+Please refer to the [Prepare Training Data](./training-datasets.md) document to prepare a pre-training dataset in `jsonl` format and place it in the `RWKV-LM/RWKV-v5` directory.
 
 In the `RWKV-LM/RWKV-v5` directory, run the following command to convert the `jsonl` data file to `binidx` format:
 
@@ -177,11 +173,10 @@ After pre-training is complete, you can find the intermediate checkpoints `rwkv-
 
 ![pretrain-get-model](./imgs/pretrain/pretrain-get-model.png)
 
-You can use [RWKV Runner](../intermediate/RWKV-Runner/Introduction.md) or the [RWKV pip - API_DEMO_CHAT.py](../intermediate/RWKVpip.mdx) script to test the pre-trained model. In addition to the final model file `rwkv-final.pth`, you can also test the last few model checkpoints.
+You can use [RWKV Runner](../basic/how-to-play.html#rwkv-runner) or the [RWKV pip - API_DEMO_CHAT.py](../inference/RWKVpip.html) script to test the pre-trained model. In addition to the final model file `rwkv-final.pth`, you can also test the last few model checkpoints.
 
 ![test-pretrain-model](./imgs/pretrain/pretrain-test-result.png)
 
-## Appendix
 
 ### DeepSpeed Training Strategies
 

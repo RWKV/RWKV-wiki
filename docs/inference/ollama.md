@@ -80,7 +80,7 @@ RWKV gguf models have various quantized versions. It is recommended to use `FP16
 :::
 
 ::: tip
-Fine-tuned an RWKV-7 model yourself and want to convert it from pth to gguf format? Check the [llama.cpp docs - Convert pth model to gguf](../llamacpp#get-gguf-models).
+Fine-tuned an RWKV-7 model yourself and want to convert it from pth to gguf format? Check the [llama.cpp docs - Convert pth model to gguf](./llamacpp##obtain-gguf-format-models).
 :::
 
 ---

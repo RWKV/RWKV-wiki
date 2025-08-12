@@ -516,7 +516,7 @@ According to the comparison of the inference complexity of different models, the
 
 In addition, the RWKV architecture design significantly reduces memory usage, making the model efficient  on standard configuration CPUs or non-professional GPUs rather than expensive or high-end computing hardware. This breakthrough progress makes large-scale deep learning models no longer limited to specific hardware platforms, thus broadening the application range.
 
-#### RWKV-V7 Model Release[#rwkv-v7-model-release]
+#### RWKV-V7 Model Release
 
 RWKV-V7 has released three series of pre-trained models: Pile, World, and G1.
 

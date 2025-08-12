@@ -12,7 +12,7 @@ On September 20, 2023, the RWKV open-source project officially joined the Linux 
 
 - [Discord Forum](https://discord.gg/bDSBUMeFpc)
 - [HF Gradio-1 | RWKV7-G1 2.9B](https://huggingface.co/spaces/BlinkDL/RWKV-Gradio-1)
-- [HF Gradio-2 | RWKV7-G1](https://huggingface.co/spaces/BlinkDL/RWKV-Gradio-2)
+- [HF Gradio-2 | RWKV7-G0](https://huggingface.co/spaces/BlinkDL/RWKV-Gradio-2)
 
 # RWKV Architecture and Papers
 
@@ -52,8 +52,6 @@ RWKV has released open-source models of various parameter scales for each archit
 | 14B Model |  Released |  No Plan |  [Released](https://huggingface.co/BlinkDL/rwkv-6-world/blob/main/RWKV-x060-World-14B-v2.1-20240719-ctx4096.pth) | No Plan  | **📅 Planned** |
 
 # Which RWKV Models Should I Use?
-
-Here's the English translation:
 
 ::: tip
 Due to performance issues caused by outdated architectures, all RWKV-5, RWKV-4 series models (Raven / World / Pile ...) and earlier RWKV versions have reached end-of-life, with existing models serving only as archives.

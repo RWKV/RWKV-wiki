@@ -215,7 +215,7 @@ After obtaining the DiSHA weight file (such as `rwkv-0.pth`), you need to **merg
 
 This process can be completed using the `merge_disha.sh` script file in the `RWKV-PEFT/scripts` directory.
 
-### Modify the Merging Parameters[#modify-merge-parameters]
+### Modify the Merging Parameters
 
 Open the `merge_disha.sh` script file in the `scripts` directory using a text editor and modify the merging parameters in the script:
 
@@ -240,7 +240,7 @@ python merge/merge_disha.py --base_model $base_model \
 # --quant int8/nf4 (Synchronize with the quantization parameter during training)
 ```
 
-### Merge the DiSHA Weight File[#merge-disha]
+### Merge the DiSHA Weight File
 
 After modifying and saving the file, run the command `sh scripts/merge_disha.sh` in the `RWKV-PEFT` main directory to merge the DiSHA model:
 
