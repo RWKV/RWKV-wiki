@@ -169,37 +169,29 @@ After adjusting the parameters, remember to save the `demo-state-tuning.sh` file
 ### Appendix: State Tuning Configuration Reference
 
 ``` bash copy filename="demo-state-tuning.sh"
-load_model='/home/rwkv/RWKV-PEFT/model/RWKV-x070-World-0.4B-v2.9-20250107-ctx4096.pth'
-proj_dir='/home/rwkv/RWKV-PEFT/output-manjuan/lora'
-data_file='/home/rwkv/RWKV-PEFT/data/test-1'
-
-n_layer=24
-n_embd=1024
-
-micro_bsz=4
+load_model='/home/rwkv/models/basemodel/3b.pth'
+proj_dir='/home/rwkv/RWKV-PEFT/output_state'
+data_file='/home/rwkv/RWKV-PEFT/data/qaemoji'
+n_layer=32
+n_embd=2560
+micro_bsz=2
 epoch_save=1
-epoch_steps=1000
+epoch_steps=500
 ctx_len=512
-
-lora_config='{"lora_load":"","lora_r":32,"lora_alpha":64,"lora_dropout":0.01}'
-
-
 python train.py --load_model $load_model \
 --proj_dir $proj_dir --data_file $data_file \
---vocab_size 65536 \
+--data_type binidx --vocab_size 65536 \
+--ctx_len $ctx_len --epoch_steps $epoch_steps --epoch_count 5 --epoch_begin 0 --epoch_save $epoch_save --micro_bsz $micro_bsz \
 --n_layer $n_layer --n_embd $n_embd \
---data_type binidx --dataload pad --loss_mask pad \
---ctx_len $ctx_len --micro_bsz $micro_bsz \
---epoch_steps $epoch_steps --epoch_count 1 --epoch_begin 0 --epoch_save $epoch_save \
---lr_init 2e-5 --lr_final 2e-5 --warmup_steps 0 --beta1 0.9 --beta2 0.99 --adam_eps 1e-8 \
+--pre_ffn 0 --head_qk 0 --lr_init 1 --lr_final 1e-2 --warmup_steps 10 --beta1 0.9 --beta2 0.99 --adam_eps 1e-8 \
 --accelerator gpu --devices 1 --precision bf16 --strategy deepspeed_stage_1 --grad_cp 1 \
 --my_testing "x070" \
---peft lora --lora_config $lora_config \
+--train_type "state"  --dataload pad --wandb PEFT-State-tuning
+
 # The following are optional
-# --op cuda/fla/triton (choose different operators, default is cuda)
-# --wandb RWKV-PEFT-LoRA (whether to use wandb to monitor the training process)
-# --quant int8/nf4 (whether to quantize the training)
-# --lr_schedule wsd (whether to enable cosine annealing to optimize the learning rate, default lr_schedule = cos_decay)
+# --fla 
+# --quant int8/nf4 (Whether to quantize training)
+# --wandb PEFT-State-tuning (Whether to use wandb to monitor the training process)
 ```
 
 ## Start the Training

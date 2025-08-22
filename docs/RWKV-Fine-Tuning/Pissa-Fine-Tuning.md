@@ -248,8 +248,8 @@ output='/home/rwkv/RWKV-PEFT/output_pissa/pissa-test-3b.pth'
 TYPE='pissa'
 
 python merge/merge.py --base_model $base_model \
---lora_init $lora_init \
---lora_checkpoint $lora_checkpoint \
+--lora_init $pissa_init \
+--lora_checkpoint $pissa_checkpoint \
 --output $output \
 --type $TYPE 
 # --quant int8/nf4 (Synchronize with the quantization parameter during training)

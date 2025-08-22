@@ -112,7 +112,7 @@ The following parameters are recommended to be adjusted according to your fine-t
 | Parameter | Description |
 | --- | --- |
 | `micro_bsz=1` | Micro-batch size. Adjust according to the size of the VRAM. Gradually increase it starting from 1 during fine-tuning |
-| `epoch_save=5` | Save the Pissa file every few training epochs. Pay attention to whether the storage space is sufficient |
+| `epoch_save=5` | Save the DiSHA file every few training epochs. Pay attention to whether the storage space is sufficient |
 | `epoch_steps=1200` | The number of steps in each training epoch. Increasing this value will prolong the training time of a single epoch |
 | `ctx_len=512` | The context length of the fine-tuned model. It is recommended to modify it according to the length of the corpus |
 
@@ -188,7 +188,7 @@ python train.py --load_model $load_model \
 --peft disha --disha_config $disha_config \
 # The following are optional
 # --op cuda/fla/triton (choose different operators, default is cuda if this parameter is not added)
-# --wandb RWKV-PEFT-LoRA (whether to use wandb to monitor the training process)
+# --wandb RWKV-PEFT-DiSHA (whether to use wandb to monitor the training process)
 # --quant int8/nf4 (whether to quantize the training)
 # --lr_schedule wsd (whether to enable cosine annealing to optimize the learning rate, default lr_schedule = cos_decay) 
 ```
