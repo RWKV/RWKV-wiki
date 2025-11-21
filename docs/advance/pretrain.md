@@ -182,13 +182,13 @@ You can use [RWKV Runner](../basic/how-to-play.html#rwkv-runner) or the [RWKV pi
 
 DeepSpeed supports the following five [training strategies](https://www.deepspeed.ai/tutorials/zero/#zero-overview):
 
-| Strategy Name               | VRAM Usage | CPU Usage | Training Speed | Applicable GPU Scenario                 | Description                                       |
-| --------------------------- | ---------- | --------- | -------------- | --------------------------------------- | ------------------------------------------------- |
-| `deepspeed_stage_1`         | High       | Low       | Fast           | High-end GPUs with ample VRAM           | Basic version, highest VRAM usage.                |
-| `deepspeed_stage_2`         | Medium     | Low       | Fast           | Consumer-grade high-end GPUs (e.g., 3090) | Best balance between VRAM and speed.              |
-| `deepspeed_stage_2_offload` | Low        | Medium    | Medium         | Machines with medium VRAM and a decent CPU | Reduces VRAM usage but is slightly slower.        |
-| `deepspeed_stage_3`         | Low        | Medium    | Medium         | Low VRAM, requires partitioning large models | Supports extremely large models, complex configuration. |
-| `deepspeed_stage_3_offload` | Lowest     | High      | Slow           | Low VRAM + high-performance CPU         | Most VRAM-efficient, but requires high CPU performance. |
+| Strategy Name | VRAM Usage | CPU Usage | Training Speed | Use Cases | Key Features |
+|---|:---:|:---:|:---:|---|---|
+| stage_1 | High | Low | Fastest | Training clusters with ample VRAM | Shards optimizer states only. Stable and efficient; offers the best throughput. |
+| stage_2 | Medium | Low | Fast | Consumer/Research machines with moderate VRAM | Shards optimizer states + gradients. More memory efficient; slight impact on throughput. |
+| stage_2_offload | Low | Medium | Medium | Limited VRAM but strong CPU | Offloads optimizer states to CPU/NVMe. Significant VRAM reduction, but increases communication overhead. |
+| stage_3 | Very Low | Medium | Medium ~ Slow | Essential for large models (>7B) | Shards model parameters. Saves VRAM, but involves complex communication. |
+| stage_3_offload | Lowest | High | Slowest | Minimal VRAM + Strong CPU/NVMe | Lowest VRAM usage, but speed depends heavily on bandwidth; significantly slower. |
 
 **`deepspeed_stage_2` is the best compromise, considering VRAM savings, training performance, and ease of deployment.**
 

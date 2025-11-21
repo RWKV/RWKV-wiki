@@ -74,8 +74,8 @@ export default defineUserConfig({
 				children: [
 					"/RWKV-Fine-Tuning/State-Tuning.md",
 					"/RWKV-Fine-Tuning/LoRA-Fine-Tuning.md",
+					"/RWKV-Fine-Tuning/MiSS-Fine-Tuning.md",
 					"/RWKV-Fine-Tuning/Pissa-Fine-Tuning.md",
-					"/RWKV-Fine-Tuning/DiSHA-Fine-Tuning.md",
 					"/RWKV-Fine-Tuning/FAQ.md",
 				]
 			},

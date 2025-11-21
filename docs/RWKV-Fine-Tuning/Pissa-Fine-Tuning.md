@@ -1,5 +1,9 @@
 # PiSSA Fine-Tuning Tutorial
 
+::: warning
+> The latest version of the RWKV-PEFT repository no longer provides PiSSA `.sh` scripts. You need to align it manually with [🤗 PEFT](https://github.com/huggingface/peft).
+:::
+
 ::: info What is PiSSA Fine-Tuning?
 
 [PiSSA Fine-Tuning](https://arxiv.org/abs/2404.02948) is a parameter-efficient fine-tuning method (PEFT, Parameter-Efficient Fine-Tuning). PiSSA fine-tuning maintains model performance by selectively updating part of the parameters (such as LoRA or Adapter layers), while avoiding a comprehensive update of the entire model, thus improving training efficiency.

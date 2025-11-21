@@ -38,6 +38,14 @@ In 2020, BlinkDL began researching Transformers and immediately discovered two o
 
 Later, he noticed Apple's [Attention Free Transformer](https://arxiv.org/abs/2105.14103) (AFT) paper and tested it, finding that these two techniques also brought significant performance improvements to AFT.
 
+:::tip
+As of November 2025, the RWKV-8 architecture is still in the experimental stage. Published features of RWKV-8 include:
+
+- [RWKV-8 Preview: DeepEmbed - An edge-friendly sparse design to solve MoE VRAM usage](https://x.com/BlinkDL_AI/status/1926941496684519805)
+- [RWKV-8 Series: DeepEmbedAttention - Streamlining KV Cache, especially suitable for hybrid models (RWKV-7s)](https://x.com/BlinkDL_AI/status/1939660738723004780)
+- [RWKV-8 Series: ROSA (RWKV Online Suffix Automaton) Mechanism - Paving the way for the future](https://x.com/BlinkDL_AI/status/1976912771985146184)
+:::
+
 ### RWKV-V1
 
 In August 2021, the first version of the RWKV architecture: RWKV-V1 released on [**RWKV-LM repository**](https://github.com/BlinkDL/RWKV-LM). The [**first commit**](https://github.com/BlinkDL/RWKV-LM/commit/4c6db5607c6f94c38c10004efb292510bc71ba59) of RWKV-V1 was on August 9, 2021.
@@ -536,6 +544,15 @@ The RWKV7-G1 series models are trained on the latest World v3.5 dataset, featuri
 | rwkv7-g1-2.9b     | Trained on 10T tokens randomly sampled from the World v3.5 dataset         |
 
 All RWKV7-G1 series models can be viewed at the [RWKV7-G1 model repository](https://huggingface.co/BlinkDL/rwkv7-g1/tree/main).
+
+| Field | Meaning |
+| --- | --- |
+| **rwkv7a / rwkv7** | Model architecture version. [rwkv7](https://arxiv.org/abs/2503.14456) is the latest RWKV base architecture; rwkv7a adds the [DE](https://x.com/BlinkDL_AI/status/1926941496684519805) mechanism to rwkv7, and rwkv7b adds both [DE](https://x.com/BlinkDL_AI/status/1926941496684519805) and [DEA](https://x.com/BlinkDL_AI/status/1939532655823040545) to rwkv7. |
+| **0.1b / 7.2b** | Model parameter size, where "B" stands for "Billions". |
+| **g1b / g0a2 / g1a3** | **Training data version**. Data quality ranking: G1b > G1a3 > G1a2 > G1a > G1 > G0a2 > G0. The RWKV7-G1a model is based on the RWKV7-G1 model with an additional 1T of high-quality reasoning and instruction data; RWKV7-G1a2 is based on RWKV7-G1a with further data added, and so on. |
+| **20250819 / 20251005** | Model release date. |
+| **ctx4096/ctx8192** | Pre-training context length. |
+
 ::: tip
 The World v3.5 dataset is an expanded version of the World V3 dataset, containing additional novels, web pages, mathematics, code, and reasoning data, totaling 5.16T tokens.
 

@@ -57,8 +57,8 @@ Below are the VRAM requirements for various RWKV-PEFT fine-tuning methods with d
 | RWKV7-1.5B | 5.6GB GPU   | 4.6GB GPU  | 3.9GB GPU  |
 | RWKV7-2.9B   | 8.8GB GPU   | 6.7GB GPU  | 5.7GB GPU  |
 
-@tab DiSHA
-**VRAM requirements for [DiSHA fine-tuning](../RWKV-Fine-Tuning/DiSHA-Fine-Tuning.md) of RWKV-7 models:**
+@tab MiSS
+**VRAM requirements for [MiSS fine-tuning](../RWKV-Fine-Tuning/MiSS-Fine-Tuning.md) of RWKV-7 models:**
 
 | Model Size | bf16  | int8 quantization | nf4 quantization |
 |------------|---------|--------|--------|
@@ -77,13 +77,16 @@ Below are the VRAM requirements for various RWKV-PEFT fine-tuning methods with d
 | RWKV7-1.5B | 5.6GB GPU   | 4.6GB GPU  | 3.9GB GPU  |
 | RWKV7-2.9B   | 8.8GB GPU   | 6.7GB GPU  | 5.7GB GPU  |
 
+::: warning
+> The latest version of the RWKV-PEFT repository no longer provides PiSSA `.sh` scripts. You need to align it manually with [🤗 PEFT](https://github.com/huggingface/peft).
+
 :::
 
 ### RWKV-6 Fine-tuning
 
 RWKV-6 models require slightly more VRAM for fine-tuning compared to RWKV-7. The following VRAM requirements are for reference:
 
-|   Model Size   | Full Fine-tuning | DiSHA/LoRA/PISSA  | QLoRA/QPissa | State tuning |
+|   Model Size   | Full Fine-tuning | MiSS/LoRA/PISSA  | QLoRA/QPissa | State tuning |
 | --------- | ---- | ---- | ---- | ---- |
 | RWKV6-1.6B | OOM | 7.4GB GPU | 5.6GB GPU | 6.4GB GPU |
 | RWKV6-3B | OOM  | 12.1GB GPU | 8.2GB GPU | 9.4GB GPU |
@@ -98,5 +101,5 @@ read the tutorials for different fine-tuning methods of RWKV-PEFT:
 
 - [State Tuning](../RWKV-Fine-Tuning/State-Tuning.md)
 - [Pissa Fine-Tuning](../RWKV-Fine-Tuning/Pissa-Fine-Tuning.md)
-- [DiSHA Fine-Tuning](../RWKV-Fine-Tuning/DiSHA-Fine-Tuning.md)
+- [MiSS Fine-Tuning](../RWKV-Fine-Tuning/MiSS-Fine-Tuning.md)
 - [LoRA Fine-Tuning](../RWKV-Fine-Tuning/LoRA-Fine-Tuning.md)
