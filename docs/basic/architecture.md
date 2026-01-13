@@ -290,12 +290,12 @@ The RWKV-5.2 architecture released six types of models: 0.4B, 1B5, 3B, 7B, and 3
 | RWKV-5.2             | Introduced diagonal decay matrices on the basis of RWKV-5.1, that is, the $u$ and $w$ vector parameters were diagonalized                                                                                                                            | [RWKV-5-World-V2.1](https://huggingface.co/BlinkDL/rwkv-5-world) series, including 0.4B, 1B5, 3B, 7B, and 3B (ctx16k)   | World-v2                                                                                                                                  |
 
 ::: danger
-RWKV-V5 series models are all outdated, it is recommended to use RWKV-V6 models.
+RWKV-V5 series models are all outdated, it is recommended to use RWKV7-g1 series models.
 :::
 
 ### RWKV-V6
 
-The version code of RWKV-V6 is "Finch". This version was developed in October 2023 and is the currently (November 2024) stable architecture.
+The version code of RWKV-V6 is "Finch". This version was developed in October 2023.
 
 ![RWKV-V6 Complete Architecture Diagram](../img/architecture/rwkv-6-architecture.png)
 
@@ -396,7 +396,7 @@ The RWKV-V6 architecture itself does not have sub-versions, but different types 
 #### RWKV-V6 State Tuning
 
 ::: tip
-In addition to the complete model weights, RWKV community developed state tuning during the iteration of the RWKV-V6 architecture. This is a novel fine-tuning method that fine-tunes the initial state of RWKV, which is equivalent to the most efficient prompt tuning.   This method is excellent at alignment because of its strong transferability. For detailed methods of state tuning, please refer to [RWKV-PEFT - State Tuning](https://github.com/JL-er/RWKV-PEFT/blob/main/scripts/demo-state-tuning.sh).
+In addition to the complete model weights, RWKV community developed state tuning during the iteration of the RWKV-V6 architecture. This is a novel fine-tuning method that fine-tunes the initial state of RWKV, which is equivalent to the most efficient prompt tuning.   This method is excellent at alignment because of its strong transferability. For detailed methods of state tuning, please refer to [RWKV-PEFT - State Tuning](https://github.com/Joluck/RWKV-PEFT/tree/main/scripts).
 
 The fine-tuned state file can be merged into the base model or used as an "enhancement plugin for the RWKV model": that is, initializing the model's state before loading the base RWKV model to affect the model's response style, response format, etc.
 :::
@@ -509,21 +509,6 @@ def ref_fwd(r, w, k, v, a, b):
 
 ```
 
-## RWKV Architecture Features
-
-The characteristics of the RWKV large model architecture include:
-
-- Efficient and stable inference speed
-- Low and fixed memory usage (supports running on CPU)
-- Capable of handling infinite context, very suitable for long text processing and multi-round dialogue applications
-- Hardware-friendly, only performs matrix and vector multiplication operations, no KV cache
-
-The RWKV architecture consists of a series of stacked residual blocks, each of which consists of time-mixing and channel-mixing sub-blocks with a recurrent structure, which is achieved by linear interpolation between the current input and the last input (in the RWKV-4 architecture paper, this process is called token shift). RWKV 6 optimized the token shift process by borrowing LoRA technology, making the simple linear interpolation (lerp) of RWKV4/5 into a data-dependent, dynamic linear interpolation (ddlerp).
-
-According to the comparison of the inference complexity of different models, the time complexity of Transformer is: O (T^2), and the space complexity is: O (T^2), so the inference speed will become slower and slower, and the memory consumption will also increase. The time complexity of RWKV is: O(T), and the space complexity is O(1). The RWKV large model achieves constant inference speed through the optimization of the calculation process, greatly reducing the time consumption during inference.
-
-In addition, the RWKV architecture design significantly reduces memory usage, making the model efficient  on standard configuration CPUs or non-professional GPUs rather than expensive or high-end computing hardware. This breakthrough progress makes large-scale deep learning models no longer limited to specific hardware platforms, thus broadening the application range.
-
 #### RWKV-V7 Model Release
 
 RWKV-V7 has released three series of pre-trained models: Pile, World, and G1.
@@ -587,7 +572,7 @@ All RWKV-7-Pile series models can be viewed at the [RWKV-7-Pile model repository
 ### RWKV-V8
 
 RWKV-V8's architecture codename is "Heron."
-RWKV-V8's first feature `DeepEmbed` was [announced](https://rwkv.cn/news/read?id=20250527) in May 2025. `DeepEmbed` can achieve excellent reasoning performance similar to MoE without consuming VRAM or even RAM, enabling truly sparse large models to be deployed on all edge devices.
+RWKV-V8's first feature `DeepEmbed` was [announced](https://x.com/BlinkDL_AI/status/1926941496684519805) in May 2025. `DeepEmbed` can achieve excellent reasoning performance similar to MoE without consuming VRAM or even RAM, enabling truly sparse large models to be deployed on all edge devices.
 
 #### RWKV-V8's DeepEmbed
 
