@@ -9,7 +9,8 @@ export default defineUserConfig({
 		// Site logo and navbar
 		logo: "/img/rwkv-avartar-256p.png",
 		navbar: [
-			{ text: 'Main Github', link: 'https://github.com/BlinkDL/RWKV-LM' },
+			{ text: 'RWKV Github', link: 'https://github.com/BlinkDL/RWKV-LM' },
+			{ text: 'Model Weights', link: 'https://huggingface.co/BlinkDL/rwkv7-g1' },
 			{ text: 'Hugging Face Integration', link: 'https://huggingface.co/docs/transformers/model_doc/rwkv' },
 			{ text: 'Community Discord', link: 'https://discord.gg/bDSBUMeFpc' }
 		],
