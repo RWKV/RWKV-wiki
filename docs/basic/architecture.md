@@ -572,9 +572,10 @@ All RWKV-7-Pile series models can be viewed at the [RWKV-7-Pile model repository
 ### RWKV-V8
 
 RWKV-V8's architecture codename is "Heron."
-RWKV-V8's first feature `DeepEmbed` was [announced](https://x.com/BlinkDL_AI/status/1926941496684519805) in May 2025. `DeepEmbed` can achieve excellent reasoning performance similar to MoE without consuming VRAM or even RAM, enabling truly sparse large models to be deployed on all edge devices.
 
 #### RWKV-V8's DeepEmbed
+
+RWKV-V8's first feature `DeepEmbed` was [announced](https://x.com/BlinkDL_AI/status/1926941496684519805) in May 2025. `DeepEmbed` can achieve excellent reasoning performance similar to MoE without consuming VRAM or even RAM, enabling truly sparse large models to be deployed on all edge devices.
 
 DeepEmbed trains a learnable high-dimensional vector for each token in the vocabulary within the FFN of every model layer, which can be written as an Embed layer. These vectors can be learned during training and stored in RAM/SSD during inference, requiring only minimal parameter prefetching for each token, thus significantly reducing VRAM usage.
 
@@ -614,6 +615,111 @@ return self.value(x * self.deepemb(idx))
 ::: tip
 Since lookup operations do not consume VRAM during inference, these vectors are essentially "free" in terms of parameter count. Therefore, n-grams (such as `bigram`, `trigram`) can be further introduced to enhance the model's ability to model phrases/segments. If the vocabulary size is large, LoRA techniques can also be combined to reduce VRAM and training overhead.
 :::
+
+
+
+#### RWKV-V8's ROSA mechanism
+
+RWKV-V8's second feature `ROSA` was [announced](https://x.com/BlinkDL_AI/status/1976912771985146184) in October 2025. 
+
+**ROSA (Rapid Online Suffix Automaton)** is a neurosymbolic infinite-range lossless information propagator to replace attention.
+
+Given a token sequence $x = x_0x_1 \dots x_{n-1}$, define $x_{a:b} = x_ax_{a+1} \dots x_b$. Our goal is to efficiently compute a new sequence $y = y_0y_1 \dots y_{n-1}$ where
+
+$$y_i = \begin{cases} x_{j+1}, & \text{if there exists } j < i \text{ and } m \geq 0 \text{ s.t. } x_{j-m:j} = x_{i-m:i} \\ -1, & \text{otherwise} \end{cases}$$
+
+where we pick the unique $j$ to maximize $m$, and ties on $m$ are broken by the largest $j$.
+
+ROSA = Rapid Online Suffix Automaton (built upon the classic Suffix Automaton):
+
+```
+def ROSA(x): # space = O(n), time = adaptive, typical O(n), worst-case O(n^2)
+	n=len(x); y=[-1]*n; s=2*n+1; b=[None]*s; c=[-1]*s; d=[0]*s; e=[-1]*s; b[0]={}; g=0; z=1
+	for i,t in enumerate(x):
+		r=z; z+=1; b[r]={}; d[r]=d[g]+1; p=g
+		while p!=-1 and t not in b[p]: b[p][t]=r; p=c[p]
+		if p==-1: c[r]=0
+		else:
+			q=b[p][t]
+			if d[p]+1==d[q]: c[r]=q
+			else:
+				u=z; z+=1; b[u]=b[q].copy(); d[u]=d[p]+1; c[u]=c[q]; e[u]=e[q]
+				while p!=-1 and b[p][t]==q: b[p][t]=u; p=c[p]
+				c[q]=c[r]=u
+		v=g=r; a=-1
+		while v!=-1:
+			if d[v]>0 and e[v]>=0: a=x[e[v]+1]; break
+			v=c[v]
+		y[i]=a; v=g
+		while v!=-1 and e[v]<i: e[v]=i; v=c[v]
+	return y
+```
+ROSA($x$) is an effective parameter-free next-token predictor for $x$. Here is its prediction error\% vs token position, for 10000 long documents from the Pile. Error keeps decreasing as ctxlen grows.
+
+![prediction-error](./images/prediction-error.png)
+
+Naïve ROSA obtains 100\% MQAR and 100\% NIAH ("best thing to do in San Francisco is") by design, regardless of ctxlen. But it's useless for most real tasks, for obvious reasons.
+
+RWKV-8 ROSA solves real tasks. Call it "RWKV Online Suffix Automaton" if you like it.
+
+- Add Emb(ROSA($x$)) to suitable (especially early) tensors in LLM. Here Emb is some embedding. **This is the correct method for kNN+LLM too, and useful for RAG.**
+- Add Emb(ROSA(Sampling($z_a$))) to $z_b$ where $z_a$ is a LLM tensor and $z_b$ is another (e.g. in next layer). **This is neurosymbolic: LLM+ROSA invents its own inner monologue languages.** Each LLM layer can produce multiple sequences with small vocabs, for fast parallel ROSA processing. Trainable using STE/soft/stochastic/RL methods. Solves wide range of tasks.
+- Bookmark tokens. Example: <C\_begin><C\_3><C\_6><C\_end> to bookmark the start of chat round 36, so ROSA can use corresponding tokens (hardcoded to match bookmark but not self) to perfectly retrieve any chat history. Speculative decoding for speed up. End-to-end solution: let LLM output when/how to insert bookmark tokens, while prefilling/decoding.
+
+Comparing with attention, ROSA directly works with discrete tokens, enabling superior efficiency (no dot product, no softmax, no float, no KV cache). Do it on CPU, in parallel with GPU layers.
+
+#### Community ROSA Projects
+
+- [rosa_soft](https://github.com/wjie98/rosa_soft) (training ROSA): Provides a robust, end-to-end trainable implementation of the ROSA (Rapid Online Suffix Automaton) operator. 
+- [ROSA-Tuning](https://github.com/zyaaa-ux/ROSA-Tuning) (training ROSA):Integrates ROSA mechanism with modern large language models, enabling them to process arbitrarily long inputs using only a fixed-length attention window, while achieving performance close to full global attention.
+- [ROSA+](https://github.com/bcml-ai/rosa-plus): ROSA+ is an extension of the ROSA mechanism.It provides an intuitive Python interface as well as a fallback Witten–Bell predictor for unknown sequences.
+- [RASP](https://github.com/x-0D/RASP): A hybrid language model that combines the efficiency of ROSA+ with syntactic understanding through Conditional Random Fields (CRF) and spaCy dependency parsing. RASP generates text with enhanced grammatical coherence and structural awareness.
+
+#### ROSA-related experiments
+
+::: tabs
+@tab ROSA simply scales
+
+RWKV8 ROSA [simply scales](https://x.com/BlinkDL_AI/status/1979237513043791932), producing mysterious new languages. 
+
+demo: [RWKV-LM/RWKV-v8](https://github.com/BlinkDL/RWKV-LM/tree/main/RWKV-v8)
+
+![experiments-ROSA-simply-scales](./images/experiments-ROSA-simply-scales.png)
+
+LM inventing inner monologue languages ✨ enabled by RWKV8 multi-layer ROSA, via fully end-to-end training (next-token prediction)
+
+![experiments-ROSA-inner-monologue-languages](./images/experiments-ROSA-inner-monologue-languages.png)
+
+@tab RWKV7 + ROSA
+
+ROSA is a component that can be added to any model. RWKV8-style ROSA (much stronger than naïve ROSA), which can be added to RWKV7.
+
+This is an [experiment](https://x.com/BlinkDL_AI/status/1980011043788390565?s=20) about learning to + and - large random numbers. RWKV7 vs RWKV7+ROSAv251020(not using loss mask, so the loss will appear higher).
+
+![experiments-ROSA-0](./images/experiments-ROSA-0.jpg)
+
+Another  [experiment](https://x.com/BlinkDL_AI/status/1980504396820804086?s=20) , RWKV7 vs RWKV7+ROSAv251020 vs RWKV7+ROSAv251021 (same arch&params as v251020, better training method) 
+
+![experiments-ROSA-1](./images/experiments-ROSA-1.jpg)
+
+@tab Solving 40 digits +/- 
+
+RWKV7+ROSA 1M params [solving](https://x.com/BlinkDL_AI/status/1982786132308795653) 40 digits +/- with 99% digit accuracy, without CoT.
+
+demo: [251024_rosaQKV_run.py](https://github.com/BlinkDL/RWKV-LM/blob/main/RWKV-v8/251024_rosaQKV_run.py)
+
+![experiments-ROSA-40digits-Add-Sub](./images/experiments-ROSA-40digits-Add-Sub.png)
+
+@tab Reversing 1-60 digits input
+
+RWKV7+ROSA with 40K params (L2-D32) reversing 1-60 digits input with 99.8% digit accuracy.
+
+demo: [251105_reverse_run.py](https://github.com/BlinkDL/RWKV-LM/blob/main/RWKV-v8/251105_reverse_run.py). 
+
+![experiments-ROSA-Reversing](./images/experiments-ROSA-Reversing.png)
+
+:::
+
 
 ## RWKV Architecture Features
 
