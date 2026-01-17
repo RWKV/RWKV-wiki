@@ -17,7 +17,7 @@ If you simply want to try RWKV Goose, checkout the following public demo.
 
 ### Hugging Face (Completion Mode)
 
-- [HF-Gradio-1: RWKV7-G1 2.9B](https://huggingface.co/spaces/BlinkDL/RWKV-Gradio-1)
+- [HF-Gradio-1: RWKV7 2.9B](https://huggingface.co/spaces/BlinkDL/RWKV-Gradio-1)
 - [HF-Gradio-2: The latest RWKV model](https://huggingface.co/spaces/BlinkDL/RWKV-Gradio-2)
 
 ::: warning
@@ -63,11 +63,7 @@ Below is the actual performance on a phone equipped with the Qualcomm Snapdragon
 
 ![App-demo](./images/App-demo-en.png)
 
-RWKV7-G1 0.4B can consistently achieve an output speed of 30 tokens per second on this mid-range phone!
-
-::: info
-These two apps are open-sourced by RWKV community members [@MollySophia](https://github.com/MollySophia) and [@HaloWang](https://github.com/HaloWang), repository link: [rwkv_mobile_flutter](https://github.com/MollySophia/rwkv_mobile_flutter)
-:::
+RWKV7-G1 2.9B can achieve an output speed of 33 tokens per second!
 
 ### RWKV WebGPU Demo
 

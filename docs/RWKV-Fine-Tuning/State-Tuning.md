@@ -42,29 +42,6 @@ The data in the above table is based on the following test parameters:
 
 To fine-tune the RWKV model through state tuning, you need to collect data suitable for training RWKV (in jsonl format). For specific methods, you can refer to [Preparing the Training Dataset](../advance/training-datasets.md).
 
-To highlight the characteristics of state tuning, we have selected a large amount of conversation data with emojis as the training data for this tutorial:
-
-![state-tuning-dataset-demo](./imgs/state-tuning-dataset-demo.png)
-
-### Convert to binidx Data
-
-Using the [`make_data.py`](https://github.com/BlinkDL/RWKV-LM/blob/main/RWKV-v5/make_data.py) script, you can shuffle and repeat the jsonl training data 10 times and convert it into binidx data that can be used for RWKV training at the same time.
-
-Run the following commands in sequence in the Linux workspace to use the `make_data.py` script in the `RWKV-LM` repository to generate binidx data:
-
-``` bash copy
-git clone https://github.com/BlinkDL/RWKV-LM.git # Clone the RWKV-LM repository
-cd RWKV-LM/RWKV-v5 # Enter the RWKV-v5 directory
-python make_data.py /home/rwkv/RWKV-PEFT/data/qaemoji.jsonl 10 512 # Shuffle and copy the data and generate binidx data
-```
-
-![state-tuning-make-data](./imgs/state-tuning-make-data.gif)
-
-`/home/rwkv/RWKV-PEFT/data/qaemoji.jsonl` needs to be replaced with the path of your own jsonl file. 10 is the number of times the data is repeated, and 512 is the ctx_len (context length) of the training data.
-
-::: tip
-In the community experiments, the ctx_len of state tuning should be as small as possible. It is recommended to start with 512.
-:::
 
 ## Configure the Training Environment
 
@@ -86,7 +63,7 @@ pip install -r requirements.txt
 
 ## Modify the Training Parameters
 
-Open the `demo-state-tuning.sh` file in the `RWKV-PEFT/scripts` directory using any text editor (such as vscode), and modify the training parameters to control the fine-tuning training process and training effect:
+Open the `state tuning.sh` file in the `RWKV-PEFT/scripts` directory using any text editor (such as vscode), and modify the training parameters to control the fine-tuning training process and training effect:
 
 ![state-tuning-configs](./imgs/state-tuning-configs.png)
 
@@ -94,7 +71,7 @@ The following is a state tuning parameter adjustment process:
 
 ### Adjust the Path Parameters
 
-The first three lines of the `demo-state-tuning.sh` file are file path parameters:
+The first three lines of the `state tuning.sh` file are file path parameters:
 
 - load_model: The path of the base RWKV model
 - proj_dir: The output path of the training log and the state file obtained from training
@@ -131,80 +108,64 @@ The following parameters are recommended to be adjusted according to your fine-t
 The following lists other modifiable training parameters in the script and the effects of their modification.
 
 ::: tip
-Note: When fine-tuning the state, it is recommended to set `--warmup_steps 10`, `--lr_init 1`, `--lr_final 0.01`, and as short a ctxlen as possible. (Yes, state tuning requires a very high learning rate.)
+Note: When fine-tuning the state, it is recommended to set  `--lr_init 1e-2`, `--lr_final 1e-4`, and as short a ctxlen as possible. (Yes, state tuning requires a very high learning rate.)
 :::
 
 | Parameter | Description |
 | --- | --- |
-| `--data_type binidx` | The file format of the training corpus, supporting: "utf-8", "utf-16le", "numpy", "binidx", "dummy", "wds_img", "uint16" |
-| `--vocab_size 65536` | The size of the vocabulary. The default is 65536. Setting it to 0 means the model automatically determines the size of the vocabulary |
-| `--epoch_count 5` | The total number of training epochs, which can be adjusted according to the effect |
-| `--epoch_begin 0` | The initial training epoch, that is, start loading from the Nth epoch |
-| `--pre_ffn 0` | Replace the first att layer with ffn, which may be beneficial sometimes |
-| `--head_qk 0` | Usually keep the default value of 0, that is, the closed state |
-| `--lr_init 1` | The initial learning rate. It is recommended to be 1 for state tuning, and it is recommended not to exceed 1e-4 for other fine-tunings |
-| `--lr_final 0.01` | The final learning rate. It is recommended to be 0.01 for state tuning, and it is recommended not to exceed 1e-4 for other fine-tunings |
-| `--warmup_steps 10` | The number of warm-up steps. It is recommended to be 10 for state tuning |
-| `--beta1 0.9` | The beta1 parameter of the Adam optimizer |
-| `--beta2 0.99` | The beta2 parameter of the Adam optimizer |
-| `--adam_eps 1e-8` | The epsilon parameter of the Adam optimizer |
-| `--accelerator gpu` | The type of accelerator used. Currently, it mainly supports gpu, and cpu basically does not support training |
-| `--devices 1` | Fill in 1 for a single graphics card, and fill in the actual number for multiple cards |
-| `--precision bf16` | The training precision. The default is bf16, and it supports: "fp32", "tf32", "fp16", "bf16" |
-| `--strategy deepspeed_stage_1` | The lightning training strategy parameter. deepspeed_stage_1 is recommended for fine-tuning |
-| `--grad_cp 1` | The number of gradient accumulation steps. 0 makes the training faster but requires more VRAM, and 1 makes the training slower but saves VRAM |
-| `--my_testing "x060"` | The version of the RWKV model being trained. Select x052 for v5 and x060 for v6 |
-| `--dataload pad` | The data loading option. pad supports bsz>1, and only limits bsz=1 |
-| `--train_type "state"` | The training type is state tuning, keep it as the default |
-| `--op` | Select the operator, supporting: "cuda", "fla", "triton", with the default setting being "cuda" |
-| `--quant int8/nf4` | RWKV uses the bf16 training precision by default, but it supports two quantization training types, int8 and nf4. int8 with less precision loss is recommended |
-| `--wandb PEFT-State-tuning` | Whether to use wandb to visually record the training log. You need to configure a [wandb](https://wandb.ai/) account in advance |
-
-Quantization training can reduce the VRAM requirements but will lead to a loss of model accuracy. If you do not need quantization training, you can delete the parameters related to `quant`.
+| `--data_type binidx` | Training corpus file format. Supports: `utf-8`, `utf-16le`, `numpy`, `binidx`, `dummy`, `uint16`, `sft`, `jsonl`. Recommended: `jsonl` or `binidx`. |
+| `--vocab_size 65536` | Vocabulary size. Default is `65536`. Set to `0` for the model to automatically determine the size. |
+| `--epoch_count 5` | Total number of training epochs. Adjust based on results. |
+| `--pre_ffn 0` | Replaces the first attention layer with an FFN (Feed-Forward Network). Sometimes beneficial. |
+| `--lr_init 1e-2` | Initial learning rate. Recommended `1e-2` for state tuning; for other fine-tuning, do not exceed `1e-4`. |
+| `--lr_final 1e-4` | Final learning rate. Recommended `1e-4` for state tuning; for other fine-tuning, do not exceed `1e-4`. |
+| `--accelerator gpu` | Accelerator type. Currently primarily supports `gpu`; `cpu` is generally not supported for training. |
+| `--devices 1` | Number of GPUs. Enter `1` for a single card, or the actual count for multi-GPU setups. |
+| `--precision bf16` | Training precision. Default is `bf16`. Supports: `fp32`, `tf32`, `fp16`, `bf16`. |
+| `--strategy deepspeed_stage_1` | Lightning training strategy. `deepspeed_stage_1` is recommended for fine-tuning. |
+| `--grad_cp 1` | Gradient checkpointing. `0`: Faster training but higher VRAM usage. `1`: Slower training but saves VRAM. |
+| `--peft state` | Fine-tuning type. Use `state` for state tuning. |
+| `--my_testing "x070"` | RWKV model version. Select `x070` for v7, `x060` for v6, and `x052` for v5 (deprecated/not recommended). |
+| `--op fla` | Operator selection. State tuning only supports the `fla` operator. |
+| `--wandb PEFT-State-tuning` | **Optional**. Whether to use wandb for training logs/visualization. Requires a pre-configured [wandb](https://wandb.ai/) account. |
+| `--lr_schedule wsd` | **Optional**. Learning rate scheduler. Default is `cos_decay`. Supports: `cos_decay`, `wsd`. |
 
 ::: tip
-After adjusting the parameters, remember to save the `demo-state-tuning.sh` file.
+After adjusting the parameters, remember to save the `state tuning.sh` file.
 :::
 
 ### Appendix: State Tuning Configuration Reference
 
-``` bash copy filename="demo-state-tuning.sh"
-load_model='/home/rwkv/RWKV-PEFT/model/RWKV-x070-World-0.4B-v2.9-20250107-ctx4096.pth'
-proj_dir='/home/rwkv/RWKV-PEFT/output-manjuan/lora'
-data_file='/home/rwkv/RWKV-PEFT/data/test-1'
+``` bash copy filename="state tuning.sh"
+load_model='/home/rwkv/RWKV-PEFT/models/rwkv7-g1a-0.1b-20250728-ctx4096.pth'
+proj_dir='/home/rwkv/RWKV-PEFT/test-output'
+data_file='/home/rwkv/RWKV-PEFT/data/test.jsonl'
 
-n_layer=24
-n_embd=1024
+n_layer=12
+n_embd=768
 
-micro_bsz=4
+micro_bsz=1
 epoch_save=1
-epoch_steps=1000
-ctx_len=512
-
-lora_config='{"lora_load":"","lora_r":32,"lora_alpha":64,"lora_dropout":0.01}'
-
+epoch_steps=300
+ctx_len=1024
 
 python train.py --load_model $load_model \
 --proj_dir $proj_dir --data_file $data_file \
 --vocab_size 65536 \
+--data_type jsonl \
 --n_layer $n_layer --n_embd $n_embd \
---data_type binidx --dataload pad --loss_mask pad \
 --ctx_len $ctx_len --micro_bsz $micro_bsz \
---epoch_steps $epoch_steps --epoch_count 1 --epoch_begin 0 --epoch_save $epoch_save \
---lr_init 2e-5 --lr_final 2e-5 --warmup_steps 0 --beta1 0.9 --beta2 0.99 --adam_eps 1e-8 \
---accelerator gpu --devices 1 --precision bf16 --strategy deepspeed_stage_1 --grad_cp 1 \
+--epoch_steps $epoch_steps --epoch_count 4 --epoch_save $epoch_save \
+--lr_init 1e-2 --lr_final 1e-4 \
+--accelerator gpu --precision bf16 \
+--devices 1 --strategy deepspeed_stage_1 --grad_cp 1 \
 --my_testing "x070" \
---peft lora --lora_config $lora_config \
-# The following are optional
-# --op cuda/fla/triton (choose different operators, default is cuda)
-# --wandb RWKV-PEFT-LoRA (whether to use wandb to monitor the training process)
-# --quant int8/nf4 (whether to quantize the training)
-# --lr_schedule wsd (whether to enable cosine annealing to optimize the learning rate, default lr_schedule = cos_decay)
+--peft state --op fla
 ```
 
 ## Start the Training
 
-In the RWKV-PEFT directory, run the command `sh scripts/demo-state-tuning.sh` to start state tuning.
+In the RWKV-PEFT directory, run the command `sh scripts/state tuning.sh` to start state tuning.
 
 After the training starts normally, it should be as follows:
 

@@ -11,8 +11,9 @@ The RWKV project was initially proposed by Bo Peng (Blink_DL), and as the projec
 On September 20, 2023, the RWKV open-source project officially joined the Linux Foundation. Today, the RWKV project is an open-source non-profit organization under the Linux Foundation, with some computing power previously supported by sponsors.
 
 - [Discord Forum](https://discord.gg/bDSBUMeFpc)
-- [HF Gradio-1 | RWKV7-G1 2.9B](https://huggingface.co/spaces/BlinkDL/RWKV-Gradio-1)
-- [HF Gradio-2 | RWKV7-G0](https://huggingface.co/spaces/BlinkDL/RWKV-Gradio-2)
+- [HF Gradio-1 | completion)](https://huggingface.co/spaces/BlinkDL/RWKV-Gradio-1)
+- [HF-Gradio-2 | completion)](https://huggingface.co/spaces/BlinkDL/RWKV-Gradio-2)
+- [HF-Gradio-2 | Chat](https://huggingface.co/spaces/RWKV-Red-Team/RWKV-LatestSpace)
 
 # RWKV Architecture and Papers
 
@@ -44,26 +45,25 @@ RWKV has released open-source models of various parameter scales for each archit
 | Version | RWKV-V4 | RWKV-v5-Eagle | RWKV-v6-Finch | RWKV-v7-Goose | RWKV-v7-G1 |
 | --- | --- | --- | --- | --- | --- | 
 | Paper | [Published](https://arxiv.org/abs/2305.13048) | [Published](https://arxiv.org/abs/2404.05892) | [Published](https://arxiv.org/abs/2404.05892) | [Published](https://arxiv.org/abs/2503.14456) | [Published](https://arxiv.org/abs/2503.14456) |
-| Overall Status | **EOL** | **EOL**| **Stable** | **Stable** | **In Progress**| 
-| 0.4B Model |  Released |  Released |  No Plan | [Released](https://huggingface.co/BlinkDL/rwkv-7-world/tree/main) | [Released](https://huggingface.co/BlinkDL/rwkv7-g1/blob/main/rwkv7-g1-0.4b-20250324-ctx4096.pth) | 
-| 1.5B Model |  Released |  Released|  [Released](https://huggingface.co/BlinkDL/rwkv-6-world/blob/main/RWKV-x060-World-1B6-v2.1-20240328-ctx4096.pth) | [Released](https://huggingface.co/BlinkDL/rwkv-7-world/tree/main) | [Released](https://huggingface.co/BlinkDL/rwkv7-g1/blob/main/rwkv7-g1-1.5b-20250429-ctx4096.pth) |
-| 3B Model |  Released |  Released |  [Released](https://huggingface.co/BlinkDL/rwkv-6-world/blob/main/RWKV-x060-World-1B6-v2.1-20240328-ctx4096.pth) | [Released](https://huggingface.co/BlinkDL/rwkv-7-world/tree/main) | [Released](https://huggingface.co/BlinkDL/rwkv7-g1/blob/main/rwkv7-g1-2.9b-20250519-ctx4096.pth)|
-| 7B Model | Released |  Released|  [Released](https://huggingface.co/BlinkDL/rwkv-6-world/blob/main/RWKV-x060-World-7B-v2.1-20240507-ctx4096.pth) | No Plan  | ⚙️ **In Training**  |
-| 14B Model |  Released |  No Plan |  [Released](https://huggingface.co/BlinkDL/rwkv-6-world/blob/main/RWKV-x060-World-14B-v2.1-20240719-ctx4096.pth) | No Plan  | **📅 Planned** |
+| Overall Status | **EOL** | **EOL**| **EOL** | **EOL** | **Continuously Updating**| 
+| 0.4B Model |  Released |  Released |  No Plan | [Released](https://huggingface.co/BlinkDL/rwkv-7-world/tree/main) | [Released](https://huggingface.co/BlinkDL/rwkv7-g1/tree/main) | 
+| 1.5B Model |  Released |  Released|  [Released](https://huggingface.co/BlinkDL/rwkv-6-world/blob/main/RWKV-x060-World-1B6-v2.1-20240328-ctx4096.pth) | [Released](https://huggingface.co/BlinkDL/rwkv-7-world/tree/main) | [Released](https://huggingface.co/BlinkDL/rwkv7-g1/tree/main) |
+| 3B Model |  Released |  Released |  [Released](https://huggingface.co/BlinkDL/rwkv-6-world/blob/main/RWKV-x060-World-1B6-v2.1-20240328-ctx4096.pth) | [Released](https://huggingface.co/BlinkDL/rwkv-7-world/tree/main) | [Released](https://huggingface.co/BlinkDL/rwkv7-g1/tree/main)|
+| 7B Model | Released |  Released|  [Released](https://huggingface.co/BlinkDL/rwkv-6-world/blob/main/RWKV-x060-World-7B-v2.1-20240507-ctx4096.pth) | No Plan  | [Released](https://huggingface.co/BlinkDL/rwkv7-g1/tree/main)  |
+| 14B Model |  Released |  No Plan |  [Released]([Released](https://huggingface.co/BlinkDL/rwkv7-g1/blob/main/rwkv7-g0a3-7.2b-20251029-ctx8192.pth)) | No Plan  | [Released](https://huggingface.co/BlinkDL/rwkv7-g1/tree/main) |
 
 # Which RWKV Models Should I Use?
 
 ::: tip
-Due to performance issues caused by outdated architectures, all RWKV-5, RWKV-4 series models (Raven / World / Pile ...) and earlier RWKV versions have reached end-of-life, with existing models serving only as archives.
+Due to performance issues caused by outdated architectures, all RWKV-6/5/4 series models (Raven / World / Pile ...) and earlier RWKV versions have reached end-of-life, with existing models serving only as archives.
 :::
 
-- **Models with 7B parameters and below**: Please use the [RWKV7-G1 2.9B model](https://modelscope.cn/models/RWKV/rwkv7-g1/files). Thanks to the latest architectural design and the newest World v3.5 dataset (totaling 5.16T tokens), the RWKV7-G1 model has strong **reasoning, coding, and mathematical capabilities**, performing better than previous models across all tasks.
+- 1️⃣ Select the **latest architecture**, e.g., RWKV7 > RWKV6
+- 2️⃣ Select models with **better datasets**. Dataset quality ranking: G1c > G1b(G0b)  > G1(G0) 
+- 3️⃣ **Check the date in the model name**. Given the same parameters, the newer the model, the better! For example, for a 1.5B model, the `G1c` version released on `20260110` is definitely superior to the `G1` version released on `250429`
 
-- **Models with more than 7B parameters**: Since RWKV7-G1 7B and larger models are currently in training, we recommend using the [RWKV-6-World-14B-V2.1](https://hf-mirror.com/BlinkDL/rwkv-6-world/blob/main/RWKV-x060-World-14B-v2.1-20240719-ctx4096.pth) model.
+The latest models can be downloaded from [Hugging Face](https://huggingface.co/BlinkDL/rwkv7-g1/tree/main).
 
-::: tip
-After the RWKV7-G1 7B/14B models complete training, they will completely replace the existing RWKV-6-World 7B/14B models.
-:::
 
 # Differences Between RWKV and Transformer
 
@@ -94,23 +94,44 @@ After the RWKV7-G1 7B/14B models complete training, they will completely replace
 
 # RWKV Model Naming Rules
 
-RWKV models typically have two naming conventions:
+RWKV models typically follow two naming conventions: one for **World models**, and another for the **RWKV G1 series** introduced during the RWKV 7 architecture era (which supports 'think' reasoning).
 
-- RWKV-6-World-3B-v2.1-20240208-ctx4096.pth
-- RWKV-x070-World-1.5B-v3-20250127-ctx4096.pth
+::: tabs
+@tab RWKV G1 Models
+G1 Model Naming Format:
+- rwkv7a-g1b-0.1b-20250819-ctx4096.pth
+- rwkv7-g0a2-7.2b-20251005-ctx4096.pth
+- rwkv7-g1a3-1.5b-20251015-ctx8192.pth
 
-The meaning of each field in the model name:
+Meaning of each field in G1 model names:
+
+| Field | Meaning |
+| --- | --- |
+| **rwkv7a / rwkv7** | Model architecture version. [rwkv7](https://rwkv.cn/news/read?id=20250320) is the latest RWKV base architecture; rwkv7a adds the [DE](https://rwkv.cn/news/read?id=20250527) mechanism on top of rwkv7; rwkv7b adds [DE](https://rwkv.cn/news/read?id=20250527) and [DEA](https://rwkv.cn/news/read?id=20250630) on top of rwkv7 |
+| **0.1b / 7.2b** | Model parameter scale, where "B" stands for "Billions" |
+| **g1b / g0a2 / g1a3** | **Training data version**. Dataset quality ranking: G1c > G1b(G0b)  > G1(G0) |
+| **20250819 / 20251005** | Model release date |
+| **ctx4096/ctx8192** | Pre-trained context length |  
+
+@tab RWKV World Models
+
+World Model Naming Format:
+- RWKV-x060-World-3B-v2.1-20240208-ctx4096.pth
+- RWKV-x070-World-0.1B-v2.8-20241210-ctx4096.pth
+
+Meaning of each field in World model names:
 
 | Field | Meaning |
 | --- | --- |
 | **RWKV** | Model name |
-| **6 / 070** | RWKV model architecture, recommended to use RWKV-7 models |
-| **World** | Model type, World indicates RWKV models trained with global languages, thus supporting multilingual tasks |
-| **3B / 1.5B** | Model parameter scale, "B" stands for "Billions" |
-| **v2.1 / v3** | Model training dataset version, v2.1 ≈ 1.1T , v3 ≈ 2.5T  |
-| **20240208 / 20250127** | Model release date |
+| **x060 / X070** | RWKV model architecture. X060 = RWKV6, X070 = RWKV7 |
+| **World** | Dataset type. The World dataset contains over 100 global languages; World models support multi-language tasks |
+| **3B / 0.1B** | Model parameter scale, where "B" stands for "Billions" |
+| **v2.1 / v2.8** | Model training set version. v2 ≈ 1.1T, v2.1 ≈ 2.5T, v3 ≈ 5.6T  |
+| **20240208 / 20231113** | Model release date |
 | **ctx4096** | Pre-trained context length |
-| **.pth** | RWKV model file format, also supports `.gguf` and `.safetensors` etc. |
+
+:::
 
 # Who sponsors the compute for RWKV?
 

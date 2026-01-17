@@ -69,6 +69,24 @@ Data Source: [issue #15](https://github.com/RWKV-Vibe/RWKV-Inference-Performance
 - driver version: 575.64.05
 :::
 
+## NVIDIA CMP 40HX 8GB
+
+| Inference Tool | Model | Precision | Tokens/s | VRAM Usage |
+| :---: |:---:|:---:|:---:| :----------:|
+| [web-rwkv](https://github.com/cryscan/web-rwkv) | RWKV7-G1 2.9B | fp16 |  68.89 | 5.9GB |
+| [web-rwkv](https://github.com/cryscan/web-rwkv) | RWKV7-G1 2.9B | int8  | 78.78  | 3.9GB |
+| [web-rwkv](https://github.com/cryscan/web-rwkv) | RWKV7-G1 2.9B | nf4 |  80.23  | 2.4GB |
+
+Data Source: [issue #23](https://github.com/RWKV-Vibe/RWKV-Inference-Performance-Test/issues/23)
+
+
+::: info Test Environment:
+- CPU：AMD Ryzen 7 5700G
+- OS version: Windows11 PRO 24H2
+- driver version: DCH-581.57
+- CUDA version: 13.0
+:::
+
 ## AMD
 
 ::: info
@@ -215,7 +233,7 @@ Data Source: [issue #19](https://github.com/RWKV-Vibe/RWKV-Inference-Performance
 ## Mobile Chips
 
 ::: info
-Inference performance of RWKV models on mobile chips, including Qualcomm, MTK SoCs, and various embedded/edge computing devices.
+The inference performance of RWKV models on mobile and edge devices, including various embedded/edge-computing platforms such as Qualcomm, MediaTek SoCs, and the RK3588.
 :::
 
 ### Qualcomm Snapdragon 8 Gen 3

@@ -16,6 +16,7 @@ The main decoding parameters of RWKV have the following effects:
 | `Temperature` | Adjusts the randomness of the generated result by modifying the scaling ratio of the logits. A lower temperature makes the model choose highly probable tokens, creating more predictable output while a higher temperature flattens the probability distribution, generating more creative but potentially lses coherent text. |
 | `Presence penalty`  | Applies a fixed penalty to any token that has already appeared, encouraging the model to use new vocabulary rather than repeating words. |
 | `Frequency Penalty` | Penalizes tokens based on how many times they've appeared, with the penalty increasing with each occurrence. Helps prevent repetitive phrases and filler words. |
+| `Penalty Decay` | Penalty decay parameter, used to control the decay rate of Presence Penalty and Frequency Penalty. The closer the value is to 1, the slower the penalty decays; the smaller the value, the faster the decay |
 | `max_tokens` | Limits the maximum number of tokens generated in one response|
 
 ::: tip
@@ -124,6 +125,53 @@ Suppose the current `Frequency Penalty` is `0.3` and the original generation pro
 ::: warning
 The examples illustrate the `Frequency Penalty` function conceptually. In actual calculations, it is usually involves a multiplicative adjustment of the logits, rather than simple substraction.
 :::
+
+
+
+### `Penalty Decay` Parameter 
+
+For example, assume `Presence Penalty = 1` and the model generates the sequence:
+
+```
+Beautiful sunny day …
+```
+
+As explained earlier, the `Presence Penalty` applies a penalty to tokens that have already appeared. Since *Beautiful* was generated in the first position, setting `Presence Penalty = 1` substantially lowers the likelihood of generating *Beautiful* again.
+
+However, this penalty does not remain constant. Under the influence of the `Penalty Decay` parameter, the strength of the penalty decreases as the sequence length increases. The decay is defined as:
+
+$$
+\text{Actual Penalty} = P_0 \cdot \gamma^d
+$$
+
+where:
+
+* $P_0$ is the original penalty value,
+* $\gamma$ is the `Penalty Decay` factor,
+* $d$ is the distance from the token’s last occurrence.
+
+#### Intuition: “Memory” of the Model
+
+If we think of the RWKV model as a writer, then `Penalty Decay` represents the writer’s **memory strength**:
+
+* **`Decay = 0.99`**\*\* → weak memory\*\*
+  After generating 100 tokens, the penalty on the first *Beautiful* decreases to about 0.366:
+
+  $$
+  1.0 \cdot 0.99^{100} \approx 0.366
+  $$
+
+  At this point, the model has almost forgotten it generated *Beautiful* before, so the probability of generating it again is relatively high.
+
+* **`Decay = 0.999`**\*\* → strong memory\*\*
+  After generating 100 tokens, the penalty on the first *Beautiful* remains as high as 0.905:
+
+  $$
+  1.0 \cdot 0.999^{100} \approx 0.905
+  $$
+
+  Here, the model clearly remembers having generated *Beautiful* already, so the probability of generating it again remains low.
+
 
 ## Parameter Combinations for Different Tasks
 

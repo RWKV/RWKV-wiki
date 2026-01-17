@@ -9,7 +9,8 @@ export default defineUserConfig({
 		// Site logo and navbar
 		logo: "/img/rwkv-avartar-256p.png",
 		navbar: [
-			{ text: 'Main Github', link: 'https://github.com/BlinkDL/RWKV-LM' },
+			{ text: 'RWKV Github', link: 'https://github.com/BlinkDL/RWKV-LM' },
+			{ text: 'Model Weights', link: 'https://huggingface.co/BlinkDL/rwkv7-g1' },
 			{ text: 'Hugging Face Integration', link: 'https://huggingface.co/docs/transformers/model_doc/rwkv' },
 			{ text: 'Community Discord', link: 'https://discord.gg/bDSBUMeFpc' }
 		],
@@ -29,6 +30,7 @@ export default defineUserConfig({
 				children: [
 					"/basic/architecture.md",
 					"/basic/how-to-play.md",
+					"/basic/RWKV-Evals.md",
 					"/basic/decoding-parameters.md",
 					"/basic/integrate.md",
 					"/basic/rwkv-performance-data.md",
@@ -74,8 +76,8 @@ export default defineUserConfig({
 				children: [
 					"/RWKV-Fine-Tuning/State-Tuning.md",
 					"/RWKV-Fine-Tuning/LoRA-Fine-Tuning.md",
+					"/RWKV-Fine-Tuning/MiSS-Fine-Tuning.md",
 					"/RWKV-Fine-Tuning/Pissa-Fine-Tuning.md",
-					"/RWKV-Fine-Tuning/DiSHA-Fine-Tuning.md",
 					"/RWKV-Fine-Tuning/FAQ.md",
 				]
 			},

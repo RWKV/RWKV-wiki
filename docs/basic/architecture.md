@@ -38,6 +38,14 @@ In 2020, BlinkDL began researching Transformers and immediately discovered two o
 
 Later, he noticed Apple's [Attention Free Transformer](https://arxiv.org/abs/2105.14103) (AFT) paper and tested it, finding that these two techniques also brought significant performance improvements to AFT.
 
+:::tip
+As of November 2025, the RWKV-8 architecture is still in the experimental stage. Published features of RWKV-8 include:
+
+- [RWKV-8 Preview: DeepEmbed - An edge-friendly sparse design to solve MoE VRAM usage](https://x.com/BlinkDL_AI/status/1926941496684519805)
+- [RWKV-8 Series: DeepEmbedAttention - Streamlining KV Cache, especially suitable for hybrid models (RWKV-7s)](https://x.com/BlinkDL_AI/status/1939660738723004780)
+- [RWKV-8 Series: ROSA (RWKV Online Suffix Automaton) Mechanism - Paving the way for the future](https://x.com/BlinkDL_AI/status/1976912771985146184)
+:::
+
 ### RWKV-V1
 
 In August 2021, the first version of the RWKV architecture: RWKV-V1 released on [**RWKV-LM repository**](https://github.com/BlinkDL/RWKV-LM). The [**first commit**](https://github.com/BlinkDL/RWKV-LM/commit/4c6db5607c6f94c38c10004efb292510bc71ba59) of RWKV-V1 was on August 9, 2021.
@@ -282,12 +290,12 @@ The RWKV-5.2 architecture released six types of models: 0.4B, 1B5, 3B, 7B, and 3
 | RWKV-5.2             | Introduced diagonal decay matrices on the basis of RWKV-5.1, that is, the $u$ and $w$ vector parameters were diagonalized                                                                                                                            | [RWKV-5-World-V2.1](https://huggingface.co/BlinkDL/rwkv-5-world) series, including 0.4B, 1B5, 3B, 7B, and 3B (ctx16k)   | World-v2                                                                                                                                  |
 
 ::: danger
-RWKV-V5 series models are all outdated, it is recommended to use RWKV-V6 models.
+RWKV-V5 series models are all outdated, it is recommended to use RWKV7-g1 series models.
 :::
 
 ### RWKV-V6
 
-The version code of RWKV-V6 is "Finch". This version was developed in October 2023 and is the currently (November 2024) stable architecture.
+The version code of RWKV-V6 is "Finch". This version was developed in October 2023.
 
 ![RWKV-V6 Complete Architecture Diagram](../img/architecture/rwkv-6-architecture.png)
 
@@ -388,7 +396,7 @@ The RWKV-V6 architecture itself does not have sub-versions, but different types 
 #### RWKV-V6 State Tuning
 
 ::: tip
-In addition to the complete model weights, RWKV community developed state tuning during the iteration of the RWKV-V6 architecture. This is a novel fine-tuning method that fine-tunes the initial state of RWKV, which is equivalent to the most efficient prompt tuning.   This method is excellent at alignment because of its strong transferability. For detailed methods of state tuning, please refer to [RWKV-PEFT - State Tuning](https://github.com/JL-er/RWKV-PEFT/blob/main/scripts/demo-state-tuning.sh).
+In addition to the complete model weights, RWKV community developed state tuning during the iteration of the RWKV-V6 architecture. This is a novel fine-tuning method that fine-tunes the initial state of RWKV, which is equivalent to the most efficient prompt tuning.   This method is excellent at alignment because of its strong transferability. For detailed methods of state tuning, please refer to [RWKV-PEFT - State Tuning](https://github.com/Joluck/RWKV-PEFT/tree/main/scripts).
 
 The fine-tuned state file can be merged into the base model or used as an "enhancement plugin for the RWKV model": that is, initializing the model's state before loading the base RWKV model to affect the model's response style, response format, etc.
 :::
@@ -501,21 +509,6 @@ def ref_fwd(r, w, k, v, a, b):
 
 ```
 
-## RWKV Architecture Features
-
-The characteristics of the RWKV large model architecture include:
-
-- Efficient and stable inference speed
-- Low and fixed memory usage (supports running on CPU)
-- Capable of handling infinite context, very suitable for long text processing and multi-round dialogue applications
-- Hardware-friendly, only performs matrix and vector multiplication operations, no KV cache
-
-The RWKV architecture consists of a series of stacked residual blocks, each of which consists of time-mixing and channel-mixing sub-blocks with a recurrent structure, which is achieved by linear interpolation between the current input and the last input (in the RWKV-4 architecture paper, this process is called token shift). RWKV 6 optimized the token shift process by borrowing LoRA technology, making the simple linear interpolation (lerp) of RWKV4/5 into a data-dependent, dynamic linear interpolation (ddlerp).
-
-According to the comparison of the inference complexity of different models, the time complexity of Transformer is: O (T^2), and the space complexity is: O (T^2), so the inference speed will become slower and slower, and the memory consumption will also increase. The time complexity of RWKV is: O(T), and the space complexity is O(1). The RWKV large model achieves constant inference speed through the optimization of the calculation process, greatly reducing the time consumption during inference.
-
-In addition, the RWKV architecture design significantly reduces memory usage, making the model efficient  on standard configuration CPUs or non-professional GPUs rather than expensive or high-end computing hardware. This breakthrough progress makes large-scale deep learning models no longer limited to specific hardware platforms, thus broadening the application range.
-
 #### RWKV-V7 Model Release
 
 RWKV-V7 has released three series of pre-trained models: Pile, World, and G1.
@@ -536,6 +529,15 @@ The RWKV7-G1 series models are trained on the latest World v3.5 dataset, featuri
 | rwkv7-g1-2.9b     | Trained on 10T tokens randomly sampled from the World v3.5 dataset         |
 
 All RWKV7-G1 series models can be viewed at the [RWKV7-G1 model repository](https://huggingface.co/BlinkDL/rwkv7-g1/tree/main).
+
+| Field | Meaning |
+| --- | --- |
+| **rwkv7a / rwkv7** | Model architecture version. [rwkv7](https://arxiv.org/abs/2503.14456) is the latest RWKV base architecture; rwkv7a adds the [DE](https://x.com/BlinkDL_AI/status/1926941496684519805) mechanism to rwkv7, and rwkv7b adds both [DE](https://x.com/BlinkDL_AI/status/1926941496684519805) and [DEA](https://x.com/BlinkDL_AI/status/1939532655823040545) to rwkv7. |
+| **0.1b / 7.2b** | Model parameter size, where "B" stands for "Billions". |
+| **g1b / g0a2 / g1a3** | **Training data version**. Data quality ranking: G1b > G1a3 > G1a2 > G1a > G1 > G0a2 > G0. The RWKV7-G1a model is based on the RWKV7-G1 model with an additional 1T of high-quality reasoning and instruction data; RWKV7-G1a2 is based on RWKV7-G1a with further data added, and so on. |
+| **20250819 / 20251005** | Model release date. |
+| **ctx4096/ctx8192** | Pre-training context length. |
+
 ::: tip
 The World v3.5 dataset is an expanded version of the World V3 dataset, containing additional novels, web pages, mathematics, code, and reasoning data, totaling 5.16T tokens.
 
@@ -570,9 +572,10 @@ All RWKV-7-Pile series models can be viewed at the [RWKV-7-Pile model repository
 ### RWKV-V8
 
 RWKV-V8's architecture codename is "Heron."
-RWKV-V8's first feature `DeepEmbed` was [announced](https://rwkv.cn/news/read?id=20250527) in May 2025. `DeepEmbed` can achieve excellent reasoning performance similar to MoE without consuming VRAM or even RAM, enabling truly sparse large models to be deployed on all edge devices.
 
 #### RWKV-V8's DeepEmbed
+
+RWKV-V8's first feature `DeepEmbed` was [announced](https://x.com/BlinkDL_AI/status/1926941496684519805) in May 2025. `DeepEmbed` can achieve excellent reasoning performance similar to MoE without consuming VRAM or even RAM, enabling truly sparse large models to be deployed on all edge devices.
 
 DeepEmbed trains a learnable high-dimensional vector for each token in the vocabulary within the FFN of every model layer, which can be written as an Embed layer. These vectors can be learned during training and stored in RAM/SSD during inference, requiring only minimal parameter prefetching for each token, thus significantly reducing VRAM usage.
 
@@ -612,6 +615,111 @@ return self.value(x * self.deepemb(idx))
 ::: tip
 Since lookup operations do not consume VRAM during inference, these vectors are essentially "free" in terms of parameter count. Therefore, n-grams (such as `bigram`, `trigram`) can be further introduced to enhance the model's ability to model phrases/segments. If the vocabulary size is large, LoRA techniques can also be combined to reduce VRAM and training overhead.
 :::
+
+
+
+#### RWKV-V8's ROSA mechanism
+
+RWKV-V8's second feature `ROSA` was [announced](https://x.com/BlinkDL_AI/status/1976912771985146184) in October 2025. 
+
+**ROSA (Rapid Online Suffix Automaton)** is a neurosymbolic infinite-range lossless information propagator to replace attention.
+
+Given a token sequence $x = x_0x_1 \dots x_{n-1}$, define $x_{a:b} = x_ax_{a+1} \dots x_b$. Our goal is to efficiently compute a new sequence $y = y_0y_1 \dots y_{n-1}$ where
+
+$$y_i = \begin{cases} x_{j+1}, & \text{if there exists } j < i \text{ and } m \geq 0 \text{ s.t. } x_{j-m:j} = x_{i-m:i} \\ -1, & \text{otherwise} \end{cases}$$
+
+where we pick the unique $j$ to maximize $m$, and ties on $m$ are broken by the largest $j$.
+
+ROSA = Rapid Online Suffix Automaton (built upon the classic Suffix Automaton):
+
+```
+def ROSA(x): # space = O(n), time = adaptive, typical O(n), worst-case O(n^2)
+	n=len(x); y=[-1]*n; s=2*n+1; b=[None]*s; c=[-1]*s; d=[0]*s; e=[-1]*s; b[0]={}; g=0; z=1
+	for i,t in enumerate(x):
+		r=z; z+=1; b[r]={}; d[r]=d[g]+1; p=g
+		while p!=-1 and t not in b[p]: b[p][t]=r; p=c[p]
+		if p==-1: c[r]=0
+		else:
+			q=b[p][t]
+			if d[p]+1==d[q]: c[r]=q
+			else:
+				u=z; z+=1; b[u]=b[q].copy(); d[u]=d[p]+1; c[u]=c[q]; e[u]=e[q]
+				while p!=-1 and b[p][t]==q: b[p][t]=u; p=c[p]
+				c[q]=c[r]=u
+		v=g=r; a=-1
+		while v!=-1:
+			if d[v]>0 and e[v]>=0: a=x[e[v]+1]; break
+			v=c[v]
+		y[i]=a; v=g
+		while v!=-1 and e[v]<i: e[v]=i; v=c[v]
+	return y
+```
+ROSA($x$) is an effective parameter-free next-token predictor for $x$. Here is its prediction error\% vs token position, for 10000 long documents from the Pile. Error keeps decreasing as ctxlen grows.
+
+![prediction-error](./images/prediction-error.png)
+
+Naïve ROSA obtains 100\% MQAR and 100\% NIAH ("best thing to do in San Francisco is") by design, regardless of ctxlen. But it's useless for most real tasks, for obvious reasons.
+
+RWKV-8 ROSA solves real tasks. Call it "RWKV Online Suffix Automaton" if you like it.
+
+- Add Emb(ROSA($x$)) to suitable (especially early) tensors in LLM. Here Emb is some embedding. **This is the correct method for kNN+LLM too, and useful for RAG.**
+- Add Emb(ROSA(Sampling($z_a$))) to $z_b$ where $z_a$ is a LLM tensor and $z_b$ is another (e.g. in next layer). **This is neurosymbolic: LLM+ROSA invents its own inner monologue languages.** Each LLM layer can produce multiple sequences with small vocabs, for fast parallel ROSA processing. Trainable using STE/soft/stochastic/RL methods. Solves wide range of tasks.
+- Bookmark tokens. Example: <C\_begin><C\_3><C\_6><C\_end> to bookmark the start of chat round 36, so ROSA can use corresponding tokens (hardcoded to match bookmark but not self) to perfectly retrieve any chat history. Speculative decoding for speed up. End-to-end solution: let LLM output when/how to insert bookmark tokens, while prefilling/decoding.
+
+Comparing with attention, ROSA directly works with discrete tokens, enabling superior efficiency (no dot product, no softmax, no float, no KV cache). Do it on CPU, in parallel with GPU layers.
+
+#### Community ROSA Projects
+
+- [rosa_soft](https://github.com/wjie98/rosa_soft) (training ROSA): Provides a robust, end-to-end trainable implementation of the ROSA (Rapid Online Suffix Automaton) operator. 
+- [ROSA-Tuning](https://github.com/zyaaa-ux/ROSA-Tuning) (training ROSA):Integrates ROSA mechanism with modern large language models, enabling them to process arbitrarily long inputs using only a fixed-length attention window, while achieving performance close to full global attention.
+- [ROSA+](https://github.com/bcml-ai/rosa-plus): ROSA+ is an extension of the ROSA mechanism.It provides an intuitive Python interface as well as a fallback Witten–Bell predictor for unknown sequences.
+- [RASP](https://github.com/x-0D/RASP): A hybrid language model that combines the efficiency of ROSA+ with syntactic understanding through Conditional Random Fields (CRF) and spaCy dependency parsing. RASP generates text with enhanced grammatical coherence and structural awareness.
+
+#### ROSA-related experiments
+
+::: tabs
+@tab ROSA simply scales
+
+RWKV8 ROSA [simply scales](https://x.com/BlinkDL_AI/status/1979237513043791932), producing mysterious new languages. 
+
+demo: [RWKV-LM/RWKV-v8](https://github.com/BlinkDL/RWKV-LM/tree/main/RWKV-v8)
+
+![experiments-ROSA-simply-scales](./images/experiments-ROSA-simply-scales.png)
+
+LM inventing inner monologue languages ✨ enabled by RWKV8 multi-layer ROSA, via fully end-to-end training (next-token prediction)
+
+![experiments-ROSA-inner-monologue-languages](./images/experiments-ROSA-inner-monologue-languages.png)
+
+@tab RWKV7 + ROSA
+
+ROSA is a component that can be added to any model. RWKV8-style ROSA (much stronger than naïve ROSA), which can be added to RWKV7.
+
+This is an [experiment](https://x.com/BlinkDL_AI/status/1980011043788390565?s=20) about learning to + and - large random numbers. RWKV7 vs RWKV7+ROSAv251020(not using loss mask, so the loss will appear higher).
+
+![experiments-ROSA-0](./images/experiments-ROSA-0.jpg)
+
+Another  [experiment](https://x.com/BlinkDL_AI/status/1980504396820804086?s=20) , RWKV7 vs RWKV7+ROSAv251020 vs RWKV7+ROSAv251021 (same arch&params as v251020, better training method) 
+
+![experiments-ROSA-1](./images/experiments-ROSA-1.jpg)
+
+@tab Solving 40 digits +/- 
+
+RWKV7+ROSA 1M params [solving](https://x.com/BlinkDL_AI/status/1982786132308795653) 40 digits +/- with 99% digit accuracy, without CoT.
+
+demo: [251024_rosaQKV_run.py](https://github.com/BlinkDL/RWKV-LM/blob/main/RWKV-v8/251024_rosaQKV_run.py)
+
+![experiments-ROSA-40digits-Add-Sub](./images/experiments-ROSA-40digits-Add-Sub.png)
+
+@tab Reversing 1-60 digits input
+
+RWKV7+ROSA with 40K params (L2-D32) reversing 1-60 digits input with 99.8% digit accuracy.
+
+demo: [251105_reverse_run.py](https://github.com/BlinkDL/RWKV-LM/blob/main/RWKV-v8/251105_reverse_run.py). 
+
+![experiments-ROSA-Reversing](./images/experiments-ROSA-Reversing.png)
+
+:::
+
 
 ## RWKV Architecture Features
 
